@@ -1,0 +1,14 @@
+# https://docs.travis-ci.com/user/travis-lint
+
+language: node_js
+
+node_js:
+  - 10
+
+install:
+  - npm install --ignore-scripts
+
+after_success:
+  - npm install posthtml
+  - npm install reshape
+  - npm run benchmark

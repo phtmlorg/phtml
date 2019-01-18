@@ -1,0 +1,59 @@
+{
+  "plugins": [
+    "plugins/markdown"
+  ],
+  "recurseDepth": 0,
+  "source": {
+    "include": [
+      "src"
+    ],
+    "includePattern": ".+\\.mjs(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "opts": {
+    "destination": "./.gh-pages/",
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "recurse": true,
+    "template": "node_modules/docdash",
+    "verbose": true
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "layoutFile": "node_modules/docdash/tmpl/layout.tmpl",
+      "includeDate": false
+    }
+  },
+  "docdash": {
+    "collapse": true,
+    "includeDate": false,
+    "typedefs": false,
+    "private": false,
+    "removeQuotes": true,
+    "search": true,
+    "menu": {
+      "GitHub": {
+        "href": "https://github.com/jonathantneal/posthtml"
+      },
+      "Support": {
+        "href": "https://gitter.im/postcss"
+      }
+    },
+    "scripts": [
+      "styles/custom.css"
+    ],
+		"meta": {
+			"title": "PostHTML",
+			"description": "A tool for transforming HTML with JavaScript"
+		},
+		"openGraph": {
+			"title": "PostHTML",
+			"type": "website",
+			"image": "https://jonathantneal.github.io/reshape-logo.svg",
+			"site_name": "Docdash",
+			"url": "https://jonathantneal.github.io/posthtml"
+		}
+  }
+}

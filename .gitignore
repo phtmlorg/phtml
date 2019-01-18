@@ -1,0 +1,14 @@
+.*
+!.appveyor.yml
+!.benchmark.mjs
+!.editorconfig
+!.jsdocrc
+!.gitignore
+!.tape*.mjs
+!.travis.yml
+*.log*
+*.result.css
+/browser.*
+/index.*
+node_modules
+package-lock.json

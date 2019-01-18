@@ -1,0 +1,170 @@
+import AttributeList from './AttributeList';
+import Container from './Container';
+import NodeList from './NodeList';
+
+/**
+* @name Element
+* @class
+* @extends Container
+* @classdesc Create a new {@link Element} {@Link Node}.
+* @param {Object} settings - Custom settings applied to the {@link Element}.
+* @param {String} settings.name - Tag name of the {@link Element}.
+* @param {Boolean} settings.isSelfClosing - Whether the {@link Element} is self-closing.
+* @param {Boolean} settings.isVoid - Whether the {@link Element} is void.
+* @param {Object|AttributeList} settings.attrs - Attributes applied to the {@link Element}.
+* @param {Array|NodeList} settings.nodes - Nodes appended to the {@link Element}.
+* @param {Object} settings.source - Source mapping of the {@link Element}.
+* @return {Element} A new {@link Element} {@Link Node}
+* @example
+* new Element({ name: 'p' }) // returns an element representing <p></p>
+*
+* new Element({
+*   name: 'input',
+*   attrs: [{ name: 'type', value: 'search' }],
+*   isVoid: true
+* }) // returns an element representing <input type="search">
+*/
+class Element extends Container {
+	constructor (settings) {
+		super();
+
+		Object.assign(this, {
+			// Tag name of the Element
+			name: String(Object(settings).name || 'span'),
+
+			// Whether the Element is self-closing
+			isSelfClosing: Boolean(Object(settings).isSelfClosing),
+
+			// Whether the Element is void
+			isVoid: Boolean(Object(settings).isVoid),
+
+			// Attributes applied to the Element
+			attrs: Object(settings).attrs instanceof AttributeList
+				? settings.attrs
+			: Object(settings).attrs instanceof Array
+				? new AttributeList(...settings.attrs)
+			: new AttributeList()
+		});
+
+		// Nodes appended to the Element
+		if (!this.selfClosing && !this.isVoid) {
+			this.nodes = Object(settings).nodes instanceof NodeList
+				? new NodeList(this, ...settings.nodes.splice(0, settings.nodes.length))
+			: Object(settings).nodes instanceof Array
+				? new NodeList(...settings.nodes)
+			: new NodeList(this);
+		}
+
+		// Source mapping of the Element
+		this.source = Object(Object(settings).source);
+	}
+
+	/**
+	* Append Nodes or new Text Nodes to the current {@link Element}.
+	* @param {...Array} nodes - Nodes inserted after the last child of the {@link Element}.
+	* @returns {Element} - The current {@link Element}.
+	* @example
+	* element.append(someOtherElement)
+	* @example <caption>Append a new {@link Text} node to the current {@link Element}.</caption>
+	* element.append("foo")
+	*/
+	append (...nodes) {
+		this.nodes.push(...nodes);
+
+		return this;
+	}
+
+	/**
+	* Return a clone the current {@link Element}.
+	* @param {Object} settings - Custom settings applied to the cloned {@link Element}.
+	* @param {Boolean} isDeep - Whether the descendants of the current {@link Element} should also be cloned.
+	* @returns {Element} - The cloned {@link Element}.
+	* @example <caption>Clone the current {@link Element} and add an "id" attribute with a value of "bar".</caption>
+	* element.clone({ attrs: { name: 'id', value: 'bar' } })
+	* @example <caption>Clone the current {@link Element} and append a {@link Text} node.</caption>
+	* element.clone({ nodes: [ "Hello World"] })
+	*/
+	clone (settings, isDeep) {
+		const clone = new Element(
+			Object.assign({}, this, { nodes: [] }, settings)
+		);
+
+		if (isDeep && this.nodes && this.nodes.length) {
+			const additionalNodes = Array.isArray(settings.nodes) ? settings.nodes : [];
+
+			clone.nodes = new NodeList(clone, ...this.nodes.map(node => node.clone({}, isDeep)).concat(additionalNodes));
+		}
+
+		return clone;
+	}
+
+	/**
+	* Return the stringified innerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceInnerHTML () {
+		return this.isSelfClosing || this.isVoid || typeof this.source.input !== 'string'
+			? ''
+		: this.source.input.slice(
+			this.source.startInnerOffset,
+			this.source.endInnerOffset
+		);
+	}
+
+	/**
+	* Return the stringified outerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceOuterHTML () {
+		return typeof this.source.input !== 'string'
+			? ''
+		: this.source.input.slice(
+			this.source.startOffset,
+			this.source.endOffset
+		);
+	}
+
+	/**
+	* Return the stringified Element.
+	* @returns {String}
+	*/
+	toString () {
+		const start = `${this.name}${this.attrs.length ? ` ${this.attrs}` : ''}`;
+
+		return this.isSelfClosing || this.isVoid
+			? `<${start}${this.isVoid ? '' : '/'}>`
+		: `<${start}>${this.nodes}</${this.name}>`;
+	}
+
+	/**
+	* Return the Element as a unique Object.
+	* @returns {Object}
+	*/
+	toJSON () {
+		const object = { name: this.name };
+
+		// conditionally disclose whether the Element is self-closing
+		if (this.isSelfClosing) {
+			object.isSelfClosing = true;
+		}
+
+		// conditionally disclose whether the Element is void
+		if (this.isVoid) {
+			object.isVoid = true;
+		}
+
+		// conditionally disclose Attributes applied to the Element
+		if (this.attrs.length) {
+			object.attrs = this.attrs.toJSON();
+		}
+
+		// conditionally disclose Nodes appended to the Element
+		if (!this.isSelfClosing && !this.isVoid && this.nodes.length) {
+			object.nodes = this.nodes.toJSON();
+		}
+
+		return object;
+	}
+}
+
+export default Element;
