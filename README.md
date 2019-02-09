@@ -87,6 +87,20 @@ PostHTML.use(
 ).process(YOUR_HTML);
 ```
 
+#### Plugin Creation
+
+```js
+import PostHTML from '@jonathantneal/posthtml';
+
+export default new PostHTML.Plugin('posthtml-plugin-name', pluginOptions => {
+  // initialization logic
+
+  return (root, result) => {
+    // runtime logic
+  };
+});
+```
+
 [cli-img]: https://img.shields.io/travis/jonathantneal/posthtml.svg
 [cli-url]: https://travis-ci.org/jonathantneal/posthtml
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
