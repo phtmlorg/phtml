@@ -92,7 +92,7 @@ function parse (input, result) {
 				attr => {
 					const source = node.sourceCodeLocation.attrs[attr.name];
 
-					return Object.assign({}, attr, { source: { input, from, source } })
+					return { ...attr, source: { input, from, source } };
 				}
 			),
 			isSelfClosing: node.selfClosing,
@@ -114,23 +114,16 @@ function parse (input, result) {
 
 	// when the parser encounters a comment
 	parser.on('comment', node => {
-		const $text = new Comment({
+		const $node = new Comment({
 			comment: node.text,
-			source: Object.assign({ input, from }, node.sourceCodeLocation)
+			source: { input, from, ...node.sourceCodeLocation }
 		});
 
-		addNode($text);
+		addNode($node);
 	});
 
 	// when the parser encounters text content
-	parser.on('text', node => {
-		const $text = new Text({
-			data: node.text,
-			source: Object.assign({ input, from }, node.sourceCodeLocation)
-		});
-
-		addNode($text);
-	});
+	parser.on('text', onText);
 
 	// process the input
 	parser.end(input);
@@ -141,6 +134,96 @@ function parse (input, result) {
 	}
 
 	return root;
+
+	// whenever a text node that needs additional parsing is encountered
+	function onText (node) {
+		// get node text as raw content
+		const data = input.slice(node.sourceCodeLocation.startOffset, node.sourceCodeLocation.endOffset);
+
+		const jsxSRegExp = /<>/;
+		const jsxERegExp = /<\/>/;
+
+		const isOpeningJSX = jsxSRegExp.test(data);
+		const isClosingJSX = jsxERegExp.test(data);
+
+		if (isOpeningJSX) {
+			const jsxOuterOffset = data.search(jsxSRegExp);
+			const jsxInnerOffset = jsxOuterOffset + 2;
+
+			// add the preceeding text node
+			const $text = new Text({
+				data: data.slice(0, jsxOuterOffset),
+				source: {
+					input,
+					from,
+					...node.sourceCodeLocation,
+					endOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+				}
+			});
+
+			addNode($text);
+
+			// add the JSX node
+			const $element = new Element({
+				name: '',
+				attrs: [],
+				isSelfClosing: false,
+				isVoid: false,
+				source: {
+					input,
+					from,
+					startInnerOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset,
+					startOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+				}
+			});
+
+			stack.push($element);
+
+			// continue processing the proceeding text node
+			onText({
+				sourceCodeLocation: {
+					...node.sourceCodeLocation,
+					startOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset
+				}
+			});
+		} else if (isClosingJSX) {
+			const jsxInnerOffset = data.search(jsxERegExp);
+			const jsxOuterOffset = jsxInnerOffset + 3;
+
+			const $text = new Text({
+				data: data.slice(0, jsxInnerOffset),
+				source: {
+					input,
+					from,
+					...node.sourceCodeLocation,
+					endOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset
+				}
+			});
+
+			addNode($text);
+
+			addElement({
+				sourceCodeLocation: {
+					startOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset,
+					endOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+				}
+			});
+
+			onText({
+				sourceCodeLocation: {
+					...node.sourceCodeLocation,
+					startOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+				}
+			});
+		} else {
+			const $text = new Text({
+				data,
+				source: { input, from, ...node.sourceCodeLocation }
+			});
+
+			addNode($text);
+		}
+	}
 
 	// add remaining elements in the stack to the root
 	function addElement (node) {

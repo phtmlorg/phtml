@@ -30,7 +30,7 @@ class Element extends Container {
 
 		Object.assign(this, {
 			// Tag name of the Element
-			name: String(Object(settings).name || 'span'),
+			name: String('name' in Object(settings) ? settings.name : 'span'),
 
 			// Whether the Element is self-closing
 			isSelfClosing: Boolean(Object(settings).isSelfClosing),

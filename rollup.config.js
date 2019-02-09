@@ -16,7 +16,12 @@ export default {
 				'transform-for-of-as-array'
 			],
 			presets: [
-				['@babel/env', { modules: false, targets: { node: 6 } }]
+				['@babel/env', {
+					loose: true,
+					modules: false,
+					targets: { node: 6 },
+					useBuiltIns: 'entry'
+				}]
 			]
 		}),
 		terser()
