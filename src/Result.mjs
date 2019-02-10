@@ -147,6 +147,7 @@ function parse (input, result) {
 		const isClosingJSX = jsxERegExp.test(data);
 
 		if (isOpeningJSX) {
+			// handle opening JSX Fragment Elements
 			const jsxOuterOffset = data.search(jsxSRegExp);
 			const jsxInnerOffset = jsxOuterOffset + 2;
 
@@ -163,7 +164,7 @@ function parse (input, result) {
 
 			addNode($text);
 
-			// add the JSX node
+			// add the JSX Fragment Element
 			const $element = new Element({
 				name: '',
 				attrs: [],
@@ -187,6 +188,7 @@ function parse (input, result) {
 				}
 			});
 		} else if (isClosingJSX) {
+			// handle closing JSX Fragment Elements
 			const jsxInnerOffset = data.search(jsxERegExp);
 			const jsxOuterOffset = jsxInnerOffset + 3;
 
@@ -237,6 +239,19 @@ function parse (input, result) {
 
 		if (node) {
 			setEndSource($element, node.sourceCodeLocation);
+
+			// Change JSX Fragment Elements to work like <script> and <style>
+			if ($element.name === '') {
+				$element.nodes.splice(0, $element.nodes.length, new Text({
+					data: $element.sourceInnerHTML,
+					source: {
+						input,
+						from,
+						startOffset: $element.source.startInnerOffset,
+						endOffset: $element.source.endInnerOffset
+					}
+				}));
+			}
 		}
 	}
 
