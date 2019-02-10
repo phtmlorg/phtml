@@ -1,12 +1,12 @@
 {
-  "name": "@jonathantneal/posthtml",
+  "name": "phtml",
   "version": "1.0.0",
   "description": "A tool for transforming HTML with JavaScript",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
-  "repository": "jonathantneal/posthtml",
-  "homepage": "https://github.com/jonathantneal/posthtml#readme",
-  "bugs": "https://github.com/jonathantneal/posthtml/issues",
+  "repository": "jonathantneal/phtml",
+  "homepage": "https://github.com/jonathantneal/phtml#readme",
+  "bugs": "https://github.com/jonathantneal/phtml/issues",
   "main": "index.js",
   "module": "index.mjs",
   "files": [
@@ -52,7 +52,7 @@
     "parser": "babel-eslint"
   },
   "keywords": [
-    "posthtml",
+    "phtml",
     "html"
   ]
 }

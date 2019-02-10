@@ -1,22 +1,22 @@
-# PostHTML [<img src="https://jonathantneal.github.io/reshape-logo.svg" alt="PostHTML" width="90" height="90" align="right">][PostHTML]
+# pHTML [<img src="https://jonathantneal.github.io/phtml/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
-[PostHTML] is a tool for transforming HTML with JavaScript. Its plugin system
+[pHTML] is a tool for transforming HTML with JavaScript. Its plugin system
 can lint your HTML, support variables and mixins, transpile future HTML syntax,
 inline images, and more.
 
 ```js
-import PostHTML from '@jonathantneal/posthtml';
+import pHTML from 'phtml';
 
 const html = `<component class="main">
   <title>Super Title</title>
   <text>Awesome Text</text>
 </component>`;
 
-PostHTML.process(html, { from: 'component.html' }).then(console.log);
+pHTML.process(html, { from: 'component.html' }).then(console.log);
 
 /* Result {
   from: 'component.html',
@@ -54,35 +54,35 @@ PostHTML.process(html, { from: 'component.html' }).then(console.log);
 
 ## Usage
 
-Add [PostHTML] to your build tool:
+Add [pHTML] to your build tool:
 
 ```bash
-npm install posthtml --save-dev
+npm install phtml --save-dev
 ```
 
 #### Node
 
-Use [PostHTML] to process your CSS:
+Use [pHTML] to process your CSS:
 
 ```js
-import PostHTML from 'posthtml';
+import pHTML from 'phtml';
 
-PostHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
+pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
 ```
 
 #### Plugins
 
-Add a [PostHTML] Plugin to your build tool:
+Add a [pHTML] Plugin to your build tool:
 
 ```bash
-npm install posthtml-some-thing --save-dev
+npm install phtml-some-thing --save-dev
 ```
 
 ```js
-import PostHTML from '@jonathantneal/posthtml';
-import postHtmlSomeThing from 'posthtml-some-thing';
+import pHTML from 'phtml';
+import postHtmlSomeThing from 'phtml-some-thing';
 
-PostHTML.use(
+pHTML.use(
   postHtmlSomeThing(/* pluginOptions */)
 ).process(YOUR_HTML);
 ```
@@ -90,9 +90,9 @@ PostHTML.use(
 #### Plugin Creation
 
 ```js
-import PostHTML from '@jonathantneal/posthtml';
+import pHTML from 'phtml';
 
-export default new PostHTML.Plugin('posthtml-plugin-name', pluginOptions => {
+export default new pHTML.Plugin('phtml-plugin-name', pluginOptions => {
   // initialization logic
 
   return (root, result) => {
@@ -101,11 +101,11 @@ export default new PostHTML.Plugin('posthtml-plugin-name', pluginOptions => {
 });
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/posthtml.svg
-[cli-url]: https://travis-ci.org/jonathantneal/posthtml
+[cli-img]: https://img.shields.io/travis/jonathantneal/phtml.svg
+[cli-url]: https://travis-ci.org/jonathantneal/phtml
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
-[npm-img]: https://img.shields.io/npm/v/@jonathantneal/posthtml.svg
-[npm-url]: https://www.npmjs.com/package/@jonathantneal/posthtml
+[npm-img]: https://img.shields.io/npm/v/phtml.svg
+[npm-url]: https://www.npmjs.com/package/phtml
 
-[PostHTML]: https://github.com/jonathantneal/posthtml
+[pHTML]: https://github.com/jonathantneal/phtml

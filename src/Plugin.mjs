@@ -8,7 +8,7 @@ import Result from './Result';
 * @param {Function} pluginFunction - Function executed by the Plugin.
 * @return {Plugin}
 * @example
-* new Plugin('posthtml-test', pluginOptions => {
+* new Plugin('phtml-test', pluginOptions => {
 *   // initialization logic
 *
 *   return (root, result) => {
@@ -19,7 +19,7 @@ import Result from './Result';
 class Plugin {
 	constructor (name, pluginFunction) {
 		Object.assign(this, {
-			name: String(name || 'posthtml-plugin'),
+			name: String(name || 'phtml-plugin'),
 			pluginFunction: pluginFunction instanceof Function
 				? pluginFunction
 			: () => {}

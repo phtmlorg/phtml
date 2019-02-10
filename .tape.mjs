@@ -1,7 +1,7 @@
-import PostHTML from '.';
+import PHTML from '.';
 import test from './.tape.test';
 
-const { Comment, Element, Fragment, Node, NodeList, Result, Text } = PostHTML;
+const { Comment, Element, Fragment, Node, NodeList, Result, Text } = PHTML;
 
 async function tests() {
 	const processOptions = { from: 'test.html' };
@@ -122,21 +122,21 @@ async function tests() {
 	await test('set Container(clone).first.first.data', () => clone.first.first.data = 'Goodbye Earth');
 	await test('get Container(clone).outerHTML', () => clone.outerHTML === '<p>Goodbye Earth</p>');
 
-	const postHTML1 = new PostHTML();
-	const result1 = await postHTML1.process(html);
+	const pHTML1 = new PHTML();
+	const result1 = await pHTML1.process(html);
 
-	await test('new PostHTML().process() returns a Result', () => result1 instanceof Result);
-	await test('new PostHTML().process().html returns a String', () => typeof result1.html === 'string');
-	await test('new PostHTML().process().root returns a Fragment', () => result1.root instanceof Fragment);
+	await test('new PHTML().process() returns a Result', () => result1 instanceof Result);
+	await test('new PHTML().process().html returns a String', () => typeof result1.html === 'string');
+	await test('new PHTML().process().root returns a Fragment', () => result1.root instanceof Fragment);
 
-	const result2 = await PostHTML.process(html);
+	const result2 = await PHTML.process(html);
 
-	await test('PostHTML.process() returns a Result', () => result2 instanceof Result);
-	await test('PostHTML.process().html returns a String', () => typeof result2.html === 'string');
-	await test('PostHTML.process().root returns a Fragment', () => result2.root instanceof Fragment);
+	await test('PHTML.process() returns a Result', () => result2 instanceof Result);
+	await test('PHTML.process().html returns a String', () => typeof result2.html === 'string');
+	await test('PHTML.process().root returns a Fragment', () => result2.root instanceof Fragment);
 
 	let working = false;
-	const postHTML3 = new PostHTML([
+	const pHTML3 = new PHTML([
 		root => {
 			working = null;
 		},
@@ -144,9 +144,9 @@ async function tests() {
 			working = working === null ? true : working;
 		}
 	]);
-	const result3 = await postHTML3.process(html);
+	const result3 = await pHTML3.process(html);
 
-	await test('PostHTML Plugins are run in order', () => working === true);
+	await test('PHTML Plugins are run in order', () => working === true);
 }
 
 tests();

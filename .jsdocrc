@@ -35,7 +35,7 @@
     "search": true,
     "menu": {
       "GitHub": {
-        "href": "https://github.com/jonathantneal/posthtml"
+        "href": "https://github.com/jonathantneal/phtml"
       },
       "Support": {
         "href": "https://gitter.im/postcss"
@@ -45,15 +45,15 @@
       "styles/custom.css"
     ],
 		"meta": {
-			"title": "PostHTML",
+			"title": "pHTML",
 			"description": "A tool for transforming HTML with JavaScript"
 		},
 		"openGraph": {
-			"title": "PostHTML",
+			"title": "pHTML",
 			"type": "website",
-			"image": "https://jonathantneal.github.io/reshape-logo.svg",
+			"image": "https://jonathantneal.github.io/phtml/logo.svg",
 			"site_name": "Docdash",
-			"url": "https://jonathantneal.github.io/posthtml"
+			"url": "https://jonathantneal.github.io/phtml"
 		}
   }
 }

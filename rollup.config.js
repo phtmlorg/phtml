@@ -6,7 +6,7 @@ export default {
 	output: [
 		{ file: 'index.js', format: 'cjs' },
 		{ file: 'index.mjs', format: 'esm' },
-		{ file: 'browser.js', format: 'iife', name: 'posthtml' }
+		{ file: 'browser.js', format: 'iife', name: 'phtml' }
 	],
 	plugins: [
 		babel({

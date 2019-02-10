@@ -11,17 +11,17 @@ import Result from './Result';
 import Text from './Text';
 
 /**
-* @name PostHTML
+* @name PHTML
 * @class
-* @classdesc Create a new instance of {@link PostHTML}.
+* @classdesc Create a new instance of {@link PHTML}.
 * @param {Array|Plugin|Function} plugins - Plugin or plugins being added.
-* @return {PostHTML}
+* @return {PHTML}
 * @example
-* new PostHTML(plugin)
+* new PHTML(plugin)
 * @example
-* new PostHTML([ somePlugin, anotherPlugin ])
+* new PHTML([ somePlugin, anotherPlugin ])
 */
-class PostHTML {
+class PHTML {
 	constructor (pluginOrPlugins) {
 		Object.assign(this, { plugins: [] });
 
@@ -34,7 +34,7 @@ class PostHTML {
 	* @param {Object} processOptions - Custom settings applied to the Result.
 	* @return {Result}
 	* @example
-	* posthtml.process('some html', processOptions)
+	* phtml.process('some html', processOptions)
 	*/
 	async process (input, processOptions) {
 		const result = new Result(input, processOptions);
@@ -53,13 +53,13 @@ class PostHTML {
 	}
 
 	/**
-	* Add plugins to the existing instance of PostHTML
+	* Add plugins to the existing instance of PHTML
 	* @param {Array|Plugin|Function} plugins - Plugin or plugins being added.
-	* @return {PostHTML}
+	* @return {PHTML}
 	* @example
-	* posthtml.use(plugin)
+	* phtml.use(plugin)
 	* @example
-	* posthtml.use([ somePlugin, anotherPlugin ])
+	* phtml.use([ somePlugin, anotherPlugin ])
 	*/
 	use (pluginOrPlugins) {
 		const plugins = pluginOrPlugins instanceof Array
@@ -81,27 +81,27 @@ class PostHTML {
 	* @param {Array|Plugin|Function} [plugins] - Custom settings applied to the {@link Result}.
 	* @return {Result}
 	* @example
-	* PostHTML.process('some html', processOptions)
+	* PHTML.process('some html', processOptions)
 	* @example <caption>Process HTML with plugins.</caption>
-	* PostHTML.process('some html', processOptions, plugins) // returns a new PostHTML instance
+	* PHTML.process('some html', processOptions, plugins) // returns a new PHTML instance
 	*/
 	static process (input, processOptions, pluginOrPlugins) {
-		const posthtml = new PostHTML(pluginOrPlugins);
+		const phtml = new PHTML(pluginOrPlugins);
 
-		return posthtml.process(input, processOptions);
+		return phtml.process(input, processOptions);
 	}
 
 	/**
-	* Return a new {@link PostHTML} instance which will use plugins
+	* Return a new {@link PHTML} instance which will use plugins
 	* @param {Object} pluginOrPlugins - Plugin or plugins being added.
-	* @return {PostHTML} - New {@link PostHTML} instance
+	* @return {PHTML} - New {@link PHTML} instance
 	* @example
-	* PostHTML.use(plugin) // returns a new PostHTML instance
+	* PHTML.use(plugin) // returns a new PHTML instance
 	* @example
-	* PostHTML.use([ somePlugin, anotherPlugin ]) // return a new PostHTML instance
+	* PHTML.use([ somePlugin, anotherPlugin ]) // return a new PHTML instance
 	*/
 	static use (pluginOrPlugins) {
-		return new PostHTML(pluginOrPlugins);
+		return new PHTML(pluginOrPlugins);
 	}
 
 	static AttributeList = AttributeList;
@@ -118,4 +118,4 @@ class PostHTML {
 	static Text = Text;
 }
 
-export default PostHTML;
+export default PHTML;

@@ -1,6 +1,6 @@
 import Benchmark from 'benchmark';
-import PostHTML from '.';
-import posthtml from 'posthtml';
+import PHTML from '.';
+import postHTML from 'posthtml';
 import reshape from 'reshape';
 
 const suite = new Benchmark.Suite();
@@ -8,20 +8,20 @@ const suite = new Benchmark.Suite();
 const basicHTML = '<p>Hello World</p>';
 
 suite
-.add('PostHTML', {
+.add('pHTML', {
 	defer: true,
 	fn(deferred) {
-		PostHTML.process(basicHTML).then(
+		PHTML.process(basicHTML).then(
 			result => {
 				deferred.resolve();
 			}
 		);
 	}
 })
-.add('PostHTML (official)', {
+.add('PostHTML', {
 	defer: true,
 	fn(deferred) {
-		posthtml().process(basicHTML).then(
+		postHTML().process(basicHTML).then(
 			result => {
 				deferred.resolve();
 			}
