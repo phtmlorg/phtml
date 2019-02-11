@@ -262,6 +262,10 @@ function parse (input, result) {
 	function addElement (node) {
 		const $element = stack.pop();
 
+		if (!$element) {
+			return;
+		}
+
 		if (!stack.length) {
 			root.nodes.push($element);
 		} else {

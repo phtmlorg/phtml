@@ -101,11 +101,11 @@ export default new pHTML.Plugin('phtml-plugin-name', pluginOptions => {
 });
 ```
 
-[cli-img]: https://img.shields.io/travis/jonathantneal/phtml.svg
-[cli-url]: https://travis-ci.org/jonathantneal/phtml
+[cli-img]: https://img.shields.io/travis/phtmlorg/phtml.svg
+[cli-url]: https://travis-ci.org/phtmlorg/phtml
 [git-img]: https://img.shields.io/badge/support-chat-blue.svg
 [git-url]: https://gitter.im/postcss/postcss
 [npm-img]: https://img.shields.io/npm/v/phtml.svg
 [npm-url]: https://www.npmjs.com/package/phtml
 
-[pHTML]: https://github.com/jonathantneal/phtml
+[pHTML]: https://github.com/phtmlorg/phtml
