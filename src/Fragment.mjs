@@ -12,8 +12,11 @@ class Fragment extends Container {
 	constructor () {
 		super();
 
-		this.name = '#document-fragment';
-		this.nodes = new NodeList(this);
+		Object.assign(this, {
+			type: 'fragment',
+			name: '#document-fragment',
+			nodes: new NodeList(this)
+		});
 	}
 
 	/**

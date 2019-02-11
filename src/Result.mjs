@@ -25,8 +25,15 @@ class Result {
 			? Array.from(voidElements)
 		: defaultVoidElements;
 		const root = parse(input, { from, to, voidElements });
+		const warnings = [];
 
-		Object.assign(this, { from, to, root });
+		Object.assign(this, {
+			type: 'result',
+			from,
+			to,
+			root,
+			warnings
+		});
 	}
 
 	/**
@@ -43,6 +50,30 @@ class Result {
 	*/
 	toJSON () {
 		return this.root.toJSON();
+	}
+
+	/**
+	* Add a warning to the current {@link Root}.
+	* @param {String} text - The message being sent as the warning.
+	* @param {Object} [opts] - Additional information about the warning.
+	* @example
+	* result.warn('Something went wrong')
+	* @example
+	* result.warn('Something went wrong', {
+	*   node: someNode,
+	*   plugin: somePlugin
+	* })
+	*/
+	warn (text, rawopts) {
+		const opts = Object(rawopts);
+
+		if (!opts.plugin) {
+			if (Object(this.currentPlugin).name) {
+				opts.plugin = this.currentPlugin.name
+			}
+		}
+
+		this.warnings.push({ text, opts });
 	}
 }
 
@@ -79,7 +110,7 @@ function parse (input, result) {
 			new Doctype({
 				publicId: node.publicId,
 				systemId: node.systemId,
-				source: node.sourceCodeLocation,
+				source: node.sourceCodeLocation
 			})
 		);
 	});

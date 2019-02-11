@@ -18,15 +18,13 @@ class Doctype extends Node {
 	constructor (settings) {
 		super();
 
-		Object.assign(
-			this,
-			{
-				name: String(Object(settings).name || 'html'),
-				publicId: Object(settings).publicId || null,
-				systemId: Object(settings).systemId || null,
-				source: Object(Object(settings).source)
-			}
-		);
+		Object.assign(this, {
+			type: 'doctype',
+			name: String(Object(settings).name || 'html'),
+			publicId: Object(settings).publicId || null,
+			systemId: Object(settings).systemId || null,
+			source: Object(Object(settings).source)
+		});
 	}
 
 	/**

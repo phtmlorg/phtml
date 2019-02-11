@@ -29,21 +29,17 @@ class Element extends Container {
 		super();
 
 		Object.assign(this, {
-			// Tag name of the Element
+			type: 'element',
 			name: String('name' in Object(settings) ? settings.name : 'span'),
-
-			// Whether the Element is self-closing
 			isSelfClosing: Boolean(Object(settings).isSelfClosing),
-
-			// Whether the Element is void
 			isVoid: Boolean(Object(settings).isVoid),
-
-			// Attributes applied to the Element
 			attrs: Object(settings).attrs instanceof AttributeList
 				? settings.attrs
 			: Object(settings).attrs instanceof Array
 				? new AttributeList(...settings.attrs)
-			: new AttributeList()
+			: new AttributeList(),
+			nodes: null,
+			source: Object(Object(settings).source)
 		});
 
 		// Nodes appended to the Element
@@ -54,9 +50,6 @@ class Element extends Container {
 				? new NodeList(...settings.nodes)
 			: new NodeList(this);
 		}
-
-		// Source mapping of the Element
-		this.source = Object(Object(settings).source);
 	}
 
 	/**

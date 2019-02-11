@@ -19,6 +19,7 @@ import Result from './Result';
 class Plugin {
 	constructor (name, pluginFunction) {
 		Object.assign(this, {
+			type: 'plugin',
 			name: String(name || 'phtml-plugin'),
 			pluginFunction: pluginFunction instanceof Function
 				? pluginFunction

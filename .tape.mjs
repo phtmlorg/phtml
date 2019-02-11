@@ -18,6 +18,9 @@ async function tests() {
 
 	const fragment = new Result(html, processOptions).root;
 
+	/* Test Container
+	/* ====================================================================== */
+
 	await test('Container#append is a Function', () => fragment.append instanceof Function);
 	await test('Container#replaceAll is a Function', () => fragment.replaceAll instanceof Function);
 	await test('Container#first is a Node', () => fragment.first instanceof Node);
@@ -70,6 +73,9 @@ async function tests() {
 	});
 	await test('Container#walk (el => el.name === "section") works as expected', () => expectedSections === 3);
 
+	/* Test Comment
+	/* ====================================================================== */
+
 	const comment = new Result(`<!--test   -->`, processOptions).root.first;
 
 	await test('Comment', () => comment instanceof Comment);
@@ -78,6 +84,9 @@ async function tests() {
 	await test('Comment#outerHTML', () => comment.outerHTML === '<!--test   -->');
 	await test('Comment#sourceInnerHTML', () => comment.sourceInnerHTML === 'test   ');
 	await test('Comment#sourceOuterHTML', () => comment.sourceOuterHTML === '<!--test   -->');
+
+	/* Test Element
+	/* ====================================================================== */
 
 	const selfClosing = new Result(`<section ...{weird} />`, processOptions).root.first;
 
@@ -115,12 +124,18 @@ async function tests() {
 	const original = new Result(`<p>Hello World</p>`, processOptions).root;
 	const clone = original.clone(true);
 
+	/* Test Container Clone
+	/* ====================================================================== */
+
 	await test('Container(clone) is not the original', () => original !== clone);
 	await test('Container(clone) matches the original', () => original.outerHTML === clone.outerHTML && original.innerHTML === clone.innerHTML);
 
 	await test('Container(clone).first.first is Text', () => clone.first.first instanceof Text);
 	await test('set Container(clone).first.first.data', () => clone.first.first.data = 'Goodbye Earth');
 	await test('get Container(clone).outerHTML', () => clone.outerHTML === '<p>Goodbye Earth</p>');
+
+	/* Test Process
+	/* ====================================================================== */
 
 	const pHTML1 = new PHTML();
 	const result1 = await pHTML1.process(html);
@@ -135,6 +150,9 @@ async function tests() {
 	await test('PHTML.process().html returns a String', () => typeof result2.html === 'string');
 	await test('PHTML.process().root returns a Fragment', () => result2.root instanceof Fragment);
 
+	/* Test Plugins
+	/* ====================================================================== */
+
 	let working = false;
 	const pHTML3 = new PHTML([
 		root => {
@@ -146,7 +164,36 @@ async function tests() {
 	]);
 	const result3 = await pHTML3.process(html);
 
-	await test('PHTML Plugins are run in order', () => working === true);
+	await test('pHTML Plugins are run in order', () => working === true);
+
+	/* Test Result Current Plugin
+	/* ====================================================================== */
+
+	let isCurrentPluginCurrentPlugin = false;
+
+	const plugin4 = (root, result) => {
+		isCurrentPluginCurrentPlugin = result.currentPlugin === plugin4;
+	};
+
+	const pHTML4 = new PHTML([ plugin4 ]);
+
+	await pHTML4.process(html);
+
+	await test('Plugin: result.currentPlugin', () => isCurrentPluginCurrentPlugin);
+
+	/* Test Plugin Warnings
+	/* ====================================================================== */
+
+	const plugin5 = (root, result) => {
+		root.warn(result, 'Something went wrong');
+		root.warn(result, 'Something else went wrong');
+	};
+
+	const pHTML5 = new PHTML([ plugin5 ]);
+
+	const result = await pHTML5.process(html)
+
+	await test('Plugin: Node#warn, Result: warnings', () => result.warnings.length === 2);
 }
 
 tests();

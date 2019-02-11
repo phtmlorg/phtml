@@ -41,11 +41,19 @@ class PHTML {
 
 		if (this.plugins instanceof Array) {
 			for (const plugin of this.plugins) {
-				if (Object(plugin) instanceof Plugin) {
-					await plugin()(result.root);
-				} else if (plugin instanceof Function) {
-					await plugin(result.root);
+				// update the current plugin
+				result.currentPlugin = plugin;
+
+				if (plugin instanceof Function) {
+					if (plugin.type === 'plugin') {
+						await plugin()(result.root, result);
+					} else {
+						await plugin(result.root, result);
+					}
 				}
+
+				// clear the current plugin
+				result.currentPlugin = null;
 			}
 		}
 

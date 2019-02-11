@@ -17,13 +17,9 @@ class Comment extends Node {
 		super();
 
 		Object.assign(this, {
-			// Name of the Node
+			type: 'comment',
 			name: '#comment',
-
-			// Content of the Comment
 			comment: String(Object(settings).comment || ''),
-
-			// Source mapping of the Comment
 			source: Object(Object(settings).source)
 		});
 	}

@@ -17,6 +17,7 @@ class Text extends Node {
 		super();
 
 		Object.assign(this, {
+			type: 'text',
 			name: '#text',
 			data: String(Object(settings).data || ''),
 			source: Object(Object(settings).source)

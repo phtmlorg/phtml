@@ -35,7 +35,7 @@
     "search": true,
     "menu": {
       "GitHub": {
-        "href": "https://github.com/jonathantneal/phtml"
+        "href": "https://github.com/phtmlorg/phtml"
       },
       "Support": {
         "href": "https://gitter.im/postcss"
@@ -51,9 +51,9 @@
 		"openGraph": {
 			"title": "pHTML",
 			"type": "website",
-			"image": "https://jonathantneal.github.io/phtml/logo.svg",
+			"image": "https://phtmlorg.github.io/phtml/logo.svg",
 			"site_name": "Docdash",
-			"url": "https://jonathantneal.github.io/phtml"
+			"url": "https://phtmlorg.github.io/phtml"
 		}
   }
 }

@@ -165,6 +165,25 @@ class Node {
 	}
 
 	/**
+	* Add a warning from the current {@link Node}.
+	* @param {Result} result - The {@link Result} the warning is being added to.
+	* @param {String} text - The message being sent as the warning.
+	* @param {Object} [opts] - Additional information about the warning.
+	* @example
+	* node.warn(result, 'Something went wrong')
+	* @example
+	* node.warn(result, 'Something went wrong', {
+	*   node: someOtherNode,
+	*   plugin: someOtherPlugin
+	* })
+	*/
+	warn (result, text, opts) {
+		const data = Object.assign({ node: this }, opts);
+
+		return result.warn(text, data);
+	}
+
+	/**
 	* The position of the current {@link Node} from its parent.
 	* @returns {Number}
 	* @example

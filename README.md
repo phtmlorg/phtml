@@ -1,4 +1,4 @@
-# pHTML [<img src="https://jonathantneal.github.io/phtml/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
+# pHTML [<img src="https://phtmlorg.github.io/phtml/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
