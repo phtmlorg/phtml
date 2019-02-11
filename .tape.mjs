@@ -1,7 +1,7 @@
 import PHTML from '.';
 import test from './.tape.test';
 
-const { Comment, Element, Fragment, Node, NodeList, Result, Text } = PHTML;
+const { Comment, Element, Fragment, Node, NodeList, Plugin, Result, Text } = PHTML;
 
 async function tests() {
 	const processOptions = { from: 'test.html' };
@@ -149,6 +149,37 @@ async function tests() {
 	await test('PHTML.process() returns a Result', () => result2 instanceof Result);
 	await test('PHTML.process().html returns a String', () => typeof result2.html === 'string');
 	await test('PHTML.process().root returns a Fragment', () => result2.root instanceof Fragment);
+
+	/* Test Plugins
+	/* ====================================================================== */
+
+	let pHTMLPluginTest1 = false;
+	let pHTMLPluginTest2 = false;
+
+	const pHTMLTestPlugin1 = new Plugin('phtml-test', opt => {
+		pHTMLPluginTest1 = opt;
+
+		return () => {
+			pHTMLPluginTest2 = opt;
+		}
+	});
+
+	await pHTMLTestPlugin1.process(html, {}, true);
+
+	await test('Plugin: Plugin#process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
+
+	pHTMLPluginTest1 = false;
+	pHTMLPluginTest2 = false;
+
+	const pHTMLInstanceWithPlugin = new PHTML([
+		pHTMLTestPlugin1(true)
+	]);
+
+	await test('Plugin: Pre-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 !== true);
+
+	await pHTMLInstanceWithPlugin.process(html);
+
+	await test('Plugin: Post-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
 
 	/* Test Plugins
 	/* ====================================================================== */

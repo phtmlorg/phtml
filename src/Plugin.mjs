@@ -16,14 +16,33 @@ import Result from './Result';
 *   }
 * })
 */
-class Plugin {
+class Plugin extends Function {
 	constructor (name, pluginFunction) {
-		Object.assign(this, {
-			type: 'plugin',
-			name: String(name || 'phtml-plugin'),
-			pluginFunction: pluginFunction instanceof Function
-				? pluginFunction
-			: () => {}
+		return Object.defineProperties(pluginFunction, {
+			constructor: {
+				value: Plugin,
+				configurable: true
+			},
+			type: {
+				value: 'plugin',
+				configurable: true
+			},
+			name: {
+				value: String(name || 'phtml-plugin'),
+				configurable: true
+			},
+			pluginFunction: {
+				value: pluginFunction instanceof Function
+					? pluginFunction
+				: () => {},
+				configurable: true
+			},
+			process: {
+				value(...args) {
+					return Plugin.prototype.process.apply(this, args);
+				},
+				configurable: true
+			}
 		});
 	}
 

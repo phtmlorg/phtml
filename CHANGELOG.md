@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 1.1.3 (February 10, 2019)
+
+- Fixed: Issue with Plugins not being executable
+
 ### 1.1.2 (February 10, 2019)
 
 - Fixed: Issue with resolving the parser
