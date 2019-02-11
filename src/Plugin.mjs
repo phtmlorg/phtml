@@ -39,6 +39,8 @@ class Plugin {
 	async process (input, processOptions, pluginOptions) {
 		const result = new Result(input, processOptions);
 
+		result.root = await result.root;
+
 		await this.pluginFunction(pluginOptions)(result.root, result);
 
 		return result;

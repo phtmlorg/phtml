@@ -39,6 +39,8 @@ class PHTML {
 	async process (input, processOptions) {
 		const result = new Result(input, processOptions);
 
+		result.root = await result.root;
+
 		if (this.plugins instanceof Array) {
 			for (const plugin of this.plugins) {
 				// update the current plugin

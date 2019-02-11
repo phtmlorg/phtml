@@ -156,15 +156,19 @@ function parse (input, result) {
 	// when the parser encounters text content
 	parser.on('text', onText);
 
-	// process the input
-	parser.end(input);
+	return new Promise(resolve => {
+		parser.once('finish', () => {
+			// add any remaining elements in the stack to the root
+			while (stack.length) {
+				addElement();
+			}
 
-	// add any remaining elements in the stack to the root
-	while (stack.length) {
-		addElement();
-	}
+			resolve(root);
+		});
 
-	return root;
+		// process the input
+		parser.end(input);
+	});
 
 	// whenever a text node that needs additional parsing is encountered
 	function onText (node) {
@@ -182,18 +186,20 @@ function parse (input, result) {
 			const jsxOuterOffset = data.search(jsxSRegExp);
 			const jsxInnerOffset = jsxOuterOffset + 2;
 
-			// add the preceeding text node
-			const $text = new Text({
-				data: data.slice(0, jsxOuterOffset),
-				source: {
-					input,
-					from,
-					...node.sourceCodeLocation,
-					endOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
-				}
-			});
+			if (jsxOuterOffset) {
+				// add the preceeding text node
+				const $text = new Text({
+					data: data.slice(0, jsxOuterOffset),
+					source: {
+						input,
+						from,
+						...node.sourceCodeLocation,
+						endOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+					}
+				});
 
-			addNode($text);
+				addNode($text);
+			}
 
 			// add the JSX Fragment Element
 			const $element = new Element({
@@ -223,17 +229,19 @@ function parse (input, result) {
 			const jsxInnerOffset = data.search(jsxERegExp);
 			const jsxOuterOffset = jsxInnerOffset + 3;
 
-			const $text = new Text({
-				data: data.slice(0, jsxInnerOffset),
-				source: {
-					input,
-					from,
-					...node.sourceCodeLocation,
-					endOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset
-				}
-			});
+			if (jsxInnerOffset) {
+				const $text = new Text({
+					data: data.slice(0, jsxInnerOffset),
+					source: {
+						input,
+						from,
+						...node.sourceCodeLocation,
+						endOffset: node.sourceCodeLocation.startOffset + jsxInnerOffset
+					}
+				});
 
-			addNode($text);
+				addNode($text);
+			}
 
 			addElement({
 				sourceCodeLocation: {
@@ -242,12 +250,14 @@ function parse (input, result) {
 				}
 			});
 
-			onText({
-				sourceCodeLocation: {
-					...node.sourceCodeLocation,
-					startOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
-				}
-			});
+			if (input.length !== node.sourceCodeLocation.startOffset + jsxOuterOffset) {
+				onText({
+					sourceCodeLocation: {
+						...node.sourceCodeLocation,
+						startOffset: node.sourceCodeLocation.startOffset + jsxOuterOffset
+					}
+				});
+			}
 		} else {
 			const $text = new Text({
 				data,
