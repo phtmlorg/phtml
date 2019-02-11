@@ -81,6 +81,12 @@ function parse (input, result) {
 	const parser = new SAXParser({ sourceCodeLocationInfo: true });
 	const originalLeaveAttrName = parser.tokenizer._leaveAttrName;
 	parser.tokenizer._leaveAttrName = function _leaveAttrName(toState) {
+		const isEmptyAttr = input.charAt(this.preprocessor.pos) !== '=';
+
+		if (isEmptyAttr) {
+			this.currentAttr.isEmpty = true;
+		}
+
 		const isDuplicateAttr = this.currentToken.attrs.some(attr => attr.name === this.currentAttr.name && attr.value === this.currentAttr.value);
 
 		if (isDuplicateAttr) {
@@ -122,6 +128,10 @@ function parse (input, result) {
 			attrs: node.attrs.map(
 				attr => {
 					const source = node.sourceCodeLocation.attrs[attr.name];
+
+					if (attr.isEmpty) {
+						attr.value = null;
+					}
 
 					return { ...attr, source: { input, from, source } };
 				}

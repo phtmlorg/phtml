@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 1.1.4 (February 11, 2019)
+
+- Fixed: Issue with empty Attributes not returning null
+
 ### 1.1.3 (February 10, 2019)
 
 - Fixed: Issue with Plugins not being executable

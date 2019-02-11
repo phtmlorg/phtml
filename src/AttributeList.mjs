@@ -33,7 +33,7 @@ class AttributeList extends Array {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
 		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
-			value: String(args[0])
+			value: normalizeAttrValue(args[0])
 		}];
 
 		return this.toggle(attrs, true);
@@ -122,7 +122,7 @@ class AttributeList extends Array {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
 		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
-			value: String(args[0])
+			value: normalizeAttrValue(args[0])
 		}];
 
 		return !this.toggle(attrs, false);
@@ -147,7 +147,7 @@ class AttributeList extends Array {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
 		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
-			value: String(args[0])
+			value: normalizeAttrValue(args[0])
 		}];
 		const force = isObject ? args[0] : args[1];
 		const isNoForceDefined = force === undefined;
@@ -184,7 +184,7 @@ class AttributeList extends Array {
 	toString () {
 		return this.length
 			? `${this.map(
-				attr => `${attr.name}${attr.value ? `="${attr.value}"` : ''}`
+				attr => `${attr.name}${attr.value === null ? '' : `="${attr.value}"`}`
 			).join(' ')}`
 		: ''
 	}
@@ -200,7 +200,7 @@ class AttributeList extends Array {
 			(object, attr) => Object.assign(
 				object,
 				{
-					[getCamelCaseString(attr.name)]: String(attr.value)
+					[getCamelCaseString(attr.name)]: attr.value
 				}
 			),
 			{}
@@ -220,12 +220,12 @@ class AttributeList extends Array {
 	static from (attrs) {
 		return Array.isArray(attrs)
 			? Array.from(attrs).map(attr => ({
-					name: String(Object(attr).name),
-				value: String(Object(attr).value)
+				name: String(Object(attr).name),
+				value: normalizeAttrValue(Object(attr).value)
 			}))
 		: Object.keys(Object(attrs)).map(name => ({
 			name: getKebabCaseString(name),
-			value: String(attrs[name])
+			value: normalizeAttrValue(attrs[name])
 		}));
 	}
 }
@@ -255,6 +255,21 @@ function getKebabCaseString (string) {
 }
 
 /**
- * [AttributeList]: AttributeList.html
- * [Element]: Element.html
- */
+* Return a value normalized as an attribute value.
+* @private
+* @example
+* normalizeAttrValue('bar') // returns 'bar'
+* normalizeAttrValue(null) // returns null
+* normalizeAttrValue('') // returns ''
+* @example
+* normalizeAttrValue(undefined) // returns ''
+* normalizeAttrValue(['test']) // returns 'test'
+*/
+
+function normalizeAttrValue (attrValue) {
+	return attrValue === null
+		? null
+	: attrValue === undefined
+		? ''
+	: String(attrValue);
+}
