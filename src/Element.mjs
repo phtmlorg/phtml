@@ -34,7 +34,7 @@ class Element extends Container {
 			isSelfClosing: Boolean(Object(settings).isSelfClosing),
 			isVoid: Boolean(Object(settings).isVoid),
 			attrs: Object(settings).attrs instanceof AttributeList
-				? settings.attrs
+				? settings.attrs.clone()
 			: Object(settings).attrs instanceof Array
 				? new AttributeList(...settings.attrs)
 			: new AttributeList(),
@@ -83,7 +83,7 @@ class Element extends Container {
 		);
 
 		if (isDeep && this.nodes && this.nodes.length) {
-			const additionalNodes = Array.isArray(settings.nodes) ? settings.nodes : [];
+			const additionalNodes = Array.isArray(Object(settings).nodes) ? settings.nodes : [];
 
 			clone.nodes = new NodeList(clone, ...this.nodes.map(node => node.clone({}, isDeep)).concat(additionalNodes));
 		}

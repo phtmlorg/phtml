@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 1.1.5 (February 12, 2019)
+
+- Fixed: Issue with null settings and linked attributes during cloning
+
 ### 1.1.4 (February 11, 2019)
 
 - Fixed: Issue with empty Attributes not returning null
