@@ -176,7 +176,7 @@ class Container extends Node {
 
 function walk (node, cb, filter) {
 	if (typeof cb === 'function' && node.nodes) {
-		node.nodes.forEach(child => {
+		node.nodes.slice(0).filter(child => child.parent === node).forEach(child => {
 			if (testWithFilter(child, filter)) {
 				cb(child); // eslint-disable-line callback-return
 			}

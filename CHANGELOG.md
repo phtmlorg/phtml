@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 1.1.6 (February 12, 2019)
+
+- Fixed: Issue walking nodes as they change
+
 ### 1.1.5 (February 12, 2019)
 
 - Fixed: Issue with null settings and linked attributes during cloning
