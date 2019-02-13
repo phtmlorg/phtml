@@ -25,9 +25,11 @@ class Node {
 	}
 
 	/**
-	* Append Nodes or new Text Nodes to the Node.
-	* @param {...Array} nodes - Nodes inserted after the last child of the Element.
-	* @returns {Node} - Current Node.
+	* Append Nodes or new Text Nodes to the current {@link Node}.
+	* @param {...Array} nodes - Nodes inserted after the last child of the current {@link Node}.
+	* @returns {Node} - The current {@link Node}.
+	* @example
+	* node.append(someOtherNode)
 	*/
 	append (...nodes) {
 		if (this.nodes) {
@@ -62,6 +64,21 @@ class Node {
 			if (index !== -1) {
 				this.parent.nodes.splice(index, 0, ...nodes);
 			}
+		}
+
+		return this;
+	}
+
+	/**
+	* Prepend Nodes or new Text Nodes to the current {@link Node}.
+	* @param {...Array} nodes - Nodes inserted before the first child of the current {@link Node}.
+	* @returns {Node} - The current {@link Node}.
+	* @example
+	* node.prepend(someOtherNode)
+	*/
+	prepend (...nodes) {
+		if (this.nodes) {
+			this.nodes.splice(0, 0, ...nodes);
 		}
 
 		return this;

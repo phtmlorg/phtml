@@ -1,3 +1,6 @@
+import Node from './Node';
+import Text from './Text';
+
 // weak map of the parents of NodeLists
 const parents = new WeakMap();
 
@@ -61,7 +64,7 @@ class NodeList extends Array {
 	splice (start, ...opts) {
 		const parent = parents.get(this);
 		const deleteCount = opts.length ? opts[0] : this.length - start;
-		const inserts = opts.slice(1).filter(node => node !== parent);
+		const inserts = getNodeListArray(opts.slice(1).filter(node => node !== parent));
 
 		for (let insert of inserts) {
 			insert.remove();
@@ -112,6 +115,37 @@ class NodeList extends Array {
 			...this.map(node => node.toJSON())
 		);
 	}
+
+	/**
+	* Return a new {@link NodeList} from an object.
+	* @param {Array|Node} nodes - An array or object of nodes.
+	* @returns {NodeList} A new {@link NodeList}
+	* @example <caption>Return a NodeList from an array of text.</caption>
+	* NodeList.from([ 'test' ]) // returns NodeList [ Text { data: 'test' } ]
+	*/
+
+	static from (nodes) {
+		return new NodeList(getNodeListArray(nodes));
+	}
 }
 
 export default NodeList;
+
+/**
+* Return an NodeList-compatible array from an array.
+* @private
+*/
+
+function getNodeListArray (nodes) {
+	return Array.isArray(nodes)
+		? Array.from(nodes).filter(
+			node => node instanceof Node || typeof node === 'string'
+		).map(
+			node => node instanceof Node
+				? node
+			: new Text({ data: node })
+		)
+	: typeof nodes === 'string'
+		? [ new Text({ data: nodes }) ]
+	: [];
+}

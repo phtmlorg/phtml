@@ -1,5 +1,6 @@
 import AttributeList from './AttributeList';
 import Container from './Container';
+import Node from './Node';
 import NodeList from './NodeList';
 
 /**
@@ -33,11 +34,7 @@ class Element extends Container {
 			name: String('name' in Object(settings) ? settings.name : 'span'),
 			isSelfClosing: Boolean(Object(settings).isSelfClosing),
 			isVoid: Boolean(Object(settings).isVoid),
-			attrs: Object(settings).attrs instanceof AttributeList
-				? settings.attrs.clone()
-			: Object(settings).attrs instanceof Array
-				? new AttributeList(...settings.attrs)
-			: new AttributeList(),
+			attrs: AttributeList.from(Object(settings).attrs),
 			nodes: null,
 			source: Object(Object(settings).source)
 		});
@@ -47,24 +44,11 @@ class Element extends Container {
 			this.nodes = Object(settings).nodes instanceof NodeList
 				? new NodeList(this, ...settings.nodes.splice(0, settings.nodes.length))
 			: Object(settings).nodes instanceof Array
-				? new NodeList(...settings.nodes)
+				? new NodeList(this, ...settings.nodes)
+			: Object(settings).nodes instanceof Node
+				? new NodeList(this, settings.nodes)
 			: new NodeList(this);
 		}
-	}
-
-	/**
-	* Append Nodes or new Text Nodes to the current {@link Element}.
-	* @param {...Array} nodes - Nodes inserted after the last child of the {@link Element}.
-	* @returns {Element} - The current {@link Element}.
-	* @example
-	* element.append(someOtherElement)
-	* @example <caption>Append a new {@link Text} node to the current {@link Element}.</caption>
-	* element.append("foo")
-	*/
-	append (...nodes) {
-		this.nodes.push(...nodes);
-
-		return this;
 	}
 
 	/**

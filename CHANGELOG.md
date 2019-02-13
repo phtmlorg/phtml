@@ -1,5 +1,12 @@
 # Changes to pHTML
 
+### 1.2.0 (February 13, 2019)
+
+- Added: `NodeList.from()` creates a NodeList from an array or Nodes and Strings
+- Added: `Node.prepend()` to prepend items to a Node parent
+- Fixed: `AttributeList.from()` to correctly parse attribute-like values
+- Fixed: Issue with `new Element()` not correctly creating or moving nodes
+
 ### 1.1.6 (February 12, 2019)
 
 - Fixed: Issue walking nodes as they change

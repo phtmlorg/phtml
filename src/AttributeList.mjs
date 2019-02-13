@@ -9,10 +9,10 @@
 * new AttributeList({ name: 'class', value: 'foo' }, { name: 'id': value: 'bar' })
 */
 class AttributeList extends Array {
-	constructor (...attrs) {
+	constructor (attrs) {
 		super();
 
-		this.push(...AttributeList.from(attrs));
+		this.push(...getAttributeListArray(attrs));
 	}
 
 	/**
@@ -31,7 +31,7 @@ class AttributeList extends Array {
 	*/
 	add (nameOrAttrs, ...args) {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
+		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
 			value: normalizeAttrValue(args[0])
 		}];
@@ -49,7 +49,7 @@ class AttributeList extends Array {
 	* attrs.clone({ name: 'id', value: 'bar' })
 	*/
 	clone (...attrs) {
-		return new AttributeList(...Array.from(this).concat(AttributeList.from(attrs)));
+		return new AttributeList(...Array.from(this).concat(getAttributeListArray(attrs)));
 	}
 
 	/**
@@ -70,14 +70,14 @@ class AttributeList extends Array {
 	/**
 	* Return an attribute value by name from the current {@link AttributeList}.
 	* @param {String} name - The name of the attribute being accessed.
-	* @returns {String|Null} - The value of the attribute.
-	* @example <caption>Return the value of "id" or `null`.</caption>
+	* @returns {String|Null|Boolean} - The value of the attribute (a string or null) or false (if the attribute does not exist).
+	* @example <caption>Return the value of "id" or `false`.</caption>
 	* attrs.get('id')
 	*/
 	get (name) {
 		const target = this.find(attr => attr.name === String(name));
 
-		return target ? String(target.value) : null;
+		return target ? target.value : false;
 	}
 
 	/**
@@ -120,7 +120,7 @@ class AttributeList extends Array {
 	*/
 	remove (nameOrAttrs, ...args) {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
+		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
 			value: normalizeAttrValue(args[0])
 		}];
@@ -145,7 +145,7 @@ class AttributeList extends Array {
 	*/
 	toggle (nameOrAttrs, ...args) {
 		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? AttributeList.from(nameOrAttrs) : [{
+		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
 			name: String(nameOrAttrs),
 			value: normalizeAttrValue(args[0])
 		}];
@@ -217,20 +217,39 @@ class AttributeList extends Array {
 	* AttributeList.from([{ name: 'data-foo', value: 'bar', foo: true }]) // returns [{ name: 'data-foo', value: 'bar' }]
 	*/
 
+	/**
+	* Return a new {@link AttributeList} from an array or object.
+	* @param {Array|AttributeList|Object} nodes - An array or object of attributes.
+	* @returns {AttributeList} A new {@link AttributeList}
+	* @example <caption>Return an array of attributes from a regular object.</caption>
+	* AttributeList.from({ dataFoo: 'bar' }) // returns AttributeList [{ name: 'data-foo', value: 'bar' }]
+	* @example <caption>Return a normalized array of attributes from an impure array of attributes.</caption>
+	* AttributeList.from([{ name: 'data-foo', value: true, foo: 'bar' }]) // returns AttributeList [{ name: 'data-foo', value: 'true' }]
+	*/
+
 	static from (attrs) {
-		return Array.isArray(attrs)
-			? Array.from(attrs).map(attr => ({
-				name: String(Object(attr).name),
-				value: normalizeAttrValue(Object(attr).value)
-			}))
-		: Object.keys(Object(attrs)).map(name => ({
-			name: getKebabCaseString(name),
-			value: normalizeAttrValue(attrs[name])
-		}));
+		return new AttributeList(getAttributeListArray(attrs));
 	}
 }
 
-export default AttributeList
+export default AttributeList;
+
+/**
+* Return an AttributeList-compatible array from an array or object.
+* @private
+*/
+
+function getAttributeListArray (attrs) {
+	return Array.isArray(attrs)
+		? Array.from(attrs).filter(attr => attr).map(attr => ({
+			name: String(Object(attr).name),
+			value: normalizeAttrValue(Object(attr).value)
+		}))
+	: Object.keys(Object(attrs)).map(name => ({
+		name: getKebabCaseString(name),
+		value: normalizeAttrValue(attrs[name])
+	}));
+}
 
 /**
 * Return a string formatted using camelCasing.
