@@ -52,8 +52,11 @@ const plugins = [
 		}),
 		modernUMD('PHTML', 'PHTML')
 	] : [],
-	isBrowserDev ? [] : terser(),
-	isCli ? [] : []
+	isBrowser && !isBrowserDev ? terser() : [],
+	isCli ? [
+		trimUseStrict(),
+		addHashBang()
+	] : []
 );
 
 export default { input, output, plugins };
@@ -78,9 +81,16 @@ function addHashBang() {
 	return {
 		name: 'add-hash-bang',
 		renderChunk(code) {
-			const updatedCode = `#!/usr/bin/env node\n\n${code}`;
+			return `#!/usr/bin/env node\n${code}`;
+		}
+	};
+}
 
-			return updatedCode;
+function trimUseStrict() {
+	return {
+		name: 'trim-use-strict',
+		renderChunk(code) {
+			return code.replace(/\s*('|")?use strict\1;\s*/, '');
 		}
 	};
 }

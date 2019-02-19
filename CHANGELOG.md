@@ -1,6 +1,10 @@
 # Changes to pHTML
 
-### 2.0.0 (February 17, 2019)
+### 2.0.1 (February 18, 2019)
+
+- Fixed: Issue running the CLI
+
+### 2.0.0 (February 18, 2019)
 
 - Added: Browser version
 - Added: CLI version

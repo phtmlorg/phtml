@@ -9,6 +9,7 @@
 *.log*
 *.result.css
 /browser.*
+/cli.*
 /index.*
 node_modules
 package-lock.json

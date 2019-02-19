@@ -1,6 +1,6 @@
 {
   "name": "phtml",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "A tool for transforming HTML with JavaScript",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -17,7 +17,8 @@
     "index.js.map",
     "index.mjs",
     "index.mjs.map",
-    "browser.js"
+    "browser.js",
+    "cli.js"
   ],
   "scripts": {
     "prebenchmark": "npm install posthtml reshape --no-save",
