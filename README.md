@@ -8,39 +8,77 @@
 can lint your HTML, support variables and mixins, transpile future HTML syntax,
 inline images, and more.
 
+## Usage
+
+Transform HTML files directly from the command line:
+
+```bash
+npx phtml source.html output.html
+```
+
+Include plugins directly from the command line:
+
+```bash
+npx phtml source.html output.html -p @phtml/markdown,@phtml/image-alt
+```
+
+```bash
+echo "<h1 md>pHTML **Markdown**</h1>" | npx phtml -p @phtml/markdown
+
+# <h1>pHTML <strong>Markdown</strong></h1>
+```
+
+### Node
+
+Add [pHTML] to your build tool:
+
+```bash
+npm install phtml --save-dev
+```
+
+Use [pHTML] to process your CSS:
+
 ```js
 import pHTML from 'phtml';
 
-const html = `<component class="main">
+pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
+```
+
+#### Node Example
+
+```js
+import pHTML from 'phtml';
+
+const html = `<my-component class="main">
   <title>Super Title</title>
   <text>Awesome Text</text>
-</component>`;
+</my-component>`;
 
-pHTML.process(html, { from: 'component.html' }).then(console.log);
+pHTML.process(html, { from: 'my-component.html' }).then(console.log);
 
 /* Result {
   from: 'component.html',
   to: 'component.html',
   root: Fragment {
     name: '#document-fragment',
-    nodes: [
+    nodes: NodeList [
       Element {
-        name: "component",
-        attrs: {
-          class: "main"
-        },
-        nodes: [
+        name: "my-component",
+        attrs: AttributeList [
+          { name: "class", value: "main" }
+        ],
+        nodes: NodeList [
           Text "\n  ",
           Element {
             name: "title",
-            nodes: [
+            nodes: NodeList [
               Text "Super Title"
             ]
           },
           Text "\n  ",
           Element {
             name: "text",
-            nodes: [
+            nodes: NodeList [
               Text "Awesome Text"
             ]
           },
@@ -52,25 +90,7 @@ pHTML.process(html, { from: 'component.html' }).then(console.log);
 }
 ```
 
-## Usage
-
-Add [pHTML] to your build tool:
-
-```bash
-npm install phtml --save-dev
-```
-
-#### Node
-
-Use [pHTML] to process your CSS:
-
-```js
-import pHTML from 'phtml';
-
-pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
-```
-
-#### Plugins
+#### Using Plugins in Node
 
 Add a [pHTML] Plugin to your build tool:
 
@@ -103,7 +123,7 @@ pHTML.use(
 - **[pHTML Self Closing](https://github.com/phtmlorg/phtml-self-closing)**: Expand self-closing tags in HTML.
 - **[pHTML Template](https://github.com/phtmlorg/phtml-template)**: Create Custom Elements from Templates in HTML.
 
-#### Plugin Creation
+### Plugin Creation
 
 ```js
 import { Plugin } from 'phtml';
@@ -112,8 +132,11 @@ export default new Plugin('phtml-plugin-name', pluginOptions => {
   // initialization logic
 
   return {
-    Element(node, root) {
-      // runtime logic
+    Element(element, result) {
+      // runtime logic, do something with an element
+    },
+    Root(root, result) {
+      // runtime logic, do something with the root
     }
   };
 });

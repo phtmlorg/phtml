@@ -34,7 +34,7 @@ class Fragment extends Container {
 	/**
 	* Return a clone of the current {@link Fragment}.
 	* @param {Boolean} isDeep - Whether the descendants of the current Fragment should also be cloned.
-	* @returns {Fragment} - Cloned Fragment
+	* @returns {Fragment} - The cloned Fragment
 	*/
 	clone (isDeep) {
 		const clone = new Fragment();

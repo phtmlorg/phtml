@@ -12,7 +12,8 @@ import NodeList from './NodeList';
 * @param {String} settings.name - Tag name of the {@link Element}.
 * @param {Boolean} settings.isSelfClosing - Whether the {@link Element} is self-closing.
 * @param {Boolean} settings.isVoid - Whether the {@link Element} is void.
-* @param {Object|AttributeList} settings.attrs - Attributes applied to the {@link Element}.
+* @param {Boolean} settings.isisWithoutEndTagVoid - Whether the {@link Element} uses a closing tag.
+* @param {Array|AttributeList|Object} settings.attrs - Attributes applied to the {@link Element}.
 * @param {Array|NodeList} settings.nodes - Nodes appended to the {@link Element}.
 * @param {Object} settings.source - Source mapping of the {@link Element}.
 * @return {Element} A new {@link Element} {@Link Node}
@@ -53,30 +54,6 @@ class Element extends Container {
 	}
 
 	/**
-	* Return a clone the current {@link Element}.
-	* @param {Object} settings - Custom settings applied to the cloned {@link Element}.
-	* @param {Boolean} isDeep - Whether the descendants of the current {@link Element} should also be cloned.
-	* @returns {Element} - The cloned {@link Element}.
-	* @example <caption>Clone the current {@link Element} and add an "id" attribute with a value of "bar".</caption>
-	* element.clone({ attrs: { name: 'id', value: 'bar' } })
-	* @example <caption>Clone the current {@link Element} and append a {@link Text} node.</caption>
-	* element.clone({ nodes: [ "Hello World"] })
-	*/
-	clone (settings, isDeep) {
-		const clone = new Element(
-			Object.assign({}, this, { nodes: [] }, settings)
-		);
-
-		if (isDeep && this.nodes && this.nodes.length) {
-			const additionalNodes = Array.isArray(Object(settings).nodes) ? settings.nodes : [];
-
-			clone.nodes = new NodeList(clone, ...this.nodes.map(node => node.clone({}, isDeep)).concat(additionalNodes));
-		}
-
-		return clone;
-	}
-
-	/**
 	* Return the stringified innerHTML from the source input.
 	* @returns {String}
 	*/
@@ -100,6 +77,28 @@ class Element extends Container {
 			this.source.startOffset,
 			this.source.endOffset
 		);
+	}
+
+	/**
+	* Return a clone the current {@link Element}.
+	* @param {Object} settings - Custom settings applied to the cloned {@link Element}.
+	* @param {Boolean} isDeep - Whether the descendants of the current {@link Element} should also be cloned.
+	* @returns {Element} - The cloned {@link Element}.
+	* @example <caption>Clone the current {@link Element} and add an "id" attribute with a value of "bar".</caption>
+	* element.clone({ attrs: { name: 'id', value: 'bar' } })
+	* @example <caption>Clone the current {@link Element} and append a {@link Text} node.</caption>
+	* element.clone({ nodes: [ "Hello World"] })
+	*/
+	clone (settings, isDeep) {
+		const clone = new Element(Object.assign({}, this, { nodes: [] }, settings));
+
+		if (isDeep && this.nodes && this.nodes.length) {
+			const additionalNodes = Array.isArray(Object(settings).nodes) ? settings.nodes : [];
+
+			clone.nodes = new NodeList(clone, ...this.nodes.map(node => node.clone({}, isDeep)).concat(additionalNodes));
+		}
+
+		return clone;
 	}
 
 	/**

@@ -7,7 +7,7 @@ const isBrowser = String(process.env.NODE_ENV).includes('browser');
 const isBrowserDev = String(process.env.NODE_ENV).includes('browserdev');
 const isCli = String(process.env.NODE_ENV).includes('cli');
 
-const pathname = isCli ? 'cli' : 'index';
+const pathname = isCli ? 'cli/index' : 'index';
 const input = `src/${pathname}.mjs`;
 const output = isBrowserDev
 	? { file: 'browser.development.js', format: 'cjs', sourcemap: true }
@@ -19,28 +19,14 @@ const output = isBrowserDev
 	{ file: 'index.js', format: 'cjs', sourcemap: true },
 	{ file: 'index.mjs', format: 'esm', sourcemap: true }
 ];
-const targets = isBrowser ? { node: 6 } : { node: 6 };
 const plugins = [
-	babel({
-		plugins: [
-			'@babel/proposal-class-properties',
-			'async-to-promises',
-			'transform-for-of-as-array'
-		],
-		presets: [
-			['@babel/env', {
-				loose: true,
-				modules: false,
-				targets,
-				useBuiltIns: 'entry'
-			}]
-		]
-	})
+	babel()
 ].concat(
 	isBrowser ? [
 		nodeResolve(),
 		commonjs(),
 		babel({
+			babelrc: false,
 			presets: [
 				['@babel/env', {
 					loose: true,

@@ -34,9 +34,9 @@ class Text extends Node {
 	* text.clone({ source: { input: 'modified source' } })
 	*/
 	clone (settings) {
-		return new Text(
-			Object.assign({}, this, settings)
-		);
+		return new Text(Object.assign({}, this, settings, {
+			source: Object.assign({}, this.source, Object(settings).source)
+		}));
 	}
 
 	/**

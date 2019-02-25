@@ -1,5 +1,11 @@
 # Changes to pHTML
 
+### 2.0.2 (February 25, 2019)
+
+- Fixed: Issue with NodeList not normalizing Node-like objects
+- Improved: CLI usage, allowing for shorthand options and hot-installed plugins
+- Improved: Source documentation and configuration
+
 ### 2.0.1 (February 18, 2019)
 
 - Fixed: Issue running the CLI

@@ -120,7 +120,7 @@ class Container extends Node {
 
 	/**
 	* Replace all of the children of the current {@link Container}.
-	* @param {...Array} nodes - Nodes appended to the {@link Container}.
+	* @param {...Node} nodes - Any nodes replacing the current children of the {@link Container}.
 	* @returns {Container} - The current {@link Container}.
 	* @example
 	* container.replaceAll(new Text({ data: 'Hello World' }))

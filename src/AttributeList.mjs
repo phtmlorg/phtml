@@ -3,7 +3,7 @@
 * @class
 * @extends Array
 * @classdesc Return a new list of {@link Element} attributes.
-* @param {...Array} attrs - An array or object of attributes.
+* @param {...Array|AttributeList|Object} attrs - An array or object of attributes.
 * @return {AttributeList}
 * @example
 * new AttributeList({ name: 'class', value: 'foo' }, { name: 'id': value: 'bar' })
@@ -42,8 +42,8 @@ class AttributeList extends Array {
 
 	/**
 	* Return a new clone of the current {@link AttributeList} while conditionally applying additional attributes.
-	* @param {...Array} attrs - Additional attributes to be added to the new {@link AttributeList}.
-	* @returns {Element} - Cloned Element.
+	* @param {...Array|AttributeList|Object} attrs - Additional attributes to be added to the new {@link AttributeList}.
+	* @returns {Element} - The cloned Element.
 	* @example
 	* attrs.clone()
 	* @example <caption>Clone the current attribute and add an "id" attribute with a value of "bar".</caption>

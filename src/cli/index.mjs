@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import PHTML from '.';
@@ -9,8 +10,9 @@ const configPath = argo.config === true ? 'phtml.config.js' : argo.config ? Stri
 .then(html => {
 	try {
 		const config = configPath ? safeRequire(configPath) : {};
+		const plugins = [].concat(config.plugins || []).concat(argo.plugins && typeof argo.plugins === 'string' ? argo.plugins.split(',') : []);
 
-		config.plugins = [].concat(config.plugins || []).map(
+		config.plugins = plugins.map(
 			plugin => {
 				const normalizedPlugin = Array.isArray(plugin)
 					? plugin.length > 1
@@ -26,7 +28,8 @@ const configPath = argo.config === true ? 'phtml.config.js' : argo.config ? Stri
 
 		return { config, html };
 	} catch (error) {
-		console.log('something went ahh!', error);
+		console.log('Something went wrong!');
+		console.log(Object(error).message || error);
 	}
 
 	return { config: {}, html };
@@ -38,12 +41,13 @@ const configPath = argo.config === true ? 'phtml.config.js' : argo.config ? Stri
 		process.exit(0);
 	}
 
-	const processOptions = Object.assign({
-		from: argo.from,
-		to: argo.to || argo.from
-	}, argo.map ? {
-		map: JSON.parse(argo.map)
-	} : {}, config.options);
+	const processOptions = { from: argo.from, to: argo.to || argo.from };
+
+	if (typeof argo.map === 'string') {
+		processOptions.map = JSON.parse(argo.map);
+	}
+
+	Object.assign(processOptions, config.options);
 
 	const plugins = [].concat(config.plugins || []);
 
@@ -82,9 +86,9 @@ function getArgo () {
 		(object, arg, i, args) => { // eslint-disable-line max-params
 			const dash = /^--([^\s]+)$/;
 
-			if (dash.test(arg)) {
-				object[arg.replace(dash, '$1')] = i + 1 in args ? args[i + 1] : true;
-			} else if (!dash.test(args[i - 1])) {
+			if (dash.test(getArgName(arg))) {
+				object[getArgName(arg).replace(dash, '$1')] = i + 1 in args ? args[i + 1] : true;
+			} else if (!dash.test(getArgName(args[i - 1]))) {
 				if (object.from === '<stdin>') {
 					object.from = arg;
 				} else if (object.to === '<stdout>') {
@@ -100,6 +104,15 @@ function getArgo () {
 			plugins: ''
 		}
 	);
+
+	function getArgName(arg) {
+		return {
+			'-c': '--config',
+			'-i': '--from',
+			'-o': '--to',
+			'-p': '--plugins',
+		}[arg] || arg;
+	}
 }
 
 function getStdin () {
@@ -155,24 +168,39 @@ function logInstructions () {
 		'pHTML\n',
 		'  Transform HTML with JavaScript\n',
 		'Usage:\n',
-		'  phtml SOURCE.html TRANSFORMED.html',
-		'  phtml --from=SOURCE.html --to=TRANSFORMED.html',
-		'  echo "<title>html</title>" | phtml\n'
-	].join('\n'));
+		'  phtml source.html ouput.html',
+		'  phtml --from source.html --to ouput.html',
+		'  phtml --from source.html --to ouput.html --plugins @phtml/markdown',
+		'  phtml -i source.html -o ouput.html -p @phtml/markdown',
+		'  echo "<title>html</title>" | phtml -p @phtml/markdown'
+	].join('\n') + '\n');
 }
 
-function safeRequire(pathname, filename) {
+function safeRequire(id) {
 	try {
-		return require(pathname);
+		// 1st, attempt to require the id as a package or filepath
+		return require(id);
 	} catch (error) {
 		try {
-			return require(path.resolve(pathname));
+			// 2nd, attempt to require the id as a resolved filepath
+			return require(path.resolve(id));
 		} catch (error2) {
-			if (filename) {
-				return require(path.resolve(pathname, filename));
-			} else {
-				throw error2;
+			try {
+				// 3rd, attempt to install and require the id as a package
+				pipeExec(`npm install --no-save ${id}`);
+
+				return require(id);
+			} catch (error3) {
+				// otherwise, throw the original error
+				throw error;
 			}
 		}
 	}
+}
+
+function pipeExec(cmd, opts) {
+	return execSync(cmd, {
+		stdio: ['pipe', 'pipe', process.stderr],
+		...opts
+	});
 }

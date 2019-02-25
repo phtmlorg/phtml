@@ -1,4 +1,4 @@
-export default async function observe (node, result, on) {
+async function observe (node, result, on) {
 	// get node types
 	const type = getTypeFromNode(node);
 	const subType = getSubTypeFromNode(node);
@@ -88,3 +88,5 @@ function getSubTypeFromNode(node) {
 		: `${node.name[0].toUpperCase()}${node.name.slice(1)}Element`
 	);
 }
+
+export default observe;

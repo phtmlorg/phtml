@@ -15,6 +15,12 @@ import Text from './Text';
 * @param {String} processOptions.to - Destination output location.
 * @param {Array} processOptions.voidElements - Void elements.
 * @return {Result}
+* @property {Result} result - Result of pHTML transformations.
+* @property {String} result.from - Path to the HTML source file. You should always set from, because it is used in source map generation and syntax error messages.
+* @property {String} result.to - Path to the HTML output file.
+* @property {Fragment} result.root - Object representing the parsed nodes of the HTML file.
+* @property {Array} result.messages - List of the messages gathered during transformations.
+* @property {Array} result.voidElements - List of the elements that only have a start tag, as they cannot have any content.
 */
 class Result {
 	constructor (html, processOptions) {
@@ -47,7 +53,23 @@ class Result {
 	}
 
 	/**
-	* Return the current {@link Root} as an Object.
+	* Current {@link Root} as a String.
+	* @returns {String}
+	*/
+	get html () {
+		return String(this.root);
+	}
+
+	/**
+	* Messages that are warnings.
+	* @returns {String}
+	*/
+	get warnings () {
+		return this.messages.filter(message => Object(message).type === 'warning');
+	}
+
+	/**
+	* The current {@link Root} as an Object.
 	* @returns {Object}
 	*/
 	toJSON () {
@@ -76,22 +98,6 @@ class Result {
 		}
 
 		this.messages.push({ type: 'warning', text, opts });
-	}
-
-	/**
-	* Return the current {@link Root} as a String.
-	* @returns {String}
-	*/
-	get html () {
-		return String(this.root);
-	}
-
-	/**
-	* Return the messages that are warnings.
-	* @returns {String}
-	*/
-	get warnings () {
-		return this.messages.filter(message => Object(message).type === 'warning');
 	}
 }
 

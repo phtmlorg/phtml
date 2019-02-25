@@ -1,4 +1,6 @@
 import Node from './Node';
+import Element from './Element';
+import Fragment from './Fragment';
 import Text from './Text';
 
 // weak map of the parents of NodeLists
@@ -10,7 +12,7 @@ const parents = new WeakMap();
 * @extends Array
 * @classdesc Create a new {@link NodeList}.
 * @param {Object} parent - Parent containing the current {@link NodeList}.
-* @param {...Array} nodes - {@link Node}s belonging to the current {@link NodeList}.
+* @param {...Node} nodes - {@link Node}s belonging to the current {@link NodeList}.
 * @return {NodeList}
 */
 class NodeList extends Array {
@@ -137,15 +139,27 @@ export default NodeList;
 */
 
 function getNodeListArray (nodes) {
-	return Array.isArray(nodes)
-		? Array.from(nodes).filter(
-			node => node instanceof Node || typeof node === 'string'
-		).map(
-			node => node instanceof Node
-				? node
-			: new Text({ data: node })
-		)
-	: typeof nodes === 'string'
-		? [ new Text({ data: nodes }) ]
-	: [];
+	// coerce nodes into an array
+	return [].concat(nodes || []).filter(
+		// nodes may be a string, an existing node, or a node-like object
+		node => node instanceof Node || typeof node === 'string' || node === Object(node) && /^(element|fragment|text)$/.test(node.type)
+	).map(
+		node => node instanceof Node
+			// Nodes are unchanged
+			? node
+		: typeof node === 'string'
+			// Strings are converted into Text nodes
+			? new Text({ data: node })
+		: node.type === 'element'
+			// Element-like Objects are normalized as Elements
+			? new Element(node)
+		: node.type === 'fragment'
+			// Fragment-like Objects are normalized as Fragments
+			? new Fragment(node)
+		: node.type === 'text'
+			// Text-like Objects are normalized as Texts
+			? new Text(node)
+		// Node-like Objects are normalized as Nodes
+		: new Node(node)
+	);
 }

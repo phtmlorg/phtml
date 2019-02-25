@@ -6,14 +6,27 @@ import observe from './observe'
 * @class
 * @classdesc Create a new Plugin.
 * @param {String} name - Name of the Plugin.
-* @param {Function} pluginFunction - Function executed by the Plugin.
+* @param {Function} pluginFunction - Function executed by the Plugin during initialization.
 * @return {Plugin}
 * @example
 * new Plugin('phtml-test', pluginOptions => {
 *   // initialization logic
 *
+*   return {
+*     Element(element, result) {
+*       // runtime logic, do something with an element
+*     },
+*     Root(root, result) {
+*       // runtime logic, do something with the root
+*     }
+*   }
+* })
+* @example
+* new Plugin('phtml-test', pluginOptions => {
+*   // initialization logic
+*
 *   return (root, result) => {
-*     // runtime logic
+*     // runtime logic, do something with the root
 *   }
 * })
 */
@@ -48,7 +61,7 @@ class Plugin extends Function {
 	}
 
 	/**
-	* Process input with options and plugin options and return the result
+	* Process input with options and plugin options and return the result.
 	* @param {String} input - Source being processed.
 	* @param {Object} processOptions - Custom settings applied to the Result.
 	* @param {Object} pluginOptions - Options passed to the Plugin.
