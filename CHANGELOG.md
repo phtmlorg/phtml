@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 2.0.3 (March 9, 2019)
+
+- Fixed: Issue with NodeList not normalizing Node-like comments and doctypes
+
 ### 2.0.2 (February 25, 2019)
 
 - Fixed: Issue with NodeList not normalizing Node-like objects

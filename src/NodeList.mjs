@@ -1,3 +1,5 @@
+import Comment from './Comment';
+import Doctype from './Doctype';
 import Node from './Node';
 import Element from './Element';
 import Fragment from './Fragment';
@@ -139,10 +141,18 @@ export default NodeList;
 */
 
 function getNodeListArray (nodes) {
+	const nodeTypes = {
+		comment: Comment,
+		doctype: Doctype,
+		element: Element,
+		fragment: Fragment,
+		text: Text
+	};
+
 	// coerce nodes into an array
 	return [].concat(nodes || []).filter(
 		// nodes may be a string, an existing node, or a node-like object
-		node => node instanceof Node || typeof node === 'string' || node === Object(node) && /^(element|fragment|text)$/.test(node.type)
+		node => node instanceof Node || typeof node === 'string' || node === Object(node) && node.type in nodeTypes
 	).map(
 		node => node instanceof Node
 			// Nodes are unchanged
@@ -150,16 +160,7 @@ function getNodeListArray (nodes) {
 		: typeof node === 'string'
 			// Strings are converted into Text nodes
 			? new Text({ data: node })
-		: node.type === 'element'
-			// Element-like Objects are normalized as Elements
-			? new Element(node)
-		: node.type === 'fragment'
-			// Fragment-like Objects are normalized as Fragments
-			? new Fragment(node)
-		: node.type === 'text'
-			// Text-like Objects are normalized as Texts
-			? new Text(node)
-		// Node-like Objects are normalized as Nodes
-		: new Node(node)
+		// Node-like Objects with recognized types are normalized
+		: new nodeTypes[node.type](node)
 	);
 }

@@ -39,7 +39,7 @@ npm install phtml --save-dev
 Use [pHTML] to process your CSS:
 
 ```js
-import pHTML from 'phtml';
+const pHTML = require('phtml');
 
 pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
 ```
@@ -47,7 +47,7 @@ pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
 #### Node Example
 
 ```js
-import pHTML from 'phtml';
+const pHTML = require('phtml');
 
 const html = `<my-component class="main">
   <title>Super Title</title>
@@ -99,8 +99,8 @@ npm install phtml-some-thing --save-dev
 ```
 
 ```js
-import pHTML from 'phtml';
-import postHtmlSomeThing from 'phtml-some-thing';
+const pHTML = require('phtml');
+const postHtmlSomeThing = require('phtml-some-thing');
 
 pHTML.use(
   postHtmlSomeThing(/* pluginOptions */)
@@ -126,9 +126,9 @@ pHTML.use(
 ### Plugin Creation
 
 ```js
-import { Plugin } from 'phtml';
+const { Plugin } = require('phtml');
 
-export default new Plugin('phtml-plugin-name', pluginOptions => {
+module.exports new Plugin('phtml-plugin-name', pluginOptions => {
   // initialization logic
 
   return {
@@ -143,9 +143,9 @@ export default new Plugin('phtml-plugin-name', pluginOptions => {
 ```
 
 ```js
-import { Plugin } from 'phtml';
+const { Plugin } = require('phtml');
 
-export default new Plugin('phtml-plugin-name', pluginOptions => {
+module.exports = new Plugin('phtml-plugin-name', pluginOptions => {
   // initialization logic
 
   return (root, result) => {
