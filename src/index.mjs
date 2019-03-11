@@ -9,7 +9,7 @@ import NodeList from './NodeList';
 import Plugin from './Plugin';
 import Result from './Result';
 import Text from './Text';
-import observe, { runAll } from './observe';
+import observe, { getPluginsAndVisitors, runAll } from './observe';
 
 /**
 * @name PHTML
@@ -39,38 +39,16 @@ class PHTML {
 	*/
 	async process (input, processOptions) {
 		const result = new Result(input, processOptions);
-		const plugins = [];
-		const observers = {};
-
-		// initialize plugins and observer plugins
-		this.plugins.forEach(plugin => {
-			const intializedPlugin = plugin.type === 'plugin' ? plugin() : plugin;
-
-			if (intializedPlugin instanceof Function) {
-				plugins.push(intializedPlugin);
-			} else if (Object(intializedPlugin) === intializedPlugin && Object.keys(intializedPlugin).length) {
-				Object.keys(intializedPlugin).forEach(key => {
-					const fn = intializedPlugin[key];
-
-					if (fn instanceof Function) {
-						if (!observers[key]) {
-							observers[key] = [];
-						}
-
-						observers[key].push(intializedPlugin[key]);
-					}
-				});
-			}
-		});
+		const { plugins, visitors } = getPluginsAndVisitors(this.plugins);
 
 		Object.assign(Node.prototype, {
 			async observe() {
-				return observe(this, result, observers);
+				return observe(this, result, visitors);
 			}
 		});
 
 		// dispatch observers
-		await observe(result.root, result, observers);
+		await observe(result.root, result, visitors);
 
 		await runAll(plugins, result.root, result);
 

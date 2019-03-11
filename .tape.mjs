@@ -44,31 +44,31 @@ async function tests() {
 	await test('Container#lastElement(0) is Container#lastElement', () => fragment.lastNth(0) === fragment.lastElement);
 
 	let expectedNodes = 0;
-	fragment.walk(el => {
+	fragment.walk(() => {
 		++expectedNodes;
 	});
 	await test('Container#walk works as expected', () => expectedNodes === 21);
 
 	let expectedElements = 0;
-	fragment.walk('*', el => {
+	fragment.walk('*', () => {
 		++expectedElements;
 	});
 	await test('Container#walk "*" filter works as expected', () => expectedElements === 9);
 
 	let expectedWalks = 0;
-	fragment.walk('section', el => {
+	fragment.walk('section', () => {
 		++expectedWalks;
 	});
 	await test('Container#walk "section" works as expected', () => expectedWalks === 3);
 
 	let expectedHP = 0;
-	fragment.walk(/h|p/, el => {
+	fragment.walk(/h|p/, () => {
 		++expectedHP;
 	});
 	await test('Container#walk /h|p/ works as expected', () => expectedHP === 6);
 
 	let expectedSections = 0;
-	fragment.walk(el => el.name === 'section', el => {
+	fragment.walk(el => el.name === 'section', () => {
 		++expectedSections;
 	});
 	await test('Container#walk (el => el.name === "section") works as expected', () => expectedSections === 3);
@@ -88,7 +88,7 @@ async function tests() {
 	/* Test Element
 	/* ====================================================================== */
 
-	const selfClosing = (new Result(`<section ...{weird}   />`, processOptions).root).first;
+	const selfClosing = new Result(`<section ...{weird}   />`, processOptions).root.first;
 
 	await test('Element(selfClosing)#isSelfClosing', () => selfClosing.isSelfClosing === true);
 	await test('Element(selfClosing)#innerHTML', () => selfClosing.innerHTML === '');
@@ -98,13 +98,13 @@ async function tests() {
 
 	await test('Element(selfClosing)#isSelfClosing', () => selfClosing.isSelfClosing === true);
 
-	const duplicateAttributes1 = (new Result('<section class class />', processOptions).root).first;
-	const duplicateAttributes2 = (new Result('<section class="foo" class="bar" />', processOptions).root).first;
+	const duplicateAttributes1 = new Result('<section class class />', processOptions).root.first;
+	const duplicateAttributes2 = new Result('<section class="foo" class="bar" />', processOptions).root.first;
 
 	await test('Element(duplicateAttributes) contains duplicate attributes', () => duplicateAttributes1.attrs.length === 2 && duplicateAttributes1.attrs[0].value === duplicateAttributes1.attrs[1].value);
 	await test('Element(duplicateAttributes) contains duplicate attributes', () => duplicateAttributes2.attrs.length === 2 && duplicateAttributes2.attrs[0].value === 'foo' && duplicateAttributes2.attrs[1].value === 'bar');
 
-	const mutatedAttributes1 = (new Result('<section class="foo" />', processOptions).root).first;
+	const mutatedAttributes1 = new Result('<section class="foo" />', processOptions).root.first;
 	const mutatedAttributes1OriginalAttr = mutatedAttributes1.attrs[0];
 	const mutatedAttributes1OriginalAttrValue = mutatedAttributes1OriginalAttr.value;
 
@@ -131,7 +131,9 @@ async function tests() {
 	await test('Container(clone) matches the original', () => original.outerHTML === clone.outerHTML && original.innerHTML === clone.innerHTML);
 
 	await test('Container(clone).first.first is Text', () => clone.first.first instanceof Text);
-	await test('set Container(clone).first.first.data', () => clone.first.first.data = 'Goodbye Earth');
+
+	clone.first.first.data = 'Goodbye Earth';
+
 	await test('get Container(clone).outerHTML', () => clone.outerHTML === '<p>Goodbye Earth</p>');
 
 	/* Test Process
@@ -186,14 +188,14 @@ async function tests() {
 
 	let working = false;
 	const pHTML3 = new PHTML([
-		root => {
+		() => {
 			working = null;
 		},
-		root => {
+		() => {
 			working = working === null ? true : working;
 		}
 	]);
-	const result3 = await pHTML3.process(html);
+	await pHTML3.process(html);
 
 	await test('pHTML Plugins are run in order', () => working === true);
 
@@ -235,7 +237,7 @@ async function tests() {
 		beforeElement() {
 			--remainingObservers6;
 		},
-		PElement(element) {
+		PElement() {
 			--remainingObservers6;
 		},
 		Root() {
@@ -245,7 +247,7 @@ async function tests() {
 
 	const pHTML6 = new PHTML([ plugin6 ]);
 
-	const result6 = await pHTML6.process(html);
+	await pHTML6.process(html);
 
 	await test('Plugin: Element with Observers', () => !remainingObservers6);
 
@@ -255,10 +257,10 @@ async function tests() {
 	let remainingObservers7 = 13;
 
 	const plugin7a = {
-		beforeElement(node) {
+		beforeElement() {
 			--remainingObservers7;
 		},
-		PElement(element) {
+		PElement() {
 			--remainingObservers7;
 		},
 		Root() {
@@ -278,7 +280,7 @@ async function tests() {
 
 	const pHTML7 = new PHTML([ plugin7a, plugin7b ]);
 
-	const result7 = await pHTML7.process(html);
+	await pHTML7.process(html);
 
 	await test('Plugin: Element with Observers and Functions', () => !remainingObservers7);
 }

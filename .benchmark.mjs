@@ -12,7 +12,7 @@ suite
 	defer: true,
 	fn(deferred) {
 		PHTML.process(basicHTML).then(
-			result => {
+			() => {
 				deferred.resolve();
 			}
 		);
@@ -22,7 +22,7 @@ suite
 	defer: true,
 	fn(deferred) {
 		postHTML().process(basicHTML).then(
-			result => {
+			() => {
 				deferred.resolve();
 			}
 		);
@@ -32,7 +32,7 @@ suite
 	defer: true,
 	fn(deferred) {
 		reshape().process(basicHTML).then(
-			result => {
+			() => {
 				deferred.resolve();
 			}
 		);
@@ -43,7 +43,7 @@ suite
 		const { cycles, hz, name, times } = test;
 		const results = [ Math.floor(hz), cycles, times.elapsed ].map(result => String(result));
 		const padding = results.reduce((length, result) => Math.max(length, String(result).length), 0);
-	
+
 		console.log(`${name}:`);
 		console.log(`${results[0].padStart(padding)} operations per second`);
 		console.log(`${results[1].padStart(padding)} cycles performed`);

@@ -52,7 +52,7 @@ async function observe (node, result, on) {
 	}
 }
 
-export async function runAll(rawplugins, node, result) {
+export async function runAll (rawplugins, node, result) {
 	const plugins = [].concat(rawplugins || []);
 
 	for (const plugin of plugins) {
@@ -67,7 +67,35 @@ export async function runAll(rawplugins, node, result) {
 	}
 }
 
-function getTypeFromNode(node) {
+export function getPluginsAndVisitors (rawplugins) {
+	const plugins = [];
+	const visitors = {};
+
+	// initialize plugins and observer plugins
+	rawplugins.forEach(plugin => {
+		const initializedPlugin = plugin.type === 'plugin' ? plugin() : plugin;
+
+		if (initializedPlugin instanceof Function) {
+			plugins.push(initializedPlugin);
+		} else if (Object(initializedPlugin) === initializedPlugin && Object.keys(initializedPlugin).length) {
+			Object.keys(initializedPlugin).forEach(key => {
+				const fn = initializedPlugin[key];
+
+				if (fn instanceof Function) {
+					if (!visitors[key]) {
+						visitors[key] = [];
+					}
+
+					visitors[key].push(initializedPlugin[key]);
+				}
+			});
+		}
+	});
+
+	return { plugins, visitors };
+}
+
+function getTypeFromNode (node) {
 	return {
 		'comment': 'Comment',
 		'text': 'Text',
@@ -76,7 +104,7 @@ function getTypeFromNode(node) {
 	}[node.type] || 'Element';
 }
 
-function getSubTypeFromNode(node) {
+function getSubTypeFromNode (node) {
 	return {
 		'#comment': 'Comment',
 		'#text': 'Text',

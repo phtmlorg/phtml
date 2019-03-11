@@ -41,6 +41,7 @@
         "href": "https://gitter.im/postcss"
       }
     },
+    "favicon": "logo.ico",
     "scripts": [
       "styles/custom.css"
     ],

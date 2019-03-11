@@ -1,5 +1,6 @@
+import Node from './Node';
 import Result from './Result';
-import observe from './observe'
+import observe, { getPluginsAndVisitors } from './observe'
 
 /**
 * @name Plugin
@@ -73,6 +74,14 @@ class Plugin extends Function {
 		const result = new Result(input, processOptions);
 
 		const initializedPlugin = this.pluginFunction(pluginOptions);
+
+		const { visitors } = getPluginsAndVisitors([ initializedPlugin ]);
+
+		Object.assign(Node.prototype, {
+			async observe() {
+				return observe(this, result, visitors);
+			}
+		});
 
 		if (typeof initializedPlugin === 'function') {
 			await initializedPlugin(result.root, result);

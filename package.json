@@ -1,6 +1,6 @@
 {
   "name": "phtml",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "description": "A tool for transforming HTML with JavaScript",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -31,9 +31,8 @@
     "build:node": "rollup --config --silent",
     "docs": "jsdoc -c .jsdocrc -d .gh-pages",
     "prepublishOnly": "npm test && npm run build",
-    "pretest": "npm run build",
+    "pretest:tape": "npm run build:node",
     "test": "npm run test:js && npm run test:tape",
-    "test:ec": "echint --ignore index.*.js test",
     "test:js": "eslint *.mjs src/*.mjs --cache --ignore-path .gitignore --quiet",
     "test:tape": "node --no-warnings --experimental-modules .tape"
   },

@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 2.0.4 (March 11, 2019)
+
+- Fixed: Issue with Node observe for pHTML and Plugin process
+
 ### 2.0.3 (March 9, 2019)
 
 - Fixed: Issue with NodeList not normalizing Node-like comments and doctypes
