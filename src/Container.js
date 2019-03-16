@@ -5,7 +5,7 @@ import Node from './Node';
 * @class
 * @extends Node
 * @classdesc Return a new {@link Container} {@link Node}.
-* @return {Container}
+* @returns {Container}
 */
 class Container extends Node {
 	/**
@@ -15,7 +15,7 @@ class Container extends Node {
 	* container.first // returns a Node or null
 	*/
 	get first () {
-		return this.nodes && this.nodes[0] || null;
+		return this.nodes[0] || null;
 	}
 
 	/**
@@ -25,7 +25,7 @@ class Container extends Node {
 	* container.firstElement // returns an Element or null
 	*/
 	get firstElement () {
-		return this.nodes && this.nodes.find(hasNodes) || null;
+		return this.nodes.find(hasNodes) || null;
 	}
 
 	/**
@@ -35,7 +35,7 @@ class Container extends Node {
 	* container.last // returns a Node or null
 	*/
 	get last () {
-		return this.nodes && this.nodes[this.nodes.length - 1] || null;
+		return this.nodes[this.nodes.length - 1] || null;
 	}
 
 	/**
@@ -45,7 +45,7 @@ class Container extends Node {
 	* container.lastElement // returns an Element or null
 	*/
 	get lastElement () {
-		return this.nodes && this.nodes.slice().reverse().find(hasNodes) || null;
+		return this.nodes.slice().reverse().find(hasNodes) || null;
 	}
 
 	/**
@@ -55,7 +55,7 @@ class Container extends Node {
 	* container.elements // returns an array of Elements
 	*/
 	get elements () {
-		return this.nodes && this.nodes.filter(hasNodes) || [];
+		return this.nodes.filter(hasNodes) || [];
 	}
 
 	/**
@@ -64,7 +64,7 @@ class Container extends Node {
 	* @example
 	* container.innerHTML // returns a string of innerHTML
 	*/
-	get innerHTML() {
+	get innerHTML () {
 		return String(this.nodes);
 	}
 
@@ -74,8 +74,36 @@ class Container extends Node {
 	* @example
 	* container.outerHTML // returns a string of outerHTML
 	*/
-	get outerHTML() {
+	get outerHTML () {
 		return String(this);
+	}
+
+	/**
+	* Return the stringified innerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceInnerHTML () {
+		return this.isSelfClosing || this.isVoid || typeof Object(this.source.input).html !== 'string'
+			? ''
+		: 'startInnerOffset' in this.source && 'endInnerOffset' in this.source
+			? this.source.input.html.slice(
+				this.source.startInnerOffset,
+				this.source.endInnerOffset
+			)
+		: this.sourceOuterHTML;
+	}
+
+	/**
+	* Return the stringified outerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceOuterHTML () {
+		return typeof Object(this.source.input).html !== 'string'
+			? ''
+		: this.source.input.html.slice(
+			this.source.startOffset,
+			this.source.endOffset
+		);
 	}
 
 	/**
@@ -85,7 +113,7 @@ class Container extends Node {
 	* container.lastNth(0) // returns a Node or null
 	*/
 	lastNth (index) {
-		return this.nodes && this.nodes.slice().reverse()[index] || null;
+		return this.nodes.slice().reverse()[index] || null;
 	}
 
 	/**
@@ -95,7 +123,7 @@ class Container extends Node {
 	* container.lastNthElement(0) // returns an Element or null
 	*/
 	lastNthElement (index) {
-		return this.nodes && this.elements.reverse()[index] || null;
+		return this.elements.reverse()[index] || null;
 	}
 
 	/**
@@ -105,7 +133,7 @@ class Container extends Node {
 	* container.nth(0) // returns a Node or null
 	*/
 	nth (index) {
-		return this.nodes && this.nodes[index] || null;
+		return this.nodes[index] || null;
 	}
 
 	/**
@@ -115,7 +143,7 @@ class Container extends Node {
 	* container.nthElement(0) // returns an Element or null
 	*/
 	nthElement (index) {
-		return this.nodes && this.elements[index] || null;
+		return this.elements[index] || null;
 	}
 
 	/**
@@ -176,13 +204,15 @@ class Container extends Node {
 
 function walk (node, cb, filter) {
 	if (typeof cb === 'function' && node.nodes) {
-		node.nodes.slice(0).filter(child => child.parent === node).forEach(child => {
-			if (testWithFilter(child, filter)) {
-				cb(child); // eslint-disable-line callback-return
-			}
+		node.nodes.slice(0).forEach(child => {
+			if (Object(child).parent === node) {
+				if (testWithFilter(child, filter)) {
+					cb(child); // eslint-disable-line callback-return
+				}
 
-			if (child && child.nodes) {
-				walk(child, cb, filter);
+				if (child.nodes) {
+					walk(child, cb, filter);
+				}
 			}
 		});
 	}

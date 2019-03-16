@@ -5,9 +5,6 @@ module.exports = {
 		['@babel/proposal-class-properties', {
 			loose: true
 		}],
-		['transform-async-to-promises', {
-			inlineHelpers: true
-		}],
 		['transform-for-of-as-array', {
 			loose: true
 		}]

@@ -8,7 +8,7 @@ const isBrowserDev = String(process.env.NODE_ENV).includes('browserdev');
 const isCli = String(process.env.NODE_ENV).includes('cli');
 
 const pathname = isCli ? 'cli/index' : 'index';
-const input = `src/${pathname}.mjs`;
+const input = `src/${pathname}.js`;
 const output = isBrowserDev
 	? { file: 'browser.development.js', format: 'cjs', sourcemap: true }
 : isBrowser
@@ -47,13 +47,13 @@ const plugins = [
 
 export default { input, output, plugins };
 
-function modernUMD(name, exportName) {
+function modernUMD (name, exportName) {
 	const replacee = `module.exports = ${exportName}`;
 	const replacer = `"object"==typeof self?self.${name}=${exportName}:"object"==typeof module&&module.exports&&(module.exports=${exportName})`;
 
 	return {
 		name: 'modern-umd',
-		renderChunk(code) {
+		renderChunk (code) {
 			return `!function(){${
 				code
 				.replace(/'use strict';\n*/, '')
@@ -63,19 +63,19 @@ function modernUMD(name, exportName) {
 	};
 }
 
-function addHashBang() {
+function addHashBang () {
 	return {
 		name: 'add-hash-bang',
-		renderChunk(code) {
+		renderChunk (code) {
 			return `#!/usr/bin/env node\n${code}`;
 		}
 	};
 }
 
-function trimUseStrict() {
+function trimUseStrict () {
 	return {
 		name: 'trim-use-strict',
-		renderChunk(code) {
+		renderChunk (code) {
 			return code.replace(/\s*('|")?use strict\1;\s*/, '');
 		}
 	};

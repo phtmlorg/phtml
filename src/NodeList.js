@@ -1,9 +1,5 @@
-import Comment from './Comment';
-import Doctype from './Doctype';
-import Node from './Node';
-import Element from './Element';
 import Fragment from './Fragment';
-import Text from './Text';
+import normalize from './normalize';
 
 // weak map of the parents of NodeLists
 const parents = new WeakMap();
@@ -15,7 +11,7 @@ const parents = new WeakMap();
 * @classdesc Create a new {@link NodeList}.
 * @param {Object} parent - Parent containing the current {@link NodeList}.
 * @param {...Node} nodes - {@link Node}s belonging to the current {@link NodeList}.
-* @return {NodeList}
+* @returns {NodeList}
 */
 class NodeList extends Array {
 	constructor (parent, ...nodes) {
@@ -26,6 +22,15 @@ class NodeList extends Array {
 		if (nodes.length) {
 			this.push(...nodes);
 		}
+	}
+
+	/**
+	* Return a clone of the current {@link NodeList}.
+	* @param {Object} parent - New parent containing the cloned {@link NodeList}.
+	* @returns {NodeList} - The cloned NodeList
+	*/
+	clone (parent) {
+		return new NodeList(parent, ...this.map(node => node.clone({}, true)));
 	}
 
 	/**
@@ -115,9 +120,7 @@ class NodeList extends Array {
 	* nodeList.toJSON() // returns []
 	*/
 	toJSON () {
-		return [].concat(
-			...this.map(node => node.toJSON())
-		);
+		return this.map(node => node.toJSON());
 	}
 
 	/**
@@ -129,7 +132,7 @@ class NodeList extends Array {
 	*/
 
 	static from (nodes) {
-		return new NodeList(getNodeListArray(nodes));
+		return new NodeList(new Fragment(), ...getNodeListArray(nodes));
 	}
 }
 
@@ -141,26 +144,8 @@ export default NodeList;
 */
 
 function getNodeListArray (nodes) {
-	const nodeTypes = {
-		comment: Comment,
-		doctype: Doctype,
-		element: Element,
-		fragment: Fragment,
-		text: Text
-	};
-
 	// coerce nodes into an array
-	return [].concat(nodes || []).filter(
-		// nodes may be a string, an existing node, or a node-like object
-		node => node instanceof Node || typeof node === 'string' || node === Object(node) && node.type in nodeTypes
-	).map(
-		node => node instanceof Node
-			// Nodes are unchanged
-			? node
-		: typeof node === 'string'
-			// Strings are converted into Text nodes
-			? new Text({ data: node })
-		// Node-like Objects with recognized types are normalized
-		: new nodeTypes[node.type](node)
-	);
+	return [].concat(nodes !== null && nodes !== undefined ? nodes : []).filter(
+		node => node !== null && node !== undefined
+	).map(normalize);
 }

@@ -8,7 +8,7 @@ import Node from './Node';
 * @param {Object} settings - Custom settings applied to the {@link Text}.
 * @param {String} settings.data - Content of the {@link Text}.
 * @param {Object} settings.source - Source mapping of the {@link Text}.
-* @return {Text}
+* @returns {Text}
 * @example
 * new Text({ data: 'Hello World' })
 */
@@ -22,6 +22,32 @@ class Text extends Node {
 			data: String(Object(settings).data || ''),
 			source: Object(Object(settings).source)
 		});
+	}
+
+	/**
+	* Return the stringified innerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceInnerHTML () {
+		return typeof Object(this.source.input).html !== 'string'
+			? ''
+		: this.source.input.html.slice(
+			this.source.startOffset,
+			this.source.endOffset
+		);
+	}
+
+	/**
+	* Return the stringified outerHTML from the source input.
+	* @returns {String}
+	*/
+	get sourceOuterHTML () {
+		return typeof Object(this.source.input).html !== 'string'
+			? ''
+		: this.source.input.html.slice(
+			this.source.startOffset,
+			this.source.endOffset
+		);
 	}
 
 	/**
