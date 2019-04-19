@@ -7,7 +7,7 @@
     "include": [
       "src"
     ],
-    "includePattern": ".+\\.mjs(doc|x)?$",
+    "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "opts": {
@@ -29,7 +29,7 @@
   "docdash": {
     "collapse": true,
     "includeDate": false,
-    "typedefs": false,
+    "typedefs": true,
     "private": false,
     "removeQuotes": true,
     "search": true,

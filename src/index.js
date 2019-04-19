@@ -31,7 +31,7 @@ class PHTML {
 	/**
 	* Process input using plugins and return the result
 	* @param {String} input - Source being processed.
-	* @param {Object} processOptions - Custom settings applied to the Result.
+	* @param {ProcessOptions} processOptions - Custom settings applied to the Result.
 	* @returns {ResultPromise}
 	* @example
 	* phtml.process('some html', processOptions)
@@ -68,7 +68,7 @@ class PHTML {
 
 	/**
 	* Process input and return the new {@link Result}
-	* @param {Object} [processOptions] - Custom settings applied to the {@link Result}.
+	* @param {ProcessOptions} [processOptions] - Custom settings applied to the {@link Result}.
 	* @param {Array|Plugin|Function} [plugins] - Custom settings applied to the {@link Result}.
 	* @returns {ResultPromise}
 	* @example

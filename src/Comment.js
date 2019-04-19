@@ -75,6 +75,21 @@ class Comment extends Node {
 	}
 
 	/**
+	* Return a clone of the current {@link Comment}.
+	* @param {Object} settings - Custom settings applied to the cloned {@link Comment}.
+	* @returns {Comment} - The cloned {@link Comment}
+	* @example
+	* comment.clone()
+	* @example <caption>Clone the current text with new source.</caption>
+	* comment.clone({ source: { input: 'modified source' } })
+	*/
+	clone (settings) {
+		return new this.constructor(Object.assign({}, this, settings, {
+			source: Object.assign({}, this.source, Object(settings).source)
+		}));
+	}
+
+	/**
 	* Return the current {@link Comment} as a String.
 	* @returns {String} A string version of the current {@link Comment}
 	* @example

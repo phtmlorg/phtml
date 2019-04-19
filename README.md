@@ -39,22 +39,22 @@ npm install phtml --save-dev
 Use [pHTML] to process your CSS:
 
 ```js
-const pHTML = require('phtml');
+const phtml = require('phtml');
 
-pHTML.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
+phtml.process(YOUR_HTML, /* processOptions */, /* pluginOrPlugins */);
 ```
 
 #### Node Example
 
 ```js
-const pHTML = require('phtml');
+const phtml = require('phtml');
 
 const html = `<my-component class="main">
   <title>Super Title</title>
   <text>Awesome Text</text>
 </my-component>`;
 
-pHTML.process(html, { from: 'my-component.html' }).then(console.log);
+phtml.process(html, { from: 'my-component.html' }).then(console.log);
 
 /* Result {
   from: 'component.html',
@@ -99,10 +99,10 @@ npm install phtml-some-thing --save-dev
 ```
 
 ```js
-const pHTML = require('phtml');
+const phtml = require('phtml');
 const postHtmlSomeThing = require('phtml-some-thing');
 
-pHTML.use(
+phtml.use(
   postHtmlSomeThing(/* pluginOptions */)
 ).process(YOUR_HTML);
 ```

@@ -1,5 +1,10 @@
 # Changes to pHTML
 
+### 3.1.0 (April 18, 2019)
+
+- Added: Ability to override visitors on `visit()`
+- Added: Ability to clone `Comment` and `Doctype` nodes
+
 ### 3.0.0 (March 16, 2019)
 
 - Changed: `Node.observe()` to `Node.visit()`

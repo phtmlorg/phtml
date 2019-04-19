@@ -92,17 +92,25 @@ class Result {
 	}
 
 	/**
-	* Transform the node and its descendants using the current visitors.
-	* @param {Node} [node] - the node to be visited.
+	* Transform the current {@link Node} and any descendants using visitors.
+	* @param {Node} node - The {@link Node} to be visited.
+	* @param {Object} [overrideVisitors] - Alternative visitors to be used in place of {@link Result} visitors.
 	* @returns {ResultPromise}
 	* @example
 	* await result.visit(someNode)
+	* @example
 	* await result.visit() // visit using the root of the current result
+	* @example
+	* await result.visit(root, {
+	*   Element () {
+	*     // do something to an element
+	*   }
+	* })
 	*/
-	visit (node) {
+	visit (node, overrideVisitors) {
 		const nodeToUse = 0 in arguments ? node : this.root;
 
-		return visit(nodeToUse, this);
+		return visit(nodeToUse, this, overrideVisitors);
 	}
 
 	/**
@@ -203,6 +211,19 @@ const defaultVoidElements = [
 export default Result;
 
 /**
-* @typedef ResultPromise
-* @returns {Promise.<Result>} a new syntax tree {@link Result}
+* A promise to return a syntax tree.
+* @typedef {Promise} ResultPromise
+* @example
+* resultPromise.then(result => {
+*  // do something with the result
+* })
+*/
+
+/**
+* A promise to return a syntax tree.
+* @typedef {Object} ProcessOptions
+* @property {Object} ProcessOptions - Custom settings applied to the {@link Result}.
+* @property {String} ProcessOptions.from - Source input location.
+* @property {String} ProcessOptions.to - Destination output location.
+* @property {Array} ProcessOptions.voidElements - Void elements.
 */

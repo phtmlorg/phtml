@@ -62,7 +62,7 @@ class Plugin extends Function {
 	/**
 	* Process input with options and plugin options and return the result.
 	* @param {String} input - Source being processed.
-	* @param {Object} processOptions - Custom settings applied to the Result.
+	* @param {ProcessOptions} processOptions - Custom settings applied to the Result.
 	* @param {Object} pluginOptions - Options passed to the Plugin.
 	* @returns {ResultPromise}
 	* @example

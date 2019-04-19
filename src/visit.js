@@ -1,6 +1,15 @@
-function visit (node, result) {
+/**
+* Transform a {@link Node} and any descendants using visitors.
+* @param {Node} node - The {@link Node} to be visited.
+* @param {Result} result - The {@link Result} to be used by visitors.
+* @param {Object} [overrideVisitors] - Alternative visitors to be used in place of {@link Result} visitors.
+* @returns {ResultPromise}
+* @private
+*/
+
+function visit (node, result, overrideVisitors) {
 	// get visitors as an object
-	const visitors = Object(Object(result).visitors);
+	const visitors = Object(overrideVisitors || Object(result).visitors);
 
 	// get node types
 	const beforeType = getTypeFromNode(node);
@@ -35,7 +44,7 @@ function visit (node, result) {
 	// walk children
 	if (Array.isArray(node.nodes)) {
 		node.nodes.slice(0).forEach(childNode => {
-			promise = promise.then(() => childNode.parent === node && visit(childNode, result));
+			promise = promise.then(() => childNode.parent === node && visit(childNode, result, overrideVisitors));
 		})
 	}
 

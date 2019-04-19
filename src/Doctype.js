@@ -34,6 +34,21 @@ class Doctype extends Node {
 	}
 
 	/**
+	* Return a clone of the current {@link Doctype}.
+	* @param {Object} settings - Custom settings applied to the cloned {@link Doctype}.
+	* @returns {Doctype} - The cloned {@link Doctype}
+	* @example
+	* doctype.clone()
+	* @example <caption>Clone the current text with new source.</caption>
+	* doctype.clone({ source: { input: 'modified source' } })
+	*/
+	clone (settings) {
+		return new this.constructor(Object.assign({}, this, settings, {
+			source: Object.assign({}, this.source, Object(settings).source)
+		}));
+	}
+
+	/**
 	* Return the current {@link Doctype} as a String.
 	* @returns {String}
 	*/

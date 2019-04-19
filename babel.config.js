@@ -11,6 +11,7 @@ module.exports = {
 	],
 	presets: [
 		['@babel/env', {
+			corejs: 3,
 			loose: true,
 			modules: false,
 			targets: { node: 6 },

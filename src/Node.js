@@ -217,16 +217,25 @@ class Node {
 	}
 
 	/**
-	* Transform the node and its descendants using the current visitors.
+	* Transform the current {@link Node} and any descendants using visitors.
+	* @param {Result} result - The {@link Result} to be used by visitors.
+	* @param {Object} [overrideVisitors] - Alternative visitors to be used in place of {@link Result} visitors.
 	* @returns {ResultPromise}
 	* @example
 	* await node.visit(result)
+	* @example
 	* await node.visit() // visit using the result of the current node
+	* @example
+	* await node.visit(result, {
+	*   Element () {
+	*     // do something to an element
+	*   }
+	* })
 	*/
-	visit (result) {
+	visit (result, overrideVisitors) {
 		const resultToUse = 0 in arguments ? result : this.result;
 
-		return visit(this, resultToUse);
+		return visit(this, resultToUse, overrideVisitors);
 	}
 
 	/**
