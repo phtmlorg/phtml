@@ -110,16 +110,20 @@ async function tests() {
 
 	mutatedAttributes1.attrs.add({ id: 'foo', class: 'bar' });
 
-	await test('Element(mutatedAttributes) mutated attributes', () => mutatedAttributes1.attrs.length === 2);
-	await test('Element(mutatedAttributes) mutated a specific attribute', () => mutatedAttributes1OriginalAttr.value !== mutatedAttributes1OriginalAttrValue);
+	await test('Element(mutatedAttributes) mutated attributes (via add)', () => mutatedAttributes1.attrs.length === 2);
+	await test('Element(mutatedAttributes) mutated a specific attribute (via add)', () => mutatedAttributes1OriginalAttr.value !== mutatedAttributes1OriginalAttrValue);
 
-	mutatedAttributes1.attrs.toggle('id');
+	mutatedAttributes1.attrs.remove('id');
 
-	await test('Element(mutatedAttributes) toggled a specific attribute off', () => mutatedAttributes1.attrs.length === 1 && mutatedAttributes1.attrs.contains('id') === false);
+	await test('Element(mutatedAttributes) mutated attributes (via remove)', () => mutatedAttributes1.attrs.length === 1);
 
 	mutatedAttributes1.attrs.toggle('id', 'foo');
 
-	await test('Element(mutatedAttributes) toggled a specific attribute on', () => mutatedAttributes1.attrs.length === 2 && mutatedAttributes1.attrs.contains('id') === true);
+	await test('Element(mutatedAttributes) toggled a specific attribute off', () => mutatedAttributes1.attrs.length === 2 && mutatedAttributes1.attrs.get('id') === 'foo');
+
+	mutatedAttributes1.attrs.toggle('id', 'foo');
+
+	await test('Element(mutatedAttributes) toggled a specific attribute on', () => mutatedAttributes1.attrs.length === 1 && mutatedAttributes1.attrs.get('id') === false);
 
 	const original = (new Result(`<p>Hello World</p>`, processOptions)).root;
 	const clone = original.clone(true);

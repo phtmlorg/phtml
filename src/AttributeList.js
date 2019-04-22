@@ -6,38 +6,33 @@
 * @param {...Array|AttributeList|Object} attrs - An array or object of attributes.
 * @returns {AttributeList}
 * @example
-* new AttributeList({ name: 'class', value: 'foo' }, { name: 'id': value: 'bar' })
+* new AttributeList([{ name: 'class', value: 'foo' }, { name: 'id', value: 'bar' }])
+* @example
+* new AttributeList({ class: 'foo', id: 'bar' })
 */
 class AttributeList extends Array {
 	constructor (attrs) {
 		super();
 
-		this.push(...getAttributeListArray(attrs));
+		if (attrs === Object(attrs)) {
+			this.push(...getAttributeListArray(attrs));
+		}
 	}
 
 	/**
 	* Add an attribute or attributes to the current {@link AttributeList}.
-	* @param {String} name_or_attrs - The name of the attribute or attributes object being added.
+	* @param {Array|Object|RegExp|String} name - The attribute to remove.
 	* @param {String} [value] - The value of the attribute being added.
 	* @returns {Boolean} - Whether the attribute or attributes were added to the current {@link AttributeList}.
 	* @example <caption>Add an empty "id" attribute.</caption>
 	* attrs.add('id')
 	* @example <caption>Add an "id" attribute with a value of "bar".</caption>
-	* attrs.add('id', 'bar')
-	* @example
 	* attrs.add({ id: 'bar' })
 	* @example
 	* attrs.add([{ name: 'id', value: 'bar' }])
 	*/
 	add (nameOrAttrs, ...args) {
-		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
-			name: String(nameOrAttrs),
-			value: normalizeAttrValue(args[0]),
-			source: {}
-		}];
-
-		return this.toggle(attrs, true);
+		return this.toggle(nameOrAttrs, ...args, true);
 	}
 
 	/**
@@ -50,7 +45,7 @@ class AttributeList extends Array {
 	* attrs.clone({ name: 'id', value: 'bar' })
 	*/
 	clone (...attrs) {
-		return new AttributeList(...Array.from(this).concat(getAttributeListArray(attrs)));
+		return new AttributeList(Array.from(this).concat(getAttributeListArray(attrs)));
 	}
 
 	/**
@@ -70,64 +65,106 @@ class AttributeList extends Array {
 
 	/**
 	* Return an attribute value by name from the current {@link AttributeList}.
-	* @param {String} name - The name of the attribute being accessed.
-	* @returns {String|Null|Boolean} - The value of the attribute (a string or null) or false (if the attribute does not exist).
+	* @description If the attribute exists with a value then a String is returned. If the attribute exists with no value then `null` is returned. If the attribute does not exist then `false` is returned.
+	* @param {RegExp|String} name - The name of the attribute being accessed.
+	* @returns {Boolean|Null|String} - The value of the attribute (a string or null) or false (if the attribute does not exist).
 	* @example <caption>Return the value of "id" or `false`.</caption>
-	* attrs.get('id')
+	* // <div>this element has no "id" attribute</div>
+	* attrs.get('id') // returns false
+	* // <div id>this element has an "id" attribute with no value</div>
+	* attrs.get('id') // returns null
+	* // <div id="">this element has an "id" attribute with a value</div>
+	* attrs.get('id') // returns ''
 	*/
 	get (name) {
-		const target = this.find(attr => attr.name === String(name));
+		const index = this.indexOf(name);
 
-		return target ? target.value : false;
+		return index === -1
+			? false
+		: this[index].value;
 	}
 
 	/**
 	* Return the position of an attribute by name or attribute object in the current {@link AttributeList}.
-	* @param {String} name - The name or attributes object being accessed.
+	* @param {Array|Object|RegExp|String} name - The attribute to locate.
 	* @returns {Number} - The index of the attribute or -1.
 	* @example <caption>Return the index of "id".</caption>
 	* attrs.indexOf('id')
+	* @example <caption>Return the index of /d$/.</caption>
+	* attrs.indexOf(/d$/i)
+	* @example <caption>Return the index of "foo" with a value of "bar".</caption>
+	* attrs.indexOf({ foo: 'bar' })
+	* @example <caption>Return the index of "ariaLabel" or "aria-label" matching /^open/.</caption>
+	* attrs.indexOf({ ariaLabel: /^open/ })
+	* @example <caption>Return the index of an attribute whose name matches `/^foo/`.</caption>
+	* attrs.indexOf([{ name: /^foo/ })
 	*/
 	indexOf (name) {
-		const isObject = name === Object(name);
+		return this.findIndex(
+			Array.isArray(name)
+				? findIndexByArray
+			: isRegExp(name)
+				? findIndexByRegExp
+			: name === Object(name)
+				? findIndexByObject
+			: findIndexByString
+		);
 
-		if (isObject) {
-			const hasName = 'name' in name.name;
-			const hasValue = 'value' in name.value;
-			const stringName = hasName && String(name.name);
-			const stringValue = hasValue && String(name.value);
-
-			return (hasName || hasValue) && this.findIndex(
-				attr => (!hasName || attr.name === stringName) && (!hasValue || attr.value === stringValue)
+		function findIndexByArray (attr) {
+			return name.some(
+				innerAttr => (
+					'name' in Object(innerAttr)
+						? isRegExp(innerAttr.name)
+							? innerAttr.name.test(attr.name)
+						: String(innerAttr.name) === attr.name
+					: true
+				) && (
+					'value' in Object(innerAttr)
+						? isRegExp(innerAttr.value)
+							? innerAttr.value.test(attr.value)
+						: getAttributeValue(innerAttr.value) === attr.value
+					: true
+				)
 			);
 		}
 
-		return this.findIndex(attr => attr.name === String(name));
+		function findIndexByObject (attr) {
+			const innerAttr = name[attr.name] || name[toCamelCaseString(attr.name)];
+
+			return innerAttr
+				? isRegExp(innerAttr)
+					? innerAttr.test(attr.value)
+				: attr.value === innerAttr
+			: false;
+		}
+
+		function findIndexByRegExp (attr) {
+			return name.test(attr.name);
+		}
+
+		function findIndexByString (attr) {
+			return attr.name === String(name) || attr.name === toKebabCaseString(name);
+		}
 	}
 
 	/**
 	* Remove an attribute or attributes from the current {@link AttributeList}.
-	* @param {String} name_or_attrs - The name of the attribute or attributes object being removed.
+	* @param {Array|Object|RegExp|String} name - The attribute to remove.
 	* @param {String} [value] - The value of the attribute being removed.
 	* @returns {Boolean} - Whether the attribute or attributes were removed from the {@link AttributeList}.
 	* @example <caption>Remove the "id" attribute.</caption>
 	* attrs.remove('id')
-	* @example <caption>Remove the "id" attribute with a value of "bar".</caption>
+	* @example <caption>Remove the "id" attribute when it has a value of "bar".</caption>
 	* attrs.remove('id', 'bar')
 	* @example
 	* attrs.remove({ id: 'bar' })
 	* @example
 	* attrs.remove([{ name: 'id', value: 'bar' }])
+	* @example <caption>Remove the "id" and "class" attributes.</caption>
+	* attrs.remove(['id', 'class'])
 	*/
 	remove (nameOrAttrs, ...args) {
-		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
-			name: String(nameOrAttrs),
-			value: normalizeAttrValue(args[0]),
-			source: {}
-		}];
-
-		return !this.toggle(attrs, false);
+		return !this.toggle(nameOrAttrs, ...args, false);
 	}
 
 	/**
@@ -146,32 +183,30 @@ class AttributeList extends Array {
 	* attrs.toggle([{ name: 'id', value: 'bar' }])
 	*/
 	toggle (nameOrAttrs, ...args) {
-		const isObject = nameOrAttrs === Object(nameOrAttrs);
-		const attrs = isObject ? getAttributeListArray(nameOrAttrs) : [{
-			name: String(nameOrAttrs),
-			value: normalizeAttrValue(args[0]),
-			source: {}
-		}];
-		const force = isObject ? args[0] : args[1];
+		const toggleAttrs = getAttributeListArray(nameOrAttrs, ...args);
+		const force = nameOrAttrs === Object(nameOrAttrs) ? args[0] : args[1];
 		const isNoForceDefined = force === undefined;
+
 		let result = false;
 
-		attrs.forEach(attr => {
-			const { name, value } = attr;
-			const index = this.findIndex(existing => existing.name === name);
+		toggleAttrs.forEach(toggleAttr => {
+			const index = this.indexOf(toggleAttr.name);
 
 			if (index === -1) {
 				if (isNoForceDefined || force) {
-					this.push({ name, value });
+					this.push({
+						name: String(toggleAttr.name),
+						value: getAttributeValue(toggleAttr.value)
+					});
 
 					result = true;
 				}
 			} else if (isNoForceDefined || !force) {
 				this.splice(index, 1);
 			} else {
-				const isValueUndefined = value === undefined;
-
-				this[index].value = isValueUndefined ? this[index].value : value;
+				this[index].value = toggleAttr.value === undefined
+					? this[index].value
+				: getAttributeValue(toggleAttr.value);
 			}
 		});
 
@@ -189,36 +224,26 @@ class AttributeList extends Array {
 			? `${this.map(
 				attr => `${Object(attr.source).before || ' '}${attr.name}${attr.value === null ? '' : `=${Object(attr.source).quote || '"'}${attr.value}${Object(attr.source).quote || '"'}`}`
 			).join('')}`
-		: ''
+		: '';
 	}
 
 	/**
 	* Return the current {@link AttributeList} as an Object.
 	* @returns {Object} An object version of the current {@link AttributeList}
 	* @example
-	* attrs.toJSON() // returns { class: 'foo', dataFoo: 'bar' }
+	* attrs.toJSON() // returns { class: 'foo', dataFoo: 'bar' } when <x class="foo" data-foo: "bar" />
 	*/
 	toJSON () {
 		return this.reduce(
 			(object, attr) => Object.assign(
 				object,
 				{
-					[getCamelCaseString(attr.name)]: attr.value
+					[toCamelCaseString(attr.name)]: attr.value
 				}
 			),
 			{}
 		);
 	}
-
-	/**
-	* Return an normalized array of attributes from an object.
-	* @param {String} attrs - An array or object of attributes.
-	* @returns {Array} A normalized array of attributes
-	* @example <caption>Return an array of attributes from a regular object.</caption>
-	* AttributeList.from({ dataFoo: true }) // returns [{ name: 'data-foo', value: 'bar' }]
-	* @example <caption>Return a normalized array of attributes from an impure array of attributes.</caption>
-	* AttributeList.from([{ name: 'data-foo', value: 'bar', foo: true }]) // returns [{ name: 'data-foo', value: 'bar' }]
-	*/
 
 	/**
 	* Return a new {@link AttributeList} from an array or object.
@@ -235,65 +260,133 @@ class AttributeList extends Array {
 	}
 }
 
-export default AttributeList;
-
 /**
 * Return an AttributeList-compatible array from an array or object.
 * @private
 */
 
-function getAttributeListArray (attrs) {
-	return Array.isArray(attrs)
-		? Array.from(attrs).filter(attr => attr).map(attr => ({
-			name: String(Object(attr).name),
-			value: normalizeAttrValue(Object(attr).value),
-			source: Object(Object(attr).source)
-		}))
-	: Object.keys(Object(attrs)).map(name => ({
-		name: getKebabCaseString(name),
-		value: normalizeAttrValue(attrs[name]),
-		source: {}
-	}));
+function getAttributeListArray (attrs, value) {
+	return attrs === null || attrs === undefined
+		? []
+	: Array.isArray(attrs)
+		? attrs.map(
+			attr => ({
+				name: String(Object(attr).name),
+				value: getAttributeValue(Object(attr).value),
+				...
+					Object(attr).source === Object(Object(attr).source)
+						? { source: attr.source }
+					: {}
+			})
+		)
+	: attrs === Object(attrs)
+		? Object.keys(attrs).map(
+			name => ({
+				name: toKebabCaseString(name),
+				value: getAttributeValue(attrs[name])
+			})
+		)
+	: getAttributeListArray({
+		[attrs]: value
+	});
+}
+
+/**
+* Return a value transformed into an attribute value.
+* @description Expected values are strings. Unexpected values are null, objects, and undefined. Nulls returns null, Objects with the default toString return their JSON.stringify’d value otherwise toString’d, and Undefineds return an empty string.
+* @example <caption>Expected values.</caption>
+* getAttributeValue('foo') // returns 'foo'
+* getAttributeValue('') // returns ''
+* @example <caption>Unexpected values.</caption>
+* getAttributeValue(null) // returns null
+* getAttributeValue(undefined) // returns ''
+* getAttributeValue(['foo']) // returns '["foo"]'
+* getAttributeValue({ toString() { return 'bar' }}) // returns 'bar'
+* getAttributeValue({ toString: 'bar' }) // returns '{"toString":"bar"}'
+* @private
+*/
+
+function getAttributeValue (value) {
+	return value === null
+		? null
+	: value === undefined
+		? ''
+	: value === Object(value)
+		? value.toString === Object.prototype.toString
+			? JSON.stringify(value)
+		: String(value)
+	: String(value);
 }
 
 /**
 * Return a string formatted using camelCasing.
-* @private
+* @param {String} value - The value being formatted.
 * @example
-* getCamelCaseString('hello-world') // returns 'helloWorld'
+* toCamelCaseString('hello-world') // returns 'helloWorld'
+* @private
 */
 
-function getCamelCaseString (string) {
-	return String(string).replace(/-[a-z]/g, $0 => $0.slice(1).toUpperCase());
+function toCamelCaseString (value) {
+	return isKebabCase(value)
+		? String(value).replace(/-[a-z]/g, $0 => $0.slice(1).toUpperCase())
+	: String(value);
 }
 
 /**
 * Return a string formatted using kebab-casing.
+* @param {String} value - The value being formatted.
+* @description Expected values do not already contain dashes.
+* @example <caption>Expected values.</caption>
+* toKebabCaseString('helloWorld') // returns 'hello-world'
+* toKebabCaseString('helloworld') // returns 'helloworld'
+* @example <caption>Unexpected values.</caption>
+* toKebabCaseString('hello-World') // returns 'hello-World'
 * @private
-* @example
-* getKebabCaseString('helloWorld') // returns 'hello-world'
 */
 
-function getKebabCaseString (string) {
-	return String(string).replace(/[A-Z]/g, $0 => `-${$0.toLowerCase()}`)
+function toKebabCaseString (value) {
+	return isCamelCase(value)
+		? String(value).replace(/[A-Z]/g, $0 => `-${$0.toLowerCase()}`)
+	: String(value);
 }
 
 /**
-* Return a value normalized as an attribute value.
+* Return whether a value is formatted camelCase.
+* @example
+* isCamelCase('helloWorld')  // returns true
+* isCamelCase('hello-world') // returns false
+* isCamelCase('helloworld')  // returns false
 * @private
-* @example
-* normalizeAttrValue('bar') // returns 'bar'
-* normalizeAttrValue(null) // returns null
-* normalizeAttrValue('') // returns ''
-* @example
-* normalizeAttrValue(undefined) // returns ''
-* normalizeAttrValue(['test']) // returns 'test'
 */
 
-function normalizeAttrValue (attrValue) {
-	return attrValue === null
-		? null
-	: attrValue === undefined
-		? ''
-	: String(attrValue);
+function isCamelCase (value) {
+	return /^\w+[A-Z]\w*$/.test(value);
 }
+
+/**
+* Return whether a value is formatted kebab-case.
+* @example
+* isKebabCase('hello-world') // returns true
+* isKebabCase('helloworld')  // returns false
+* isKebabCase('helloWorld')  // returns false
+* @private
+*/
+
+function isKebabCase (value) {
+	return /^\w+[-]\w+$/.test(value);
+}
+
+/**
+* Return whether a value is a Regular Expression.
+* @example
+* isRegExp(/hello-world/) // returns true
+* isRegExp('/hello-world/')  // returns false
+* isRegExp(new RegExp('hello-world')) // returns true
+* @private
+*/
+
+function isRegExp (value) {
+	return Object.prototype.toString.call(value) === '[object RegExp]';
+}
+
+export default AttributeList;

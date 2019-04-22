@@ -121,7 +121,7 @@ phtml.use(
 - **[pHTML Markdown](https://github.com/phtmlorg/phtml-markdown)**: Write markdown in HTML.
 - **[pHTML Schema](https://github.com/phtmlorg/phtml-schema)**: Generate schema.org microdata in HTML.
 - **[pHTML Self Closing](https://github.com/phtmlorg/phtml-self-closing)**: Expand self-closing tags in HTML.
-- **[pHTML Template](https://github.com/phtmlorg/phtml-template)**: Create Custom Elements from Templates in HTML.
+- **[pHTML Template](https://github.com/phtmlorg/phtml-template)**: Create and reuse compiled templates in HTML.
 
 ### Plugin Creation
 

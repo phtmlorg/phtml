@@ -89,7 +89,7 @@ class PHTML {
 	* @example
 	* PHTML.use(plugin) // returns a new PHTML instance
 	* @example
-	* PHTML.use([ somePlugin, anotherPlugin ]) // return a new PHTML instance
+	* PHTML.use([ somePlugin, anotherPlugin ]) // returns a new PHTML instance
 	*/
 	static use (pluginOrPlugins) {
 		return new PHTML(pluginOrPlugins);

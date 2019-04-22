@@ -2,8 +2,9 @@
 !.appveyor.yml
 !.benchmark.mjs
 !.editorconfig
-!.jsdocrc
+!.eslintrc
 !.gitignore
+!.jsdocrc
 !.tape*.mjs
 !.travis.yml
 *.log*

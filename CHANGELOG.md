@@ -1,5 +1,11 @@
 # Changes to pHTML
 
+### 3.2.0 (April 22, 2019)
+
+- Added: `AttributeList` supports Regular Expression searching when using
+  `get`, `contains`, `add`, `remove`, `toggle`, and `indexOf`.
+- Fixed: An issue where an `AttributeList` might be missing attributes.
+
 ### 3.1.0 (April 18, 2019)
 
 - Added: Ability to override visitors on `visit()`
