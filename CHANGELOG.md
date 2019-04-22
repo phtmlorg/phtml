@@ -1,5 +1,10 @@
 # Changes to pHTML
 
+### 3.2.1 (April 22, 2019)
+
+- Fixed: An issue where `AttributeList#add` and `AttributeList#remove` might
+  return the wrong value.
+
 ### 3.2.0 (April 22, 2019)
 
 - Added: `AttributeList` supports Regular Expression searching when using

@@ -32,7 +32,7 @@ class AttributeList extends Array {
 	* attrs.add([{ name: 'id', value: 'bar' }])
 	*/
 	add (nameOrAttrs, ...args) {
-		return this.toggle(nameOrAttrs, ...args, true);
+		return toggle(this, nameOrAttrs, ...args.slice(0, 1), true).attributeAdded;
 	}
 
 	/**
@@ -99,7 +99,7 @@ class AttributeList extends Array {
 	* @example <caption>Return the index of an attribute whose name matches `/^foo/`.</caption>
 	* attrs.indexOf([{ name: /^foo/ })
 	*/
-	indexOf (name) {
+	indexOf (name, ...args) {
 		return this.findIndex(
 			Array.isArray(name)
 				? findIndexByArray
@@ -139,11 +139,25 @@ class AttributeList extends Array {
 		}
 
 		function findIndexByRegExp (attr) {
-			return name.test(attr.name);
+			return name.test(attr.name) && (
+				args.length
+					? isRegExp(args[0])
+						? args[0].test(attr.value)
+					: attr.value === getAttributeValue(args[0])
+				: true
+			);
 		}
 
 		function findIndexByString (attr) {
-			return attr.name === String(name) || attr.name === toKebabCaseString(name);
+			return (
+				attr.name === String(name) || attr.name === toKebabCaseString(name)
+			) && (
+				args.length
+					? isRegExp(args[0])
+						? args[0].test(attr.value)
+					: attr.value === getAttributeValue(args[0])
+				: true
+			);
 		}
 	}
 
@@ -164,13 +178,13 @@ class AttributeList extends Array {
 	* attrs.remove(['id', 'class'])
 	*/
 	remove (nameOrAttrs, ...args) {
-		return !this.toggle(nameOrAttrs, ...args, false);
+		return toggle(this, nameOrAttrs, ...args.slice(0, 1), false).attributeRemoved;
 	}
 
 	/**
 	* Toggle an attribute or attributes from the current {@link AttributeList}.
 	* @param {String|Object} name_or_attrs - The name of the attribute being toggled, or an object of attributes being toggled.
-	* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled, or when attributes is a string whether the attribute should be forcibly toggled.
+	* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled when the first argument is not an object, or whether the attribute should be forcably toggled.
 	* @param {Boolean} [force] - Whether the attribute should be forcably toggled.
 	* @returns {Boolean} - Whether any attribute was added to the current {@link AttributeList}.
 	* @example <caption>Toggle the "id" attribute.</caption>
@@ -183,34 +197,9 @@ class AttributeList extends Array {
 	* attrs.toggle([{ name: 'id', value: 'bar' }])
 	*/
 	toggle (nameOrAttrs, ...args) {
-		const toggleAttrs = getAttributeListArray(nameOrAttrs, ...args);
-		const force = nameOrAttrs === Object(nameOrAttrs) ? args[0] : args[1];
-		const isNoForceDefined = force === undefined;
+		const result = toggle(this, nameOrAttrs, ...args);
 
-		let result = false;
-
-		toggleAttrs.forEach(toggleAttr => {
-			const index = this.indexOf(toggleAttr.name);
-
-			if (index === -1) {
-				if (isNoForceDefined || force) {
-					this.push({
-						name: String(toggleAttr.name),
-						value: getAttributeValue(toggleAttr.value)
-					});
-
-					result = true;
-				}
-			} else if (isNoForceDefined || !force) {
-				this.splice(index, 1);
-			} else {
-				this[index].value = toggleAttr.value === undefined
-					? this[index].value
-				: getAttributeValue(toggleAttr.value);
-			}
-		});
-
-		return result;
+		return result.attributeAdded || result.atttributeModified;
 	}
 
 	/**
@@ -229,7 +218,7 @@ class AttributeList extends Array {
 
 	/**
 	* Return the current {@link AttributeList} as an Object.
-	* @returns {Object} An object version of the current {@link AttributeList}
+	* @returns {Object} point - An object version of the current {@link AttributeList}
 	* @example
 	* attrs.toJSON() // returns { class: 'foo', dataFoo: 'bar' } when <x class="foo" data-foo: "bar" />
 	*/
@@ -258,6 +247,53 @@ class AttributeList extends Array {
 	static from (attrs) {
 		return new AttributeList(getAttributeListArray(attrs));
 	}
+}
+
+/**
+* Toggle an attribute or attributes from an {@link AttributeList}.
+* @param {AttributeList} attrs - The {@link AttributeList} being modified.
+* @param {String|Object} name_or_attrs - The name of the attribute being toggled, or an object of attributes being toggled.
+* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled when the first argument is not an object, or whether the attribute should be forcably toggled.
+* @param {Boolean} [force] - Whether the attribute should be forcably toggled.
+* @returns {Array} An object specifying whether any attributes were added, removed, and/or modified.
+* @private
+*/
+
+function toggle (attrs, nameOrAttrs, ...args) {
+	let attributeAdded = false;
+	let attributeRemoved = false;
+	let atttributeModified= false;
+
+	const toggleAttrs = getAttributeListArray(nameOrAttrs, ...args);
+	const force = nameOrAttrs === Object(nameOrAttrs) && typeof args[0] === 'boolean' ? args[0] : args[1];
+	const isNoForceDefined = force === undefined;
+
+	toggleAttrs.forEach(toggleAttr => {
+		const index = attrs.indexOf(toggleAttr.name);
+
+		if (index === -1) {
+			if (isNoForceDefined || force) {
+				attrs.push({
+					name: String(toggleAttr.name),
+					value: getAttributeValue(toggleAttr.value)
+				});
+
+				attributeAdded = true;
+			}
+		} else if (isNoForceDefined || !force) {
+			attrs.splice(index, 1);
+
+			attributeRemoved = true;
+		} else {
+			attrs[index].value = toggleAttr.value === undefined
+				? attrs[index].value
+			: getAttributeValue(toggleAttr.value);
+
+			atttributeModified = true;
+		}
+	});
+
+	return { attributeAdded, attributeRemoved, atttributeModified };
 }
 
 /**
