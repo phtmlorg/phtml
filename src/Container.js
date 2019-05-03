@@ -65,7 +65,19 @@ class Container extends Node {
 	* container.innerHTML // returns a string of innerHTML
 	*/
 	get innerHTML () {
-		return String(this.nodes);
+		return this.nodes.innerHTML;
+	}
+
+	/**
+	* Define the nodes of the current {@link Container} from a String.
+	* @param {String} innerHTML - Source being processed.
+	* @returns {Void}
+	* @example
+	* container.innerHTML = 'Hello <strong>world</strong>';
+	* container.nodes.length; // 2
+	*/
+	set innerHTML (innerHTML) {
+		this.nodes.innerHTML = innerHTML;
 	}
 
 	/**
@@ -75,7 +87,24 @@ class Container extends Node {
 	* container.outerHTML // returns a string of outerHTML
 	*/
 	get outerHTML () {
-		return String(this);
+		return this.nodes.innerHTML;
+	}
+
+	/**
+	* Replace the current {@link Container} from a String.
+	* @param {String} input - Source being processed.
+	* @returns {Void}
+	* @example
+	* container.outerHTML = 'Hello <strong>world</strong>';
+	*/
+	set outerHTML (outerHTML) {
+		const Result = Object(this.result).constructor;
+
+		if (Result) {
+			const childNodes = new Result(outerHTML).root.nodes;
+
+			this.replaceWith(...childNodes);
+		}
 	}
 
 	/**
@@ -104,6 +133,22 @@ class Container extends Node {
 			this.source.startOffset,
 			this.source.endOffset
 		);
+	}
+
+	/**
+	* Return the text content of the current {@link Container} as a String.
+	* @returns {String}
+	*/
+	get textContent () {
+		return this.nodes.textContent;
+	}
+
+	/**
+	* Define the content of the current {@link Container} as a new {@link Text} {@link Node}.
+	* @returns {String}
+	*/
+	set textContent (textContent) {
+		this.nodes.textContent = textContent;
 	}
 
 	/**

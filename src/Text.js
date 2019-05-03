@@ -5,7 +5,7 @@ import Node from './Node';
 * @class
 * @extends Node
 * @classdesc Create a new {@link Text} {@link Node}.
-* @param {Object} settings - Custom settings applied to the {@link Text}.
+* @param {Object|String} settings - Custom settings applied to the {@link Text}, or the content of the {@link Text}.
 * @param {String} settings.data - Content of the {@link Text}.
 * @param {Object} settings.source - Source mapping of the {@link Text}.
 * @returns {Text}
@@ -15,6 +15,10 @@ import Node from './Node';
 class Text extends Node {
 	constructor (settings) {
 		super();
+
+		if (typeof settings === 'string') {
+			settings = { data: settings };
+		}
 
 		Object.assign(this, {
 			type: 'text',
@@ -48,6 +52,27 @@ class Text extends Node {
 			this.source.startOffset,
 			this.source.endOffset
 		);
+	}
+
+	/**
+	* Return the current {@link Text} as a String.
+	* @returns {String}
+	* @example
+	* text.textContent // returns ''
+	*/
+	get textContent () {
+		return String(this.data);
+	}
+
+	/**
+	* Define the current {@link Text} from a String.
+	* @returns {Void}
+	* @example
+	* text.textContent = 'Hello World'
+	* text.textContent // 'Hello World'
+	*/
+	set textContent (textContent) {
+		this.data = String(textContent);
 	}
 
 	/**

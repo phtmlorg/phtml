@@ -63,7 +63,12 @@ Tokenizer.prototype._leaveAttrValue = function _leaveAttrValue (toState) {
 		? ''
 	: this.preprocessor.html[startValue];
 
-	this.currentAttr.raw.value = this.currentAttr.value;
+	const currentAttrValue = this.preprocessor.html.slice(
+		startValue + quote.length,
+		endValue - quote.length
+	);
+
+	this.currentAttr.raw.value = currentAttrValue;
 	this.currentAttr.raw.source.startValue = startValue;
 	this.currentAttr.raw.source.endValue = endValue;
 	this.currentAttr.raw.source.quote = quote;

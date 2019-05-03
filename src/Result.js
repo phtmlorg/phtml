@@ -35,7 +35,9 @@ class Result {
 		: from;
 		const voidElements = 'voidElements' in Object(processOptions)
 			? [].concat(Object(processOptions).voidElements || [])
-		: defaultVoidElements;
+		: Result.voidElements;
+
+		// prepare visitors (which may be functions or visitors)
 		const visitors = getVisitors(Object(processOptions).visitors);
 
 		// prepare the result object
@@ -136,10 +138,30 @@ class Result {
 
 		this.messages.push({ type: 'warning', text, opts });
 	}
+
+	static voidElements = [
+		'area',
+		'base',
+		'br',
+		'col',
+		'command',
+		'embed',
+		'hr',
+		'img',
+		'input',
+		'keygen',
+		'link',
+		'meta',
+		'param',
+		'source',
+		'track',
+		'wbr'
+	];
 }
 
 function transform (node, result) {
-	const source = node.sourceCodeLocation === Object(node.sourceCodeLocation)
+	const hasSource = node.sourceCodeLocation === Object(node.sourceCodeLocation);
+	const source = hasSource
 		? {
 			startOffset: node.sourceCodeLocation.startOffset,
 			endOffset: node.sourceCodeLocation.endOffset,
@@ -179,7 +201,14 @@ function transform (node, result) {
 			source
 		})
 	: treeAdapter.isTextNode(node)
-		? new Text({ data: node.value, result, source })
+		? new Text({
+			data: hasSource ? source.input.html.slice(
+				source.startInnerOffset,
+				source.endInnerOffset
+			) : node.value,
+			result,
+			source
+		})
 	: new Fragment({
 		nodes: node.childNodes instanceof Array ? node.childNodes.map(child => transform(child, result)) : null,
 		result,
@@ -188,25 +217,6 @@ function transform (node, result) {
 
 	return $node;
 }
-
-const defaultVoidElements = [
-	'area',
-	'base',
-	'br',
-	'col',
-	'command',
-	'embed',
-	'hr',
-	'img',
-	'input',
-	'keygen',
-	'link',
-	'meta',
-	'param',
-	'source',
-	'track',
-	'wbr'
-];
 
 export default Result;
 

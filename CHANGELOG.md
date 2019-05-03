@@ -1,5 +1,19 @@
 # Changes to pHTML
 
+### 3.3.0 (May 3, 2019)
+
+- Fixed: `Attribute` values and `Text` data now preserve raw HTML entities.
+- Fixed: An issue where function plugins now consistently runs _after_ rather
+  than _before_ the `Root` node is visited.
+- Added: Settable `innerHTML` and `outerHTML`.
+- Added: Getable and settable `textContent`.
+- Added: The `use` method now also accepts multiple arguments for multiple
+  plugins.
+- Added: A string argument passed to `Comment` defines the comment.
+- Added: A string argument passed to `Doctype` defines the doctype name.
+- Added: A string argument passed to `Element` defines the element tag name.
+- Added: A string argument passed to `Text` defines the text data.
+
 ### 3.2.1 (April 22, 2019)
 
 - Fixed: An issue where `AttributeList#add` and `AttributeList#remove` might

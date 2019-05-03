@@ -14,7 +14,7 @@ import Text from './Text';
 * @name PHTML
 * @class
 * @classdesc Create a new instance of {@link PHTML}.
-* @param {Array|Plugin|Function} plugins - Plugin or plugins being added.
+* @param {Array|Object|Plugin|Function} plugins - Plugin or plugins being added.
 * @returns {PHTML}
 * @example
 * new PHTML(plugin)
@@ -45,21 +45,26 @@ class PHTML {
 
 	/**
 	* Add plugins to the existing instance of PHTML
-	* @param {Array|Plugin|Function} plugins - Plugin or plugins being added.
+	* @param {Array|Object|Plugin|Function} plugins - Plugin or plugins being added.
 	* @returns {PHTML}
 	* @example
 	* phtml.use(plugin)
 	* @example
 	* phtml.use([ somePlugin, anotherPlugin ])
+	* @example
+	* phtml.use(somePlugin, anotherPlugin)
 	*/
-	use (pluginOrPlugins) {
-		const plugins = Array.isArray(pluginOrPlugins)
-			? pluginOrPlugins.filter(
-				plugin => typeof plugin === 'function' || Object(plugin) === plugin && Object.keys(plugin).length
+	use (pluginOrPlugins, ...additionalPlugins) {
+		const plugins = [pluginOrPlugins, ...additionalPlugins].reduce(
+			(flattenedPlugins, plugin) => flattenedPlugins.concat(plugin),
+			[]
+		).filter(
+			// Plugins are either a function or an object with keys
+			plugin => (
+				typeof plugin === 'function' ||
+				Object(plugin) === plugin && Object.keys(plugin).length
 			)
-		: typeof pluginOrPlugins === 'function' || Object(pluginOrPlugins) === pluginOrPlugins && Object.keys(pluginOrPlugins).length
-			? [pluginOrPlugins]
-		: [];
+		);
 
 		this.plugins.push(...plugins);
 
@@ -69,7 +74,7 @@ class PHTML {
 	/**
 	* Process input and return the new {@link Result}
 	* @param {ProcessOptions} [processOptions] - Custom settings applied to the {@link Result}.
-	* @param {Array|Plugin|Function} [plugins] - Custom settings applied to the {@link Result}.
+	* @param {Array|Object|Plugin|Function} [plugins] - Custom settings applied to the {@link Result}.
 	* @returns {ResultPromise}
 	* @example
 	* PHTML.process('some html', processOptions)
@@ -84,15 +89,20 @@ class PHTML {
 
 	/**
 	* Return a new {@link PHTML} instance which will use plugins
-	* @param {Object} pluginOrPlugins - Plugin or plugins being added.
+	* @param {Array|Object|Plugin|Function} plugin - Plugin or plugins being added.
 	* @returns {PHTML} - New {@link PHTML} instance
 	* @example
 	* PHTML.use(plugin) // returns a new PHTML instance
 	* @example
 	* PHTML.use([ somePlugin, anotherPlugin ]) // returns a new PHTML instance
+	* @example
+	* PHTML.use(somePlugin, anotherPlugin) // returns a new PHTML instance
 	*/
-	static use (pluginOrPlugins) {
-		return new PHTML(pluginOrPlugins);
+	static use (pluginOrPlugins, ...additionalPlugins) {
+		return new PHTML().use(
+			pluginOrPlugins,
+			...additionalPlugins
+		);
 	}
 
 	static AttributeList = AttributeList;

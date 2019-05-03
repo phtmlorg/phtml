@@ -1,4 +1,5 @@
 import Fragment from './Fragment';
+import Text from './Text';
 import normalize from './normalize';
 
 // weak map of the parents of NodeLists
@@ -22,6 +23,60 @@ class NodeList extends Array {
 		if (nodes.length) {
 			this.push(...nodes);
 		}
+	}
+
+	/**
+	* Return the innerHTML of the current {@link Container} as a String.
+	* @returns {String}
+	* @example
+	* container.innerHTML // returns a string of innerHTML
+	*/
+	get innerHTML () {
+		return this.map(
+			node => node.type === 'text'
+				? getInnerHtmlEncodedString(node.data)
+			: 'outerHTML' in node
+				? node.outerHTML
+			: String(node)
+		).join('');
+	}
+
+	/**
+	* Define the nodes of the current {@link NodeList} from a String.
+	* @param {String} innerHTML - Source being processed.
+	* @returns {Void}
+	* @example
+	* nodeList.innerHTML = 'Hello <strong>world</strong>';
+	* nodeList.length; // 2
+	*/
+	set innerHTML (innerHTML) {
+		const parent = parents.get(this);
+
+		const Result = Object(parent.result).constructor
+
+		if (Result) {
+			const nodes = new Result(innerHTML).root.nodes;
+
+			this.splice(0, this.length, ...nodes);
+		}
+	}
+
+	/**
+	* Return the text content of the current {@link NodeList} as a String.
+	* @returns {String}
+	*/
+	get textContent () {
+		return this.map(
+			node => Object(node).textContent || ''
+		).join('');
+	}
+
+	/**
+	* Define the content of the current {@link NodeList} as a new {@link Text} {@link Node}.
+	* @returns {String}
+	*/
+	set textContent (textContent) {
+		this.splice(0, this.length, new Text({ data: textContent }));
 	}
 
 	/**
@@ -148,4 +203,20 @@ function getNodeListArray (nodes) {
 	return [].concat(nodes !== null && nodes !== undefined ? nodes : []).filter(
 		node => node !== null && node !== undefined
 	).map(normalize);
+}
+
+/**
+* Return an innerHTML-encoded string.
+* @private
+*/
+
+function getInnerHtmlEncodedString (string) {
+	return string.replace(
+		/&|<|>/g,
+		match => match === '&'
+			? '&amp;'
+		: match === '<'
+			? '&lt;'
+		: '&gt;'
+	);
 }

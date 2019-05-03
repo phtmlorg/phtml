@@ -5,7 +5,7 @@ import Node from './Node';
 * @class
 * @extends Node
 * @classdesc Return a new {@link Comment} {@link Node}.
-* @param {Object} settings - Custom settings applied to the Comment.
+* @param {Object|String} settings - Custom settings applied to the Comment, or the content of the {@link Comment}.
 * @param {String} settings.comment - Content of the Comment.
 * @param {Object} settings.source - Source mapping of the Comment.
 * @returns {Comment}
@@ -15,6 +15,10 @@ import Node from './Node';
 class Comment extends Node {
 	constructor (settings) {
 		super();
+
+		if (typeof settings === 'string') {
+			settings = { comment: settings };
+		}
 
 		Object.assign(this, {
 			type: 'comment',

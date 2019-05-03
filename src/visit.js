@@ -25,48 +25,71 @@ function visit (node, result, overrideVisitors) {
 
 	// fire "before" visitors
 	if (visitors[beforeNodeType]) {
-		promise = promise.then(() => runAll(visitors[beforeNodeType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[beforeNodeType], node, result)
+		);
 	}
 
 	if (visitors[beforeType]) {
-		promise = promise.then(() => runAll(visitors[beforeType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[beforeType], node, result)
+		);
 	}
 
-	if (visitors[beforeSubType] && visitors[beforeSubType] !== visitors[beforeType]) {
-		promise = promise.then(() => runAll(visitors[beforeSubType], node, result));
+	if (beforeSubType !== beforeType && visitors[beforeSubType]) {
+		promise = promise.then(
+			() => runAll(visitors[beforeSubType], node, result)
+		);
 	}
 
 	// dispatch before root event
 	if (visitors[beforeRootType] && node === result.root) {
-		promise = promise.then(() => runAll(visitors[beforeRootType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[beforeRootType], node, result)
+		);
 	}
 
 	// walk children
 	if (Array.isArray(node.nodes)) {
 		node.nodes.slice(0).forEach(childNode => {
-			promise = promise.then(() => childNode.parent === node && visit(childNode, result, overrideVisitors));
+			promise = promise.then(
+				() => (
+					childNode.parent === node &&
+					visit(childNode, result, overrideVisitors)
+				)
+			);
 		})
 	}
 
 	// fire "after" visitors
 	if (visitors[afterNodeType]) {
-		promise = promise.then(() => runAll(visitors[afterNodeType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[afterNodeType], node, result)
+		);
 	}
 
 	if (visitors[afterType]) {
-		promise = promise.then(() => runAll(visitors[afterType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[afterType], node, result)
+		);
 	}
 
-	if (visitors[afterSubType] && visitors[afterSubType] !== visitors[afterType]) {
-		promise = promise.then(() => runAll(visitors[afterSubType], node, result));
+	if (afterType !== afterSubType && visitors[afterSubType]) {
+		promise = promise.then(
+			() => runAll(visitors[afterSubType], node, result)
+		);
 	}
 
 	// dispatch root event
 	if (visitors[afterRootType] && node === result.root) {
-		promise = promise.then(() => runAll(visitors[afterRootType], node, result));
+		promise = promise.then(
+			() => runAll(visitors[afterRootType], node, result)
+		);
 	}
 
-	return promise.then(() => result);
+	return promise.then(
+		() => result
+	);
 }
 
 export function runAll (plugins, node, result) {
@@ -88,6 +111,7 @@ export function runAll (plugins, node, result) {
 	return promise;
 }
 
+// return normalized plugins and visitors
 function getVisitors (rawplugins) {
 	const visitors = {};
 
@@ -96,11 +120,11 @@ function getVisitors (rawplugins) {
 		const initializedPlugin = Object(plugin).type === 'plugin' ? plugin() : plugin;
 
 		if (initializedPlugin instanceof Function) {
-			if (!visitors.Root) {
-				visitors.Root = [];
+			if (!visitors.afterRoot) {
+				visitors.afterRoot = [];
 			}
 
-			visitors.Root.push(initializedPlugin);
+			visitors.afterRoot.push(initializedPlugin);
 		} else if (Object(initializedPlugin) === initializedPlugin && Object.keys(initializedPlugin).length) {
 			Object.keys(initializedPlugin).forEach(key => {
 				const fn = initializedPlugin[key];
@@ -130,8 +154,8 @@ function getTypeFromNode (node) {
 
 function getSubTypeFromNode (node) {
 	return {
-		'#comment': 'Comment',
-		'#text': 'Text',
+		'comment': 'Comment',
+		'text': 'Text',
 		'doctype': 'Doctype',
 		'fragment': 'Fragment'
 	}[node.type] || (

@@ -1,5 +1,5 @@
-import PHTML from '.';
-import test from './.tape.test';
+const PHTML = require('..');
+const test = require('./test');
 
 const { Comment, Element, Fragment, Node, NodeList, Plugin, Result, Text } = PHTML;
 
@@ -125,11 +125,94 @@ async function tests() {
 
 	await test('Element(mutatedAttributes) toggled a specific attribute on', () => mutatedAttributes1.attrs.length === 1 && mutatedAttributes1.attrs.get('id') === false);
 
-	const original = (new Result(`<p>Hello World</p>`, processOptions)).root;
-	const clone = original.clone(true);
+	await test('Element: Generate a new <div> from a string', () => String(new Element('div')) === '<div></div>');
+	await test('Element: Generate a new <input> from a string', () => String(new Element('input')) === '<input>');
+	await test('Element: Generate a new <span> from nothing', () => String(new Element()) === '<span></span>');
+
+	await test('Element#innerHTML getter/setter', async () => {
+		const { root } = new Result(`<section>Hello World</section>`, processOptions);
+		const { first: section } = root;
+
+		await test(() => section.innerHTML === 'Hello World');
+
+		section.innerHTML = 'Hello <strong>World</strong>';
+		await test(() => section.innerHTML === 'Hello <strong>World</strong>');
+		await test(() => section.last.innerHTML === 'World');
+
+		section.last.innerHTML = 'Earth';
+		await test(() => section.innerHTML === 'Hello <strong>Earth</strong>');
+	});
+
+	await test('Element#outerHTML getter/setter', async () => {
+		const { root } = new Result(`<section>Hello World</section>`, processOptions);
+
+		const section = root.first;
+		await test(() => section.outerHTML === '<section>Hello World</section>');
+
+		section.outerHTML = 'Hello <strong>World</strong>';
+		await test(() => root.innerHTML === 'Hello <strong>World</strong>');
+
+		const strong = root.last;
+		await test(() => strong.outerHTML === '<strong>World</strong>');
+
+		strong.outerHTML = 'Earth';
+		await test(() => root.innerHTML === 'Hello Earth');
+	});
+
+	await test('Element#textContent getter/setter', async () => {
+		const { root } = new Result(`<section>Hello <strong>World</strong></section>`, processOptions);
+
+		await test(() => root.textContent === 'Hello World');
+
+		const section = root.first;
+		section.innerHTML = 'Hello <em>World</em>';
+		await test(() => root.textContent === 'Hello World');
+
+		const strong = section.last;
+		await test(() => strong.textContent === 'World');
+
+		strong.textContent = 'Earth';
+		await test(() => root.textContent === 'Hello Earth');
+	});
+
+	await test('Element entities', async () => {
+		const sourceInnerData1 = '"X" &quot;X&quot;';
+		const sourceOuterData1 = `<section>${sourceInnerData1}</section>`;
+		const expectInnerHtml1 = '"X" &amp;quot;X&amp;quot;';
+		const expectOuterHtml1 = `<section>${expectInnerHtml1}</section>`;
+
+		const { root } = new Result(sourceOuterData1, processOptions);
+
+		const section = root.first;
+		// textContent/toString() does not transform entities
+		await test(() => section.textContent === sourceInnerData1);
+		await test(() => String(section) === sourceOuterData1);
+
+		// innerHTML/outerHTML does transform entities
+		await test(() => section.innerHTML === expectInnerHtml1);
+		await test(() => section.outerHTML === expectOuterHtml1);
+
+		const sourceInnerData2 = '<element> &lt;element&gt;';
+		const sourceOuterData2 = `<section>${sourceInnerData2}</section>`;
+		const expectInnerHtml2 = '&lt;element&gt; &amp;lt;element&amp;gt;';
+		const expectOuterHtml2 = `<section>${expectInnerHtml2}</section>`;
+
+		section.textContent = sourceInnerData2;
+
+		// textContent/toString() does not transform entities
+		await test(() => section.textContent === sourceInnerData2);
+		await test(() => String(section) === sourceOuterData2);
+
+		// innerHTML/outerHTML does transform entities
+		await test(() => section.innerHTML === expectInnerHtml2);
+		await test(() => section.outerHTML === expectOuterHtml2);
+	});
 
 	/* Test Container Clone
 	/* ====================================================================== */
+
+	const original = (new Result(`<p>Hello World</p>`, processOptions)).root;
+	const clone = original.clone(true);
 
 	await test('Container(clone) is not the original', () => original !== clone);
 	await test('Container(clone) matches the original', () => original.outerHTML === clone.outerHTML && original.innerHTML === clone.innerHTML);
@@ -156,137 +239,148 @@ async function tests() {
 	await test('PHTML.process().html returns a String', () => typeof result2.html === 'string');
 	await test('PHTML.process().root returns a Fragment', () => result2.root instanceof Fragment);
 
-	/* Test Plugins
-	/* ====================================================================== */
+	await test('PHTML.process() preserves entities', async () => {
+		const entitySample = ['&quot;', '&lt;', '&gt;', '&amp;'];
+		const sourceHTML = entitySample.map(
+			entity => `<p data-entity="${entity}">${entity}</p>`
+		).join('\n');
+		const { html: resultHTML } = await PHTML.process(sourceHTML);
 
-	let pHTMLPluginTest1 = false;
-	let pHTMLPluginTest2 = false;
-
-	const pHTMLTestPlugin1 = new Plugin('phtml-test', opt => {
-		pHTMLPluginTest1 = opt;
-
-		return () => {
-			pHTMLPluginTest2 = opt;
-		}
+		return sourceHTML === resultHTML;
 	});
 
-	await pHTMLTestPlugin1.process(html, {}, true);
+	/* Test Plugins
+	/* ====================================================================== */
 
-	await test('Plugin: Plugin#process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
+	await test(async () => {
+		let pHTMLPluginTest1 = false;
+		let pHTMLPluginTest2 = false;
 
-	pHTMLPluginTest1 = false;
-	pHTMLPluginTest2 = false;
+		const pHTMLTestPlugin1 = new Plugin('phtml-test', opt => {
+			pHTMLPluginTest1 = opt;
 
-	const pHTMLInstanceWithPlugin = new PHTML([
-		pHTMLTestPlugin1(true)
-	]);
+			return () => {
+				pHTMLPluginTest2 = opt;
+			}
+		});
 
-	await test('Plugin: Pre-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 !== true);
+		await pHTMLTestPlugin1.process(html, {}, true);
 
-	await pHTMLInstanceWithPlugin.process(html);
+		await test('Plugin: Plugin#process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
 
-	await test('Plugin: Post-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
+		pHTMLPluginTest1 = false;
+		pHTMLPluginTest2 = false;
+
+		const pHTMLInstanceWithPlugin = new PHTML([
+			pHTMLTestPlugin1(true)
+		]);
+
+		await test('Plugin: Pre-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 !== true);
+
+		await pHTMLInstanceWithPlugin.process(html);
+
+		await test('Plugin: Post-Process', () => pHTMLPluginTest1 === true && pHTMLPluginTest2 === true);
+	});
 
 	/* Test Plugins
 	/* ====================================================================== */
 
-	let working = false;
-	const pHTML3 = new PHTML([
-		() => {
-			working = null;
-		},
-		() => {
-			working = working === null ? true : working;
-		}
-	]);
-	await pHTML3.process(html);
+	await test('Plugins: Plugins are run in order', async () => {
+		let working = false;
 
-	await test('pHTML Plugins are run in order', () => working === true);
+		await PHTML.use(
+			() => {
+				working = null;
+			},
+			() => {
+				working = working === null ? true : working;
+			}
+		).process(html);
+
+		return working === true;
+	});
 
 	/* Test Result Current Plugin
 	/* ====================================================================== */
 
-	let isCurrentPluginCurrentPlugin = false;
+	await test('Plugin: result.currentPlugin', async () => {
+		let isCurrentPluginCurrentPlugin = false;
 
-	const plugin4 = (root, result) => {
-		isCurrentPluginCurrentPlugin = result.currentPlugin === plugin4;
-	};
+		const plugin = (root, result) => {
+			isCurrentPluginCurrentPlugin = result.currentPlugin === plugin;
+		};
 
-	const pHTML4 = new PHTML([ plugin4 ]);
+		await PHTML.use(plugin).process(html);
 
-	await pHTML4.process(html);
-
-	await test('Plugin: result.currentPlugin', () => isCurrentPluginCurrentPlugin);
+		return isCurrentPluginCurrentPlugin;
+	});
 
 	/* Test Plugin Warnings
 	/* ====================================================================== */
 
-	const plugin5 = (root, result) => {
-		root.warn(result, 'Something went wrong');
-		root.warn(result, 'Something else went wrong');
-	};
+	await test('Plugin: Node#warn, Result: warnings', async () => {
+		const plugin = (root, result) => {
+			root.warn(result, 'Something went wrong');
+			root.warn(result, 'Something else went wrong');
+		};
 
-	const pHTML5 = new PHTML([ plugin5 ]);
+		const result = await PHTML.use(plugin).process(html);
 
-	const result = await pHTML5.process(html);
-
-	await test('Plugin: Node#warn, Result: warnings', () => result.warnings.length === 2);
-
-	/* Test Plugin Object
-	/* ====================================================================== */
-
-	let remainingObservers6 = 13;
-
-	const plugin6 = {
-		afterElement() {
-			--remainingObservers6;
-		},
-		PElement() {
-			--remainingObservers6;
-		},
-		Root() {
-			--remainingObservers6;
-		}
-	};
-
-	const pHTML6 = new PHTML([ plugin6 ]);
-
-	await pHTML6.process(html);
-
-	await test('Plugin: Element with Observers', () => !remainingObservers6);
+		return result.warnings.length === 2;
+	});
 
 	/* Test Plugin Object
 	/* ====================================================================== */
 
-	let remainingObservers7 = 13;
+	await test('Plugin: Element with Observers', async () => {
 
-	const plugin7a = {
-		afterElement() {
-			--remainingObservers7;
-		},
-		PElement() {
-			--remainingObservers7;
-		},
-		Root() {
-			--remainingObservers7;
-		}
-	};
+		let observersRunCount = 13;
 
-	const plugin7b = async root => {
-		if (remainingObservers7) {
-			throw new Error('incorrect visitor count');
-		} else {
-			remainingObservers7 = 13;
-		}
+		const plugin = {
+			afterElement() {
+				--observersRunCount;
+			},
+			PElement() {
+				--observersRunCount;
+			},
+			Root() {
+				--observersRunCount;
+			}
+		};
 
-		await root.visit();
-	};
+		await PHTML.use(plugin).process(html);
 
-	const pHTML7 = new PHTML([ plugin7a, plugin7b ]);
+		return !observersRunCount;
+	});
 
-	await pHTML7.process(html);
+	/* Test Plugin Object
+	/* ====================================================================== */
 
-	await test('Plugin: Element with Visitors and Functions', () => !remainingObservers7);
+	await test('Plugin: Element with Visitors and Functions', async () => {
+		let observersRunCount = 13;
+
+		const plugin1 = {
+			afterElement () {
+				--observersRunCount;
+			},
+			PElement () {
+				--observersRunCount;
+			},
+			Root () {
+				--observersRunCount;
+			}
+		};
+
+		const plugin2 = async () => {
+			if (observersRunCount) {
+				throw new Error('incorrect visitor count');
+			}
+		};
+
+		await PHTML.use([ plugin1, plugin2 ]).process(html);
+
+		return !observersRunCount;
+	});
 }
 
 tests();

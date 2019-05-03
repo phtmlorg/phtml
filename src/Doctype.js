@@ -5,7 +5,7 @@ import Node from './Node';
 * @class
 * @extends Node
 * @classdesc Create a new {@link Doctype} {@link Node}.
-* @param {Object} settings - Custom settings applied to the {@link Doctype}.
+* @param {Object|String} settings - Custom settings applied to the {@link Doctype}, or the name of the {@link Doctype}.
 * @param {String} settings.name - Name of the {@link Doctype}.
 * @param {String} settings.publicId - Public identifier portion of the {@link Doctype}.
 * @param {String} settings.systemId - System identifier portion of the {@link Doctype}.
@@ -17,6 +17,10 @@ import Node from './Node';
 class Doctype extends Node {
 	constructor (settings) {
 		super();
+
+		if (typeof settings === 'string') {
+			settings = { name: settings };
+		}
 
 		Object.assign(this, {
 			type: 'doctype',
