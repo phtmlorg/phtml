@@ -98,6 +98,9 @@ async function tests() {
 
 	await test('Element(selfClosing)#isSelfClosing', () => selfClosing.isSelfClosing === true);
 
+	/* Test Element Attributes
+	/* ====================================================================== */
+
 	const duplicateAttributes1 = new Result('<section class class />', processOptions).root.first;
 	const duplicateAttributes2 = new Result('<section class="foo" class="bar" />', processOptions).root.first;
 
@@ -105,18 +108,23 @@ async function tests() {
 	await test('Element(duplicateAttributes) contains duplicate attributes', () => duplicateAttributes2.attrs.length === 2 && duplicateAttributes2.attrs[0].value === 'foo' && duplicateAttributes2.attrs[1].value === 'bar');
 
 	const mutatedAttributes1 = new Result('<section class="foo" />', processOptions).root.first;
+
+	// class="foo"
 	const mutatedAttributes1OriginalAttr = mutatedAttributes1.attrs[0];
 	const mutatedAttributes1OriginalAttrValue = mutatedAttributes1OriginalAttr.value;
 
+	// id="foo" class="bar"
 	mutatedAttributes1.attrs.add({ id: 'foo', class: 'bar' });
 
 	await test('Element(mutatedAttributes) mutated attributes (via add)', () => mutatedAttributes1.attrs.length === 2);
 	await test('Element(mutatedAttributes) mutated a specific attribute (via add)', () => mutatedAttributes1OriginalAttr.value !== mutatedAttributes1OriginalAttrValue);
 
+	// class="bar"
 	mutatedAttributes1.attrs.remove('id');
 
 	await test('Element(mutatedAttributes) mutated attributes (via remove)', () => mutatedAttributes1.attrs.length === 1);
 
+	// id="foo" class="bar"
 	mutatedAttributes1.attrs.toggle('id', 'foo');
 
 	await test('Element(mutatedAttributes) toggled a specific attribute off', () => mutatedAttributes1.attrs.length === 2 && mutatedAttributes1.attrs.get('id') === 'foo');

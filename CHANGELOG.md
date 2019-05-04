@@ -1,5 +1,9 @@
 # Changes to pHTML
 
+### 3.3.1 (May 3, 2019)
+
+- Fixed: Issue with `Attribute` modification.
+
 ### 3.3.0 (May 3, 2019)
 
 - Fixed: `Attribute` values and `Text` data now preserve raw HTML entities.

@@ -31,8 +31,8 @@ class AttributeList extends Array {
 	* @example
 	* attrs.add([{ name: 'id', value: 'bar' }])
 	*/
-	add (nameOrAttrs, ...args) {
-		return toggle(this, nameOrAttrs, ...args.slice(0, 1), true).attributeAdded;
+	add (name, ...args) {
+		return toggle(this, getAttributeListArray(name, ...args), true).attributeAdded;
 	}
 
 	/**
@@ -177,15 +177,15 @@ class AttributeList extends Array {
 	* @example <caption>Remove the "id" and "class" attributes.</caption>
 	* attrs.remove(['id', 'class'])
 	*/
-	remove (nameOrAttrs, ...args) {
-		return toggle(this, nameOrAttrs, ...args.slice(0, 1), false).attributeRemoved;
+	remove (name, ...args) {
+		return toggle(this, getAttributeListArray(name, ...args), false).attributeRemoved;
 	}
 
 	/**
 	* Toggle an attribute or attributes from the current {@link AttributeList}.
 	* @param {String|Object} name_or_attrs - The name of the attribute being toggled, or an object of attributes being toggled.
-	* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled when the first argument is not an object, or whether the attribute should be forcably toggled.
-	* @param {Boolean} [force] - Whether the attribute should be forcably toggled.
+	* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled when the first argument is not an object, or attributes should be exclusively added (true) or removed (false).
+	* @param {Boolean} [force] - Whether attributes should be exclusively added (true) or removed (false).
 	* @returns {Boolean} - Whether any attribute was added to the current {@link AttributeList}.
 	* @example <caption>Toggle the "id" attribute.</caption>
 	* attrs.toggle('id')
@@ -196,8 +196,15 @@ class AttributeList extends Array {
 	* @example
 	* attrs.toggle([{ name: 'id', value: 'bar' }])
 	*/
-	toggle (nameOrAttrs, ...args) {
-		const result = toggle(this, nameOrAttrs, ...args);
+	toggle (name, ...args) {
+		const attrs = getAttributeListArray(name, ...args);
+		const force = (
+			name === Object(name)
+				? args[0] == null ? null : Boolean(args[0])
+			: args[1] == null ? null : Boolean(args[1])
+		);
+
+		const result = toggle(this, attrs, force);
 
 		return result.attributeAdded || result.atttributeModified;
 	}
@@ -252,42 +259,35 @@ class AttributeList extends Array {
 /**
 * Toggle an attribute or attributes from an {@link AttributeList}.
 * @param {AttributeList} attrs - The {@link AttributeList} being modified.
-* @param {String|Object} name_or_attrs - The name of the attribute being toggled, or an object of attributes being toggled.
-* @param {String|Boolean} [value_or_force] - The value of the attribute being toggled when the first argument is not an object, or whether the attribute should be forcably toggled.
-* @param {Boolean} [force] - Whether the attribute should be forcably toggled.
-* @returns {Array} An object specifying whether any attributes were added, removed, and/or modified.
+* @param {String|Object} toggles - The attributes being toggled.
+* @param {Boolean} [force] - Whether attributes should be exclusively added (true) or removed (false)
+* @returns {Object} An object specifying whether any attributes were added, removed, and/or modified.
 * @private
 */
 
-function toggle (attrs, nameOrAttrs, ...args) {
+function toggle (attrs, toggles, force) {
 	let attributeAdded = false;
 	let attributeRemoved = false;
 	let atttributeModified= false;
 
-	const toggleAttrs = getAttributeListArray(nameOrAttrs, ...args);
-	const force = nameOrAttrs === Object(nameOrAttrs) && typeof args[0] === 'boolean' ? args[0] : args[1];
-	const isNoForceDefined = force === undefined;
-
-	toggleAttrs.forEach(toggleAttr => {
+	toggles.forEach(toggleAttr => {
 		const index = attrs.indexOf(toggleAttr.name);
 
 		if (index === -1) {
-			if (isNoForceDefined || force) {
-				attrs.push({
-					name: String(toggleAttr.name),
-					value: getAttributeValue(toggleAttr.value)
-				});
+			if (force !== false) {
+				// add the attribute (if not exclusively removing attributes)
+				attrs.push(toggleAttr);
 
 				attributeAdded = true;
 			}
-		} else if (isNoForceDefined || !force) {
+		} else if (force !== true) {
+			// remove the attribute (if not exclusively adding attributes)
 			attrs.splice(index, 1);
 
 			attributeRemoved = true;
-		} else {
-			attrs[index].value = toggleAttr.value === undefined
-				? attrs[index].value
-			: getAttributeValue(toggleAttr.value);
+		} else if (toggleAttr.value !== undefined && attrs[index].value !== toggleAttr.value) {
+			// change the value of the attribute (if exclusively adding attributes)
+			attrs[index].value = toggleAttr.value;
 
 			atttributeModified = true;
 		}
@@ -303,28 +303,52 @@ function toggle (attrs, nameOrAttrs, ...args) {
 
 function getAttributeListArray (attrs, value) {
 	return attrs === null || attrs === undefined
+		// void values are omitted
 		? []
 	: Array.isArray(attrs)
-		? attrs.map(
-			attr => ({
-				name: String(Object(attr).name),
-				value: getAttributeValue(Object(attr).value),
-				...
-					Object(attr).source === Object(Object(attr).source)
-						? { source: attr.source }
-					: {}
-			})
+		// arrays are sanitized as a name or value, and then optionally a source
+		? attrs.reduce(
+			(attrs, rawattr) => {
+				const attr = {};
+
+				if ('name' in Object(rawattr)) {
+					attr.name = String(rawattr.name);
+				}
+
+				if ('value' in Object(rawattr)) {
+					attr.value = getAttributeValue(rawattr.value);
+				}
+
+				if ('source' in Object(rawattr)) {
+					attr.source = rawattr.source;
+				}
+
+				if ('name' in attr || 'value' in attr) {
+					attrs.push(attr);
+				}
+
+				return attrs;
+			},
+			[]
 		)
 	: attrs === Object(attrs)
+		// objects are sanitized as a name and value
 		? Object.keys(attrs).map(
 			name => ({
 				name: toKebabCaseString(name),
 				value: getAttributeValue(attrs[name])
 			})
 		)
-	: getAttributeListArray({
-		[attrs]: value
-	});
+	: 1 in arguments
+		// both name and value arguments are sanitized as a name and value
+		? [{
+			name: attrs,
+			value: getAttributeValue(value)
+		}]
+	// one name argument is sanitized as a name
+	: [{
+		name: attrs
+	}];
 }
 
 /**
