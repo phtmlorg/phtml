@@ -1,12 +1,20 @@
-# pHTML [<img src="https://phtmlorg.github.io/phtml/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
+# pHTML [<img src="https://phtml.io/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
-[pHTML] is a tool for transforming HTML with JavaScript. Its plugin system
-can lint your HTML, support variables and mixins, transpile future HTML syntax,
-inline images, and more.
+[pHTML] is a tool for transforming HTML with JavaScript.
+
+It fully embraces the HTML language, and aims to help you write and maintain
+HTML that you _and_ future you feel good about.
+
+It can help you compose reusable templates and components, or automate image
+size attributes and schema.org microdata and heading levels, or transform
+modern CSS and JS with Babel and PostCSS.
+
+It works in the command line, Node, [Grunt], [Gulp], [11ty], and even the
+browser itself.
 
 ## Usage
 
@@ -161,4 +169,7 @@ module.exports = new Plugin('phtml-plugin-name', pluginOptions => {
 [npm-img]: https://img.shields.io/npm/v/phtml.svg
 [npm-url]: https://www.npmjs.com/package/phtml
 
+[11ty]: https://github.com/phtmlorg/phtml-11ty
+[Grunt]: https://github.com/phtmlorg/grunt-phtml
+[Gulp]: https://github.com/phtmlorg/gulp-phtml
 [pHTML]: https://github.com/phtmlorg/phtml

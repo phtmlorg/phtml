@@ -52,9 +52,9 @@
 		"openGraph": {
 			"title": "pHTML",
 			"type": "website",
-			"image": "https://phtmlorg.github.io/phtml/logo.svg",
+			"image": "https://phtml.io/logo.svg",
 			"site_name": "Docdash",
-			"url": "https://phtmlorg.github.io/phtml"
+			"url": "https://phtml.io/"
 		}
   }
 }
