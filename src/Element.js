@@ -8,14 +8,16 @@ import Result from './Result';
 * @class
 * @extends Container
 * @classdesc Create a new {@link Element} {@Link Node}.
-* @param {Object|String} settings - Custom settings applied to the {@link Element}, or the tag name of the {@link Text}.
+* @param {Object|String} settings - Custom settings applied to the {@link Element} or its tag name.
 * @param {String} settings.name - Tag name of the {@link Element}.
 * @param {Boolean} settings.isSelfClosing - Whether the {@link Element} is self-closing.
 * @param {Boolean} settings.isVoid - Whether the {@link Element} is void.
-* @param {Boolean} settings.isisWithoutEndTagVoid - Whether the {@link Element} uses a closing tag.
+* @param {Boolean} settings.isWithoutEndTag - Whether the {@link Element} uses a closing tag.
 * @param {Array|AttributeList|Object} settings.attrs - Attributes applied to the {@link Element}.
 * @param {Array|NodeList} settings.nodes - Nodes appended to the {@link Element}.
 * @param {Object} settings.source - Source mapping of the {@link Element}.
+* @param {Array|AttributeList|Object} [attrs] - Conditional override attributes applied to the {@link Element}.
+* @param {Array|NodeList} [nodes] - Conditional override nodes appended to the {@link Element}.
 * @returns {Element} A new {@link Element} {@Link Node}
 * @example
 * new Element({ name: 'p' }) // returns an element representing <p></p>
@@ -25,33 +27,48 @@ import Result from './Result';
 *   attrs: [{ name: 'type', value: 'search' }],
 *   isVoid: true
 * }) // returns an element representing <input type="search">
+* @example
+* new Element('p') // returns an element representing <p></p>
+*
+* new Element('p', null,
+*   new Element(
+*     'input',
+*     [{ name: 'type', value: 'search' }]
+*   )
+* ) // returns an element representing <p><input type="search"></p>
 */
 class Element extends Container {
-	constructor (settings) {
+	constructor (settings, ...args) {
 		super();
 
-		if (typeof settings === 'string') {
-			settings = { name: settings };
+		if (settings !== Object(settings)) {
+			settings = { name: String(settings == null ? 'span' : settings) };
 		}
 
-		const name = String('name' in Object(settings) ? settings.name : 'span');
+		if (args[0] === Object(args[0])) {
+			settings.attrs = args[0];
+		}
+
+		if (args.length > 1) {
+			settings.nodes = args.slice(1);
+		}
 
 		Object.assign(this, settings, {
 			type: 'element',
-			name,
-			isSelfClosing: Boolean(Object(settings).isSelfClosing),
-			isVoid: 'isVoid' in Object(settings)
-				? Boolean(Object(settings).isVoid)
-			: Result.voidElements.includes(name),
-			isWithoutEndTag: Boolean(Object(settings).isWithoutEndTag),
-			attrs: AttributeList.from(Object(settings).attrs),
-			nodes: Array.isArray(Object(settings).nodes)
+			name: settings.name,
+			isSelfClosing: Boolean(settings.isSelfClosing),
+			isVoid: 'isVoid' in settings
+				? Boolean(settings.isVoid)
+			: Result.voidElements.includes(settings.name),
+			isWithoutEndTag: Boolean(settings.isWithoutEndTag),
+			attrs: AttributeList.from(settings.attrs),
+			nodes: Array.isArray(settings.nodes)
 				? new NodeList(this, ...Array.from(settings.nodes))
-			: Object(settings).nodes !== null && Object(settings).nodes !== undefined
+			: settings.nodes !== null && settings.nodes !== undefined
 				? new NodeList(this, settings.nodes)
 			: new NodeList(this),
-			source: Object(Object(settings).source)
-		});
+			source: Object(settings.source)
+		})
 	}
 
 	/**
@@ -82,7 +99,12 @@ class Element extends Container {
 	* @returns {Element} - The cloned Element
 	*/
 	clone (settings, isDeep) {
-		const clone = new Element({ ...this, nodes: [], ...Object(settings) });
+		const clone = new Element({
+			...this,
+			nodes: [],
+			...Object(settings)
+		});
+
 		const didSetNodes = 'nodes' in Object(settings);
 
 		if (isDeep && !didSetNodes) {

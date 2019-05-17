@@ -10,7 +10,7 @@ const parents = new WeakMap();
 * @class
 * @extends Array
 * @classdesc Create a new {@link NodeList}.
-* @param {Object} parent - Parent containing the current {@link NodeList}.
+* @param {Container} parent - Parent containing the current {@link NodeList}.
 * @param {...Node} nodes - {@link Node}s belonging to the current {@link NodeList}.
 * @returns {NodeList}
 */
@@ -50,7 +50,7 @@ class NodeList extends Array {
 	* nodeList.length; // 2
 	*/
 	set innerHTML (innerHTML) {
-		const parent = parents.get(this);
+		const parent = this.parent;
 
 		const Result = Object(parent.result).constructor
 
@@ -59,6 +59,14 @@ class NodeList extends Array {
 
 			this.splice(0, this.length, ...nodes);
 		}
+	}
+
+	/**
+	* Return the parent of the current {@link NodeList}.
+	* @returns {Container}
+	*/
+	get parent () {
+		return parents.get(this);
 	}
 
 	/**
@@ -103,7 +111,7 @@ class NodeList extends Array {
 	* @returns {Number}
 	*/
 	push (...nodes) {
-		const parent = parents.get(this);
+		const parent = this.parent;
 		const inserts = nodes.filter(node => node !== parent);
 
 		this.splice(this.length, 0, ...inserts);
@@ -125,10 +133,11 @@ class NodeList extends Array {
 	* Add and remove {@link Node}s to and from the {@link NodeList}.
 	* @returns {Array}
 	*/
-	splice (start, ...opts) {
-		const parent = parents.get(this);
-		const deleteCount = opts.length ? opts[0] : this.length - start;
-		const inserts = getNodeListArray(opts.slice(1).filter(node => node !== parent));
+	splice (start, ...args) {
+		const { length, parent } = this;
+		const startIndex = start > length ? length : start < 0 ? Math.max(length + start, 0) : Number(start) || 0;
+		const deleteCount = 0 in args ? Number(args[0]) || 0 : length;
+		const inserts = getNodeListArray(args.slice(1).filter(node => node !== parent));
 
 		for (let insert of inserts) {
 			insert.remove();
@@ -136,7 +145,7 @@ class NodeList extends Array {
 			insert.parent = parent;
 		}
 
-		const removes = Array.prototype.splice.call(this, start, deleteCount, ...inserts);
+		const removes = Array.prototype.splice.call(this, startIndex, deleteCount, ...inserts);
 
 		for (let remove of removes) {
 			delete remove.parent;
@@ -150,7 +159,7 @@ class NodeList extends Array {
 	* @returns {Number}
 	*/
 	unshift (...nodes) {
-		const parent = parents.get(this);
+		const parent = this.parent;
 		const inserts = nodes.filter(node => node !== parent);
 
 		this.splice(0, 0, ...inserts);
@@ -175,7 +184,7 @@ class NodeList extends Array {
 	* nodeList.toJSON() // returns []
 	*/
 	toJSON () {
-		return this.map(node => node.toJSON());
+		return Array.from(this).map(node => node.toJSON());
 	}
 
 	/**
@@ -200,9 +209,11 @@ export default NodeList;
 
 function getNodeListArray (nodes) {
 	// coerce nodes into an array
-	return [].concat(nodes !== null && nodes !== undefined ? nodes : []).filter(
-		node => node !== null && node !== undefined
-	).map(normalize);
+	return Object(nodes).length
+		? Array.from(nodes).filter(
+			node => node != null
+		).map(normalize)
+	: [];
 }
 
 /**

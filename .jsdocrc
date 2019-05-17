@@ -41,7 +41,7 @@
         "href": "https://gitter.im/postcss"
       }
     },
-    "favicon": "logo.ico",
+    "favicon": "favicon.ico",
     "scripts": [
       "styles/custom.css"
     ],
@@ -52,7 +52,7 @@
 		"openGraph": {
 			"title": "pHTML",
 			"type": "website",
-			"image": "https://phtml.io/logo.svg",
+			"image": "https://phtml.io/phtml.png",
 			"site_name": "Docdash",
 			"url": "https://phtml.io/"
 		}

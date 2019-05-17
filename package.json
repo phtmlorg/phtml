@@ -1,6 +1,6 @@
 {
   "name": "phtml",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "A tool for transforming HTML with JavaScript",
   "author": "Jonathan Neal <jonathantneal@hotmail.com>",
   "license": "CC0-1.0",
@@ -25,7 +25,7 @@
   ],
   "scripts": {
     "prebenchmark": "npm install posthtml reshape --no-save",
-    "benchmark": "node --experimental-modules=true .benchmark.mjs",
+    "benchmark": "node .benchmark.js",
     "build": "npm run build:browser && npm run build:cli && npm run build:node",
     "build:browser": "npm run build:browser:min && npm run build:browser:dev",
     "build:browser:dev": "cross-env NODE_ENV=browserdev rollup --config --silent",
@@ -33,11 +33,14 @@
     "build:cli": "cross-env NODE_ENV=cli rollup --config --silent",
     "build:node": "rollup --config --silent",
     "docs": "jsdoc --configure .jsdocrc --destination .gh-pages",
+    "postdocs": "for file in .gh-pages/*.html; do npx phtml \"$file\" \"$file\" -p .gh-pages/scripts/phtml-patch; done",
+    "predocs": "rm -rf .gh-pages/*.html",
     "prepublishOnly": "npm test && npm run build",
     "pretest:tape": "npm run build:node",
     "test": "npm run test:js && npm run test:tape",
     "test:js": "eslint *.js src/*.js --cache --ignore-path .gitignore --quiet",
-    "test:tape": "node test"
+    "test:tape": "node test",
+    "watch": "rollup --config --silent --watch"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -49,20 +52,35 @@
     "@babel/core": "^7.4.4",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "@phtml/image-alt": "^3.0.0",
+    "@phtml/image-alt": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-transform-for-of-as-array": "^1.1.1",
     "benchmark": "^2.1.4",
     "cross-env": "^5.2.0",
     "docdash": "^1.1.0",
     "eslint": "^5.16.0",
-    "jsdoc": "^3.6.1",
+    "jsdoc": "^3.6.2",
     "pre-commit": "^1.2.2",
-    "rollup": "^1.11.3",
+    "rollup": "^1.12.1",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-commonjs": "^9.3.4",
-    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-terser": "^4.0.4"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "impliedStrict": true,
+      "sourceType": "module"
+    },
+    "root": true
   },
   "keywords": [
     "phtml",

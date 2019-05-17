@@ -1,20 +1,23 @@
-# pHTML [<img src="https://phtml.io/logo.svg" alt="pHTML" width="90" height="90" align="right">][pHTML]
+# phtml [<img src="https://phtml.io/logo.svg" alt="phtml" width="90" height="90" align="right">][phtml]
 
 [![NPM Version][npm-img]][npm-url]
 [![Build Status][cli-img]][cli-url]
 [![Support Chat][git-img]][git-url]
 
-[pHTML] is a tool for transforming HTML with JavaScript.
+[phtml] is a tool for transforming HTML with JavaScript.
 
 It fully embraces the HTML language, and aims to help you write and maintain
-HTML that you _and_ future you feel good about.
+HTML that you _and future you_ feel good about.
 
-It can help you compose reusable templates and components, or automate image
-size attributes and schema.org microdata and heading levels, or transform
-modern CSS and JS with Babel and PostCSS.
+phtml helps you compose [reusable templates and components](https://github.com/phtmlorg/phtml-template),
+or automate [image size attributes](https://github.com/phtmlorg/phtml-image-size)
+and [schema.org microdata](https://github.com/phtmlorg/phtml-schema) and [heading levels](https://github.com/phtmlorg/phtml-h-element),
+or transform modern [CSS with PostCSS](https://github.com/phtmlorg/phtml-css)
+and [JS with Babel](https://github.com/phtmlorg/phtml-js).
 
-It works in the command line, Node, [Grunt], [Gulp], [11ty], and even the
-browser itself.
+It works in the command line and Node, but also [Grunt], [Gulp],
+[<abbr title="Eleventy"></abbr>][11ty], [Webpack], [Rollup], and even
+[the browser itself][browser].
 
 ## Usage
 
@@ -30,21 +33,23 @@ Include plugins directly from the command line:
 npx phtml source.html output.html -p @phtml/markdown,@phtml/image-alt
 ```
 
-```bash
-echo "<h1 md>pHTML **Markdown**</h1>" | npx phtml -p @phtml/markdown
+Transform strings from the command line:
 
-# <h1>pHTML <strong>Markdown</strong></h1>
+```bash
+echo "<h1 md>phtml **Markdown**</h1>" | npx phtml -p @phtml/markdown
+
+# <h1>phtml <strong>Markdown</strong></h1>
 ```
 
 ### Node
 
-Add [pHTML] to your build tool:
+Add [phtml] to your build tool:
 
 ```bash
 npm install phtml --save-dev
 ```
 
-Use [pHTML] to process your CSS:
+Use [phtml] to process your CSS:
 
 ```js
 const phtml = require('phtml');
@@ -100,7 +105,7 @@ phtml.process(html, { from: 'my-component.html' }).then(console.log);
 
 #### Using Plugins in Node
 
-Add a [pHTML] Plugin to your build tool:
+Add a [phtml] Plugin to your build tool:
 
 ```bash
 npm install phtml-some-thing --save-dev
@@ -117,27 +122,34 @@ phtml.use(
 
 ## Plugins
 
-- **[pHTML CSS](https://github.com/phtmlorg/phtml-css)**: Transform inline CSS in HTML.
-- **[pHTML Define](https://github.com/phtmlorg/phtml-define)**: Use custom defined elements HTML.
-- **[pHTML Doctype](https://github.com/phtmlorg/phtml-doctype)**: Automatically add the doctype to HTML.
-- **[pHTML H Element](https://github.com/phtmlorg/phtml-h-element)**: Write contextual headings using `<h>` in HTML.
-- **[pHTML Image Alt](https://github.com/phtmlorg/phtml-image-alt)**: Automatically add image alt attributes in HTML.
-- **[pHTML Image Size](https://github.com/phtmlorg/phtml-image-size)**: Automatically add image size attributes in HTML.
-- **[pHTML Include](https://github.com/phtmlorg/phtml-include)**: Embed HTML partials in HTML.
-- **[pHTML JS](https://github.com/phtmlorg/phtml-js)**: Transform inline JS in HTML.
-- **[pHTML JSX](https://github.com/phtmlorg/phtml-jsx)**: Use JSX in HTML.
-- **[pHTML Markdown](https://github.com/phtmlorg/phtml-markdown)**: Write markdown in HTML.
-- **[pHTML Schema](https://github.com/phtmlorg/phtml-schema)**: Generate schema.org microdata in HTML.
-- **[pHTML Self Closing](https://github.com/phtmlorg/phtml-self-closing)**: Expand self-closing tags in HTML.
-- **[pHTML Template](https://github.com/phtmlorg/phtml-template)**: Create and reuse compiled templates in HTML.
+You can find phtml plugins on npm.
+
+https://www.npmjs.com/search?q=keywords:phtml-plugin
 
 ### Plugin Creation
 
-```js
-const { Plugin } = require('phtml');
+Create plugins directly from the command line:
 
-module.exports new Plugin('phtml-plugin-name', pluginOptions => {
-  // initialization logic
+```bash
+npm init phtml-plugin
+
+# Plugin Name: Example (becomes `phtml Hello` / `phtml-hello`)
+# Keywords: awesome,blossom (added to package.json keywords)
+```
+
+Once the command finishes, a new plugin is fully scaffolded with bare
+functionality, documentation, and tests. Within the plugin directory,
+functionality is added to `src/index.js`.
+
+#### Advanced Plugin Creation
+
+Create plugins using a new `Plugin` class:
+
+```js
+import phtml from 'phtml';
+
+export default new phtml.Plugin('phtml-hello', pluginOptions => {
+	// initialization logic
 
   return {
     Element(element, result) {
@@ -150,17 +162,26 @@ module.exports new Plugin('phtml-plugin-name', pluginOptions => {
 });
 ```
 
-```js
-const { Plugin } = require('phtml');
+The runtime plugin can visit nodes as they are entered or exited.
 
-module.exports = new Plugin('phtml-plugin-name', pluginOptions => {
-  // initialization logic
+## Browser Usage
 
-  return (root, result) => {
-    // runtime logic
-  };
-});
+phtml works in the browser, which may be great for experimentation:
+
+```html
+<script src="https://unpkg.com/phtml"></script>
+<script>
+const html = `<my-component class="main">
+  <title>Super Title</title>
+  <text>Awesome Text</text>
+</my-component>`;
+
+phtml.process(html, { from: 'my-component.html' }).then(console.log);
+</script>
 ```
+
+Note that the browser version of phtml is 52 kB because it includes its own
+HTML parser, [parse5].
 
 [cli-img]: https://img.shields.io/travis/phtmlorg/phtml.svg
 [cli-url]: https://travis-ci.org/phtmlorg/phtml
@@ -170,6 +191,10 @@ module.exports = new Plugin('phtml-plugin-name', pluginOptions => {
 [npm-url]: https://www.npmjs.com/package/phtml
 
 [11ty]: https://github.com/phtmlorg/phtml-11ty
+[browser]: https://unpkg.com/phtml/
 [Grunt]: https://github.com/phtmlorg/grunt-phtml
 [Gulp]: https://github.com/phtmlorg/gulp-phtml
-[pHTML]: https://github.com/phtmlorg/phtml
+[parse5]: https://github.com/inikulin/parse5
+[phtml]: https://github.com/phtmlorg/phtml
+[Rollup]: https://github.com/phtmlorg/rollup-plugin-phtml
+[Webpack]: https://github.com/phtmlorg/phtml-loader

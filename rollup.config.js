@@ -10,14 +10,14 @@ const isCli = String(process.env.NODE_ENV).includes('cli');
 const pathname = isCli ? 'cli/index' : 'index';
 const input = `src/${pathname}.js`;
 const output = isBrowserDev
-	? { file: 'browser.development.js', format: 'cjs', sourcemap: true }
+	? { file: 'browser.development.js', format: 'cjs', sourcemap: true, strict: false }
 : isBrowser
 	? { file: 'browser.js', format: 'cjs' }
 : isCli
 	? { file: 'cli.js', format: 'cjs' }
 : [
-	{ file: 'index.js', format: 'cjs', sourcemap: true },
-	{ file: 'index.mjs', format: 'esm', sourcemap: true }
+	{ file: 'index.js', format: 'cjs', sourcemap: true, strict: false },
+	{ file: 'index.mjs', format: 'esm', sourcemap: true, strict: false }
 ];
 const plugins = [
 	babel()
@@ -37,11 +37,12 @@ const plugins = [
 				}]
 			]
 		}),
-		modernUMD('PHTML', 'PHTML')
+		modernUMD('phtml', 'PHTML')
 	] : [],
-	isBrowser && !isBrowserDev ? terser() : [],
+	isBrowser && !isBrowserDev ? terser({
+		keep_classnames: /^phtml$/i
+	}) : [],
 	isCli ? [
-		trimUseStrict(),
 		addHashBang()
 	] : []
 );
@@ -69,15 +70,6 @@ function addHashBang () {
 		name: 'add-hash-bang',
 		renderChunk (code) {
 			return `#!/usr/bin/env node\n${code}`;
-		}
-	};
-}
-
-function trimUseStrict () {
-	return {
-		name: 'trim-use-strict',
-		renderChunk (code) {
-			return code.replace(/\s*('|")?use strict\1;\s*/, '');
 		}
 	};
 }

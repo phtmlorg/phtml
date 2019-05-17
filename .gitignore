@@ -1,8 +1,7 @@
 .*
 !.appveyor.yml
-!.benchmark.mjs
+!.benchmark.js
 !.editorconfig
-!.eslintrc
 !.gitignore
 !.jsdocrc
 !.tape*.mjs

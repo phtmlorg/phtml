@@ -1,5 +1,12 @@
 # Changes to pHTML
 
+### 4.1.0 (May 6, 2019)
+
+- Added: Read-only access to a NodeList `parent`
+- Added: Shorthand Element creation where the 1st argument is the element name,
+  the 2nd argument are the attributes, and all arguments after that are
+  children of the element
+
 ### 4.0.0 (May 6, 2019)
 
 - Updated: Node 8+ compatibility

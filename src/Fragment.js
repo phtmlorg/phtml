@@ -5,9 +5,17 @@ import NodeList from './NodeList';
 * @name Fragment
 * @class
 * @extends Container
-* @classdesc Create a new {@link Fragment} {@link Node}.
+* @classdesc Create a new {@link Fragment} {@Link Node}.
+* @param {Object} settings - Custom settings applied to the {@link Fragment}.
+* @param {Array|NodeList} settings.nodes - Nodes appended to the {@link Fragment}.
+* @param {Object} settings.source - Source mapping of the {@link Fragment}.
 * @returns {Fragment}
+* @example
+* new Fragment() // returns an empty fragment
+*
+* new Fragment({ nodes: [ new Element('span') ] }) // returns a fragment with a <span>
 */
+
 class Fragment extends Container {
 	constructor (settings) {
 		super();

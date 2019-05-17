@@ -1,7 +1,7 @@
-import Benchmark from 'benchmark';
-import PHTML from '.';
-import postHTML from 'posthtml';
-import reshape from 'reshape';
+const Benchmark = require('benchmark');
+const PHTML = require('.');
+const postHTML = require('posthtml');
+const reshape = require('reshape');
 
 const suite = new Benchmark.Suite();
 
