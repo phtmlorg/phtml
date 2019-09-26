@@ -1,0 +1,3460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Global - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Global</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        
+        </h2>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+            
+
+            
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="getAttributeListArray"><span class="type-signature"></span>getAttributeListArray<span class="signature">(attrs, value<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;<a href="global.html#AttributePartial">AttributePartial</a>>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AttributeList.js.html">AttributeList.js</a>, <a href="AttributeList.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return an AttributeList-compatible array from an array or object.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;(<a href="global.html#AttributePartial">AttributePartial</a>|<a href="global.html#AttributePlain">AttributePlain</a>)></span>
+|
+
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">void</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>raw attributes.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">any</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>optional attribute value to be used when <code>attr</code> is a primative.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;<a href="global.html#AttributePartial">AttributePartial</a>></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id="AttributeArgument">AttributeArgument</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AttributeList.js.html">AttributeList.js</a>, <a href="AttributeList.js.html#line455">line 455</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Any kind of attribute</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#AttributePartial">AttributePartial</a></span>
+|
+
+<span class="param-type">Array.&lt;<a href="global.html#AttributePartial">AttributePartial</a>></span>
+|
+
+<span class="param-type"><a href="global.html#AttributePlain">AttributePlain</a></span>
+|
+
+<span class="param-type">Array.&lt;<a href="global.html#AttributePlain">AttributePlain</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="AttributePartial">AttributePartial</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AttributeList.js.html">AttributeList.js</a>, <a href="AttributeList.js.html#line446">line 446</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>value</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">RegExp</span>
+|
+
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#AttributeSource">AttributeSource</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Object representing a complete or partial attribute</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="AttributePlain">AttributePlain</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AttributeList.js.html">AttributeList.js</a>, <a href="AttributeList.js.html#line452">line 452</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Object representing an attribute</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object.&lt;string, string></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="AttributeSource">AttributeSource</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="AttributeList.js.html">AttributeList.js</a>, <a href="AttributeList.js.html#line441">line 441</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>before</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>quote</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Object representing the source configuration of an attribute</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="CommentInput">CommentInput</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Comment.js.html">Comment.js</a>, <a href="Comment.js.html#line113">line 113</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>comment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Content of the Comment.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">CommentSource</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Source mapping of the Comment.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#CommentInput">CommentInput</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Metadata of the Comment.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>startOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Starting offset within the input source.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Ending offset within the input source.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>html</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>HTML source of the Comment.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the Comment.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="DoctypeSource">DoctypeSource</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Doctype.js.html">Doctype.js</a>, <a href="Doctype.js.html#line88">line 88</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>doctype</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Label of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Name of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>publicId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Public identifier portion of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>systemId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>System identifier portion of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#DoctypeSource">DoctypeSource</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Source mapping of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Raw HTML source of the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>before</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Starting content within the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>after</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Starting content within the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>beforePublicId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Ending offset within the Doctype.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>afterPublicId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Ending offset within the Doctype.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the Doctype, or the content of the Doctype.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="ElementJSON">ElementJSON</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Element.js.html">Element.js</a>, <a href="Element.js.html#line184">line 184</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>"span"</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Tag name of the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isSelfClosing</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the Element is self-closing.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isVoid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the Element is void.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isWithoutEndTag</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    <code>false</code>
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the Element includes a closing tag.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+|
+
+<span class="param-type"><a href="AttributeList.html">AttributeList</a></span>
+|
+
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Attributes applied to the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+|
+
+<span class="param-type"><a href="NodeList.html">NodeList</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Nodes appended to the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Source mapping of the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Result.html">Result</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Result applied to the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>before</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Raw content before the inner-opening tag of the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>after</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Raw content before the inner-closing tag of the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Tag name of the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isSelfClosing</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the Element is self-closing.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>isVoid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Whether the Element is void.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>attrs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, (string|null)></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Attributes applied to the Element.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;(<a href="global.html#ElementJSON">ElementJSON</a>|string)></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last"><p>Nodes appended to the Element.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the Element or its tag name.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="FragmentSource">FragmentSource</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line80">line 80</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Nodes appended to the Fragment.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#FragmentSource">FragmentSource</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Source mapping of the Fragment.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Result.html">Result</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Result applied to the Fragment.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the Fragment.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="Message">Message</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line243">line 243</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>type</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Type of message.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Message itself.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#MessageInfo">MessageInfo</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Information about the message.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Message gathered during transformations.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="MessageInfo">MessageInfo</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line249">line 249</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>plugin</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Plugin.html">Plugin</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Current plugin.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Information about the message.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="MessageWarning">MessageWarning</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line253">line 253</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Warning message gathered during transformations.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="ProcessOptions">ProcessOptions</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line229">line 229</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Source input location.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Destination output location.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>voidElements</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Void elements.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the <a href="Result.html">Result</a>.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="ResultPromise">ResultPromise</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line221">line 221</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Promise to return a syntax tree.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Promise.&lt;<a href="Result.html">Result</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>resultPromise.then(result => {
+ // do something with the result
+})</code></pre>
+
+
+
+            
+                
+<h4 class="name" id="ResultType">ResultType</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Result.js.html">Result.js</a>, <a href="Result.js.html#line235">line 235</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>from</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HTML source file. You should always set from, because it is used in source map generation and syntax error messages.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>to</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Path to the HTML output file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>root</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Fragment.html">Fragment</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Object representing the parsed nodes of the HTML file.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>messages</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="global.html#Message">Message</a>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of the messages gathered during transformations.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>voidElements</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;string></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>List of the elements that only have a start tag, as they cannot have any content.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Result of a pHTML transformation.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+                
+<h4 class="name" id="TextSource">TextSource</h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Text.js.html">Text.js</a>, <a href="Text.js.html#line122">line 122</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Content of the Text.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>source</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#TextSource">TextSource</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Source mapping of the Text.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Raw HTML source of the Text.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>startOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>starting offset of the raw HTML source of the Text.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>endOffset</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Ending offset of the raw HTML source of the Text.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<div class="description">
+    <p>Custom settings applied to the Text, or the content of the Text.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+            
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>

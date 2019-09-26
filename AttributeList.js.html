@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>AttributeList.js - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">AttributeList.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Return a new list of {@link Element} attributes.
+* @extends Array
+*/
+class AttributeList extends Array {
+	/**
+	* @param {AttributeArgument|void} attrs - attributes.
+	*/
+	constructor (attrs) {
+		super();
+
+		if (attrs === Object(attrs)) {
+			this.push(...getAttributeListArray(attrs));
+		}
+	}
+
+	/**
+	* Add an attribute or attributes to the current {@link AttributeList}, returning whether the attribute or attributes were added.
+	* @param {AttributeArgument|RegExp|string} name - Attribute to remove.
+	* @param {Array.&lt;string>} [value] - Value of the attribute to remove.
+	* @example &lt;caption>Add an empty "id" attribute.&lt;/caption>
+	* attrs.add('id')
+	* @example &lt;caption>Add an "id" attribute with a value of "bar".&lt;/caption>
+	* attrs.add({ id: 'bar' })
+	* @example
+	* attrs.add([{ name: 'id', value: 'bar' }])
+	*/
+	add (name, ...value) {
+		return toggle(this, getAttributeListArray(name, ...value), true).attributeAdded;
+	}
+
+	/**
+	* Return a new clone of the current {@link AttributeList} while conditionally applying additional attributes.
+	* @param {Array&lt;AttributeArgument|RegExp|string>} attrs - Additional attributes to be added to the new {@link AttributeList}.
+	* @example
+	* attrs.clone()
+	* @example &lt;caption>Clone the current attribute and add an "id" attribute with a value of "bar".&lt;/caption>
+	* attrs.clone({ name: 'id', value: 'bar' })
+	*/
+	clone (...attrs) {
+		return new AttributeList(Array.from(this).concat(getAttributeListArray(attrs)));
+	}
+
+	/**
+	* Return whether an attribute or attributes exists in the current {@link AttributeList}.
+	* @param {AttributeArgument|RegExp|string} name - Attribute to check.
+	* @example &lt;caption>Return whether there is an "id" attribute.&lt;/caption>
+	* attrs.contains('id')
+	* @example
+	* attrs.contains({ id: 'bar' })
+	* @example &lt;caption>Return whether there is an "id" attribute with a value of "bar".&lt;/caption>
+	* attrs.contains([{ name: 'id': value: 'bar' }])
+	*/
+	contains (name) {
+		return this.indexOf(name) !== -1;
+	}
+
+	/**
+	* Return an attribute value by name from the current {@link AttributeList} as a string or null, or false if the attribute does not exist.
+	* @description If the attribute exists with a value then a String is returned. If the attribute exists with no value then `null` is returned. If the attribute does not exist then `false` is returned.
+	* @param {AttributeArgument|RegExp|string} name - Name or attribute object being accessed.
+	* @returns {false|null|string}
+	* @example &lt;caption>Return the value of "id" or `false`.&lt;/caption>
+	* // &lt;div>this element has no "id" attribute&lt;/div>
+	* attrs.get('id') // returns false
+	* // &lt;div id>this element has an "id" attribute with no value&lt;/div>
+	* attrs.get('id') // returns null
+	* // &lt;div id="">this element has an "id" attribute with a value&lt;/div>
+	* attrs.get('id') // returns ''
+	*/
+	get (name) {
+		const index = this.indexOf(name);
+
+		return index === -1
+			? false
+		: this[index].value;
+	}
+
+	/**
+	* Return the position of an attribute by name or attribute object in the current {@link AttributeList}.
+	* @param {AttributeArgument|RegExp|string} name - Attribute to locate.
+	* @param {Array&lt;RegExp|string>} [value] - Value of the attribute to locate.
+	* @example &lt;caption>Return the index of "id".&lt;/caption>
+	* attrs.indexOf('id')
+	* @example &lt;caption>Return the index of /d$/.&lt;/caption>
+	* attrs.indexOf(/d$/i)
+	* @example &lt;caption>Return the index of "foo" with a value of "bar".&lt;/caption>
+	* attrs.indexOf({ foo: 'bar' })
+	* @example &lt;caption>Return the index of "ariaLabel" or "aria-label" matching /^open/.&lt;/caption>
+	* attrs.indexOf({ ariaLabel: /^open/ })
+	* @example &lt;caption>Return the index of an attribute whose name matches `/^foo/`.&lt;/caption>
+	* attrs.indexOf([{ name: /^foo/ })
+	*/
+	indexOf (name, ...value) {
+		return this.findIndex(
+			Array.isArray(name)
+				? findIndexByArray
+			: isRegExp(name)
+				? findIndexByRegExp
+			: name === Object(name)
+				? findIndexByObject
+			: findIndexByString
+		);
+
+		function findIndexByArray (attr) {
+			return name.some(
+				innerAttr => (
+					'name' in Object(innerAttr)
+						? isRegExp(innerAttr.name)
+							? innerAttr.name.test(attr.name)
+						: String(innerAttr.name) === attr.name
+					: true
+				) &amp;&amp; (
+					'value' in Object(innerAttr)
+						? isRegExp(innerAttr.value)
+							? innerAttr.value.test(attr.value)
+						: getAttributeValue(innerAttr.value) === attr.value
+					: true
+				)
+			);
+		}
+
+		function findIndexByObject (attr) {
+			const innerAttr = name[attr.name] || name[toCamelCaseString(attr.name)];
+
+			return innerAttr
+				? isRegExp(innerAttr)
+					? innerAttr.test(attr.value)
+				: attr.value === innerAttr
+			: false;
+		}
+
+		function findIndexByRegExp (attr) {
+			return name.test(attr.name) &amp;&amp; (
+				value.length
+					? isRegExp(value[0])
+						? value[0].test(attr.value)
+					: attr.value === getAttributeValue(value[0])
+				: true
+			);
+		}
+
+		function findIndexByString (attr) {
+			return (
+				attr.name === String(name) || attr.name === toKebabCaseString(name)
+			) &amp;&amp; (
+				value.length
+					? isRegExp(value[0])
+						? value[0].test(attr.value)
+					: attr.value === getAttributeValue(value[0])
+				: true
+			);
+		}
+	}
+
+	/**
+	* Remove an attribute or attributes from the current {@link AttributeList}, returning whether any attribute was removed.
+	* @param {AttributeArgument|RegExp|string} name - Attribute to remove.
+	* @param {Array&lt;string>} [value] - Value of the attribute being removed.
+	* @example &lt;caption>Remove the "id" attribute.&lt;/caption>
+	* attrs.remove('id')
+	* @example &lt;caption>Remove the "id" attribute when it has a value of "bar".&lt;/caption>
+	* attrs.remove('id', 'bar')
+	* @example
+	* attrs.remove({ id: 'bar' })
+	* @example
+	* attrs.remove([{ name: 'id', value: 'bar' }])
+	* @example &lt;caption>Remove the "id" and "class" attributes.&lt;/caption>
+	* attrs.remove(['id', 'class'])
+	*/
+	remove (name, ...value) {
+		return toggle(this, getAttributeListArray(name, ...value), false).attributeRemoved;
+	}
+
+	/**
+	* Toggle an attribute or attributes from the current {@link AttributeList}, returning whether any attribute was added.
+	* @param {AttributeArgument|RegExp|string} attr - Attribute to toggle.
+	* @param {Array&lt;{ 0: boolean }>|Array&lt;{ 0: string }>|Array&lt;{ 0: string, 1: boolean }>} [value] - Value of the attribute being toggled when the first argument is not an object, or attributes should be exclusively added (true) or removed (false).
+	* @param {boolean} [force] - Whether attributes should be exclusively added (true) or removed (false).
+	* @example &lt;caption>Toggle the "id" attribute.&lt;/caption>
+	* attrs.toggle('id')
+	* @example &lt;caption>Toggle the "id" attribute with a value of "bar".&lt;/caption>
+	* attrs.toggle('id', 'bar')
+	* @example
+	* attrs.toggle({ id: 'bar' })
+	* @example
+	* attrs.toggle([{ name: 'id', value: 'bar' }])
+	*/
+	toggle (attr, ...value) {
+		const attrs = getAttributeListArray(attr, ...value);
+		const force = (
+			attr === Object(attr)
+				? value[0] == null ? null : Boolean(value[0])
+			: value[1] == null ? null : Boolean(value[1])
+		);
+
+		const result = toggle(this, attrs, force);
+
+		return result.attributeAdded || result.atttributeModified;
+	}
+
+	/**
+	* Return the current {@link AttributeList} as a String.
+	* @example
+	* attrs.toString() // returns 'class="foo" data-foo="bar"'
+	*/
+	toString () {
+		return this.length
+			? `${this.map(
+				attr => `${Object(attr.source).before || ' '}${attr.name}${attr.value === null ? '' : `=${Object(attr.source).quote || '"'}${attr.value}${Object(attr.source).quote || '"'}`}`
+			).join('')}`
+		: '';
+	}
+
+	/**
+	* Return the current {@link AttributeList} as a stringifiable Object.
+	* @returns {AttributePlain}
+	* @example
+	* attrs.toJSON() // returns { class: 'foo', dataFoo: 'bar' } when &lt;x class="foo" data-foo: "bar" />
+	*/
+	toJSON () {
+		return this.reduce(
+			(object, attr) => Object.assign(
+				object,
+				{
+					[toCamelCaseString(attr.name)]: attr.value
+				}
+			),
+			{}
+		);
+	}
+
+	/**
+	* Return a new {@link AttributeList} from an array or object of attributes.
+	* @param {Array&lt;AttributePartial|AttributePlain>} attrs - Array or object of attributes.
+	* @example &lt;caption>Return an array of attributes from a regular object.&lt;/caption>
+	* AttributeList.from({ dataFoo: 'bar' }) // returns AttributeList [{ name: 'data-foo', value: 'bar' }]
+	* @example &lt;caption>Return a normalized array of attributes from an impure array of attributes.&lt;/caption>
+	* AttributeList.from([{ name: 'data-foo', value: true, foo: 'bar' }]) // returns AttributeList [{ name: 'data-foo', value: 'true' }]
+	*/
+
+	static from (attrs) {
+		return new AttributeList(getAttributeListArray(attrs));
+	}
+}
+
+/**
+* Toggle an attribute or attributes in an {@link AttributeList}, returning an object specifying whether any attributes were added, removed, and/or modified.
+* @param {AttributeList} attrs - {@link AttributeList} being modified.
+* @param {Array&lt;AttributePartial>} toggles - Attributes being toggled.
+* @param {boolean} [force] - Whether attributes should be exclusively added (true) or removed (false).
+* @private
+*/
+
+function toggle (attrs, toggles, force) {
+	let attributeAdded = false;
+	let attributeRemoved = false;
+	let atttributeModified= false;
+
+	toggles.forEach(toggleAttr => {
+		const index = attrs.indexOf(toggleAttr.name);
+
+		if (index === -1) {
+			if (force !== false) {
+				// add the attribute (when not exclusively removing attributes)
+				attrs.push(toggleAttr);
+
+				attributeAdded = true;
+			}
+		} else if (force !== true) {
+			// remove the attribute (when not exclusively adding attributes)
+			attrs.splice(index, 1);
+
+			attributeRemoved = true;
+		} else if (toggleAttr.value !== undefined &amp;&amp; attrs[index].value !== toggleAttr.value) {
+			// change the value of the attribute (when exclusively adding attributes)
+			attrs[index].value = toggleAttr.value;
+
+			atttributeModified = true;
+		}
+	});
+
+	return { attributeAdded, attributeRemoved, atttributeModified };
+}
+
+/** Return an AttributeList-compatible array from an array or object.
+* @param {Array&lt;AttributePartial|AttributePlain>|RegExp|string|void} attrs - raw attributes.
+* @param {any} [value] - optional attribute value to be used when `attr` is a primative.
+* @returns {Array&lt;AttributePartial>}
+*/
+
+function getAttributeListArray (attrs, value) {
+	return attrs === null || attrs === undefined
+		// void values are omitted
+		? []
+	: Array.isArray(attrs)
+		// arrays are sanitized as a name or value, and then optionally a source
+		? attrs.reduce(
+			(/** @type {Array&lt;AttributePartial>} */ attrs, rawattr) => {
+				/** @type {AttributePartial} */
+				const attr = {};
+
+				if ('name' in Object(rawattr)) {
+					attr.name = String(rawattr.name);
+				}
+
+				if ('value' in Object(rawattr)) {
+					attr.value = getAttributeValue(rawattr.value);
+				}
+
+				if ('source' in Object(rawattr)) {
+					attr.source = Object(rawattr.source);
+				}
+
+				if ('name' in attr || 'value' in attr) {
+					attrs.push(attr);
+				}
+
+				return attrs;
+			},
+			[]
+		)
+	: attrs === Object(attrs)
+		// objects are sanitized as a name and value
+		? Object.keys(attrs).map(
+			name => ({
+				name: toKebabCaseString(name),
+				value: getAttributeValue((/** @type {AttributePlain} */(attrs))[name])
+			})
+		)
+	: 1 in arguments
+		// both name and value arguments are sanitized as a name and value
+		? [{
+			name: /** @type {RegExp|string} */attrs,
+			value: getAttributeValue(value)
+		}]
+	// one name argument is sanitized as a name
+	: [{
+		name: attrs
+	}];
+}
+
+/**
+* Return a value transformed into an attribute value.
+* @description Expected values are strings. Unexpected values are null, objects, and undefined. Nulls returns null, Objects with the default toString return their JSON.stringify’d value otherwise toString’d, and Undefineds return an empty string.
+* @returns {null|string}
+* @example &lt;caption>Expected values.&lt;/caption>
+* getAttributeValue('foo') // returns 'foo'
+* getAttributeValue('') // returns ''
+* @example &lt;caption>Unexpected values.&lt;/caption>
+* getAttributeValue(null) // returns null
+* getAttributeValue(undefined) // returns ''
+* getAttributeValue(['foo']) // returns '["foo"]'
+* getAttributeValue({ toString() { return 'bar' }}) // returns 'bar'
+* getAttributeValue({ toString: 'bar' }) // returns '{"toString":"bar"}'
+* @private
+*/
+
+function getAttributeValue (value) {
+	return value === null
+		? null
+	: value === undefined
+		? ''
+	: value === Object(value)
+		? value.toString === Object.prototype.toString
+			? JSON.stringify(value)
+		: String(value)
+	: String(value);
+}
+
+/**
+* Return a string formatted using camelCasing.
+* @example
+* toCamelCaseString('hello-world') // returns 'helloWorld'
+* @private
+*/
+
+function toCamelCaseString (value) {
+	return isKebabCase(value)
+		? String(value).replace(/-[a-z]/g, $0 => $0.slice(1).toUpperCase())
+	: String(value);
+}
+
+/**
+* Return a string formatted using kebab-casing.
+* @description Expected values do not already contain dashes.
+* @example &lt;caption>Expected values.&lt;/caption>
+* toKebabCaseString('helloWorld') // returns 'hello-world'
+* toKebabCaseString('helloworld') // returns 'helloworld'
+* @example &lt;caption>Unexpected values.&lt;/caption>
+* toKebabCaseString('hello-World') // returns 'hello-World'
+* @private
+*/
+
+function toKebabCaseString (value) {
+	return isCamelCase(value)
+		? String(value).replace(/[A-Z]/g, $0 => `-${$0.toLowerCase()}`)
+	: String(value);
+}
+
+/**
+* Return whether a value is formatted camelCase.
+* @example
+* isCamelCase('helloWorld')  // returns true
+* isCamelCase('hello-world') // returns false
+* isCamelCase('helloworld')  // returns false
+* @private
+*/
+
+function isCamelCase (value) {
+	return /^\w+[A-Z]\w*$/.test(value);
+}
+
+/**
+* Return whether a value is formatted kebab-case.
+* @example
+* isKebabCase('hello-world') // returns true
+* isKebabCase('helloworld')  // returns false
+* isKebabCase('helloWorld')  // returns false
+* @private
+*/
+
+function isKebabCase (value) {
+	return /^\w+[-]\w+$/.test(value);
+}
+
+/**
+* Return whether a value is a Regular Expression.
+* @example
+* isRegExp(/hello-world/) // returns true
+* isRegExp('/hello-world/')  // returns false
+* isRegExp(new RegExp('hello-world')) // returns true
+* @private
+*/
+
+function isRegExp (value) {
+	return Object.prototype.toString.call(value) === '[object RegExp]';
+}
+
+export default AttributeList;
+
+/**
+* @typedef {Object} AttributeSource Object representing the source configuration of an attribute
+* @property {string} [before]
+* @property {string} [quote]
+*/
+/**
+* @typedef {Object} AttributePartial - Object representing a complete or partial attribute
+* @property {RegExp|string} [name]
+* @property {RegExp|String} [value]
+* @property {AttributeSource} [source]
+*/
+/**
+* @typedef {Object.&lt;string,string>} AttributePlain - Object representing an attribute
+*/
+/**
+* @typedef {AttributePartial|Array&lt;AttributePartial>|AttributePlain|Array&lt;AttributePlain>} AttributeArgument - Any kind of attribute
+*/
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>

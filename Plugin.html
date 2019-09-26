@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Plugin - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Plugin</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Plugin
+        </h2>
+        
+            <div class="class-description"><p>Return a new Plugin.</p></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Plugin"><span class="type-signature"></span>new Plugin<span class="signature">(name, pluginFunction)</span><span class="type-signature"> &rarr; {<a href="Plugin.html">Plugin</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Plugin.js.html">Plugin.js</a>, <a href="Plugin.js.html#line3">line 3</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>new Plugin('phtml-test', pluginOptions => {
+  // initialization logic
+
+  return {
+    Element (element, result) {
+      // runtime logic, do something with an element
+    },
+    Root (root, result) {
+      // runtime logic, do something with the root
+    }
+  }
+})</code></pre>
+
+    <pre class="prettyprint"><code>new Plugin('phtml-test', pluginOptions => {
+  // initialization logic
+
+  return (root, result) => {
+    // runtime logic, do something with the root
+  }
+})</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Name of the Plugin.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pluginFunction</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Function executed by the Plugin during initialization.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Plugin.html">Plugin</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+        </div>
+    
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="process"><span class="type-signature"></span>process<span class="signature">(input, processOptions, pluginOptions)</span><span class="type-signature"> &rarr; {<a href="global.html#ResultPromise">ResultPromise</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Plugin.js.html">Plugin.js</a>, <a href="Plugin.js.html#line71">line 71</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Process input with options and plugin options and return the result.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>plugin.process('some html', processOptions, pluginOptions)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>input</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Source being processed.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>processOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="global.html#ProcessOptions">ProcessOptions</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Custom settings applied to the Result.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>pluginOptions</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Options passed to the Plugin.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#ResultPromise">ResultPromise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>

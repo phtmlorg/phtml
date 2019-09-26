@@ -1,0 +1,4458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Fragment - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Fragment</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Fragment
+        </h2>
+        
+            <div class="class-description"><p>Return a new <a href="Fragment.html">Fragment</a> <a href="Node.html">Node</a>.</p></div>
+        
+    
+</header>
+
+<article>
+    
+        <div class="container-overview">
+        
+            
+
+    
+    <h2>Constructor</h2>
+    
+
+    <h4 class="name" id="Fragment"><span class="type-signature"></span>new Fragment<span class="signature">(settings)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>new Fragment() // returns an empty fragment
+
+new Fragment({ nodes: [ new Element('span') ] }) // returns a fragment with a &lt;span></code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>settings</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">FragmentSettings</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Custom settings applied to the <a href="Fragment.html">Fragment</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        </div>
+    
+
+    
+        <h3 class="subsection-title">Extends</h3>
+
+        
+
+
+    <ul>
+        <li><a href="Container.html">Container</a></li>
+    </ul>
+
+
+    
+
+    
+
+    
+    
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="elements"><span class="type-signature"></span>elements<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#elements">Container#elements</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return a child <a href="Element.html">Element</a> <a href="NodeList.html">NodeList</a> of the current <a href="Container.html">Container</a>.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.elements // returns an array of Elements</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="first"><span class="type-signature"></span>first<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line13">line 13</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#first">Container#first</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the first child <a href="Node.html">Node</a> of the current <a href="Container.html">Container</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.first // returns a Node or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="firstElement"><span class="type-signature"></span>firstElement<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line23">line 23</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#firstElement">Container#firstElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the first child <a href="Element.html">Element</a> of the current <a href="Container.html">Container</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.firstElement // returns an Element or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="index"><span class="type-signature"></span>index<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line11">line 11</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#index">Container#index</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Position of the current <a href="Node.html">Node</a> from its parent.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.index // returns the index of the node or -1</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="innerHTML"><span class="type-signature"></span>innerHTML<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line62">line 62</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#innerHTML">Container#innerHTML</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the innerHTML of the current <a href="Container.html">Container</a> as a String.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.innerHTML // returns a string of innerHTML</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="last"><span class="type-signature"></span>last<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line33">line 33</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#last">Container#last</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the last child <a href="Node.html">Node</a> of the current <a href="Container.html">Container</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.last // returns a Node or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="lastElement"><span class="type-signature"></span>lastElement<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#lastElement">Container#lastElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the last child <a href="Element.html">Element</a> of the current <a href="Container.html">Container</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.lastElement // returns an Element or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="name"><span class="type-signature"></span>name<span class="type-signature"> :'#document-fragment'</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Node name of the Fragment</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">'#document-fragment'</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="next"><span class="type-signature"></span>next<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#next">Container#next</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Next <a href="Node.html">Node</a> after the current <a href="Node.html">Node</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.next // returns null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="nextElement"><span class="type-signature"></span>nextElement<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#nextElement">Container#nextElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Next <a href="Element.html">Element</a> after the current <a href="Node.html">Node</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.nextElement // returns an element or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="nodes"><span class="type-signature"></span>nodes<span class="type-signature"> :Array.&lt;<a href="Node.html">Node</a>></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line29">line 29</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Nodes appended to the Fragment</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="outerHTML"><span class="type-signature"></span>outerHTML<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line84">line 84</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#outerHTML">Container#outerHTML</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the outerHTML of the current <a href="Container.html">Container</a> as a String.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.outerHTML // returns a string of outerHTML</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="previous"><span class="type-signature"></span>previous<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line57">line 57</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#previous">Container#previous</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Previous <a href="Node.html">Node</a> before the current <a href="Node.html">Node</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.previous // returns a node or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="previousElement"><span class="type-signature"></span>previousElement<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#previousElement">Container#previousElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Previous <a href="Element.html">Element</a> before the current <a href="Node.html">Node</a>, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.previousElement // returns an element or null</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="result"><span class="type-signature"></span>result<span class="type-signature"> :<a href="Result.html">Result</a></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line41">line 41</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Current result applied to the Fragment</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="Result.html">Result</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="root"><span class="type-signature"></span>root<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line89">line 89</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#root">Container#root</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Top-most ancestor from the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.root // returns the top-most node or the current node itself</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="source"><span class="type-signature"></span>source<span class="type-signature"> :<a href="global.html#FragmentSource">FragmentSource</a></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Source mapping of the Fragment</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type"><a href="global.html#FragmentSource">FragmentSource</a></span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sourceInnerHTML"><span class="type-signature"></span>sourceInnerHTML<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line109">line 109</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#sourceInnerHTML">Container#sourceInnerHTML</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the stringified innerHTML from the source input.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="sourceOuterHTML"><span class="type-signature"></span>sourceOuterHTML<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line124">line 124</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#sourceOuterHTML">Container#sourceOuterHTML</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the stringified outerHTML from the source input.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="textContent"><span class="type-signature"></span>textContent<span class="type-signature"></span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#textContent">Container#textContent</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the text content of the current <a href="Container.html">Container</a> as a String.</p>
+</div>
+
+
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="type"><span class="type-signature"></span>type<span class="type-signature"> :'fragment'</span></h4>
+
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Type identifer of the Fragment</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">'fragment'</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id="after"><span class="type-signature"></span>after<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line105">line 105</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#after">Container#after</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Insert one or more <a href="Node.html">Node</a>s after the current <a href="Node.html">Node</a>, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.after(new Text({ data: 'Hello World' }))</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes to be inserted after the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="append"><span class="type-signature"></span>append<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line123">line 123</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#append">Container#append</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Append Nodes or new Text Nodes to the current <a href="Node.html">Node</a>, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.append(someOtherNode)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes to be inserted after the last child of the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="appendTo"><span class="type-signature"></span>appendTo<span class="signature">(parent)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#appendTo">Container#appendTo</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Append the current <a href="Node.html">Node</a> to another Node, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>parent</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Container.html">Container</a></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p><a href="Container.html">Container</a> for the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="before"><span class="type-signature"></span>before<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line149">line 149</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#before">Container#before</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Insert Nodes or new Text Nodes before the Node if it has a parent, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.before(new Text({ data: 'Hello World' })) // returns the current node</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes to be inserted before the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="clone"><span class="type-signature"></span>clone<span class="signature">(isDeep)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line48">line 48</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return a clone of the current <a href="Fragment.html">Fragment</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>isDeep</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Whether the descendants of the current Fragment should also be cloned.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="lastNth"><span class="type-signature"></span>lastNth<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Node.html">Node</a>|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line155">line 155</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#lastNth">Container#lastNth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return a child <a href="Node.html">Node</a> of the current <a href="Container.html">Container</a> by last index, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.lastNth(0) // returns a Node or null</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="lastNthElement"><span class="type-signature"></span>lastNthElement<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Element.html">Element</a>|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line165">line 165</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#lastNthElement">Container#lastNthElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return a child <a href="Element.html">Element</a> of the current <a href="Container.html">Container</a> by last index, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.lastNthElement(0) // returns an Element or null</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Element.html">Element</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="nth"><span class="type-signature"></span>nth<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Node.html">Node</a>|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line175">line 175</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#nth">Container#nth</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return a child <a href="Node.html">Node</a> of the current <a href="Container.html">Container</a> by index, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.nth(0) // returns a Node or null</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="nthElement"><span class="type-signature"></span>nthElement<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="Element.html">Element</a>|null}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line185">line 185</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#nthElement">Container#nthElement</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return an <a href="Element.html">Element</a> child of the current Container by index, or <code>null</code> if there is none.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.nthElement(0) // returns an Element or null</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="Element.html">Element</a></span>
+|
+
+<span class="param-type">null</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="prepend"><span class="type-signature"></span>prepend<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line167">line 167</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#prepend">Container#prepend</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Prepend Nodes or new Text Nodes to the current <a href="Node.html">Node</a>, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.prepend(someOtherNode)</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Node.html">Node</a></span>
+|
+
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes inserted before the first child of the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="remove"><span class="type-signature"></span>remove<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line180">line 180</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#remove">Container#remove</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Remove the current <a href="Node.html">Node</a> from its parent, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.remove() // returns the current node</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="replaceAll"><span class="type-signature"></span>replaceAll<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line195">line 195</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#replaceAll">Container#replaceAll</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Replace all of the children of the current <a href="Container.html">Container</a>, returning the current <a href="Container.html">Container</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>container.replaceAll(new Text({ data: 'Hello World' }))</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;<a href="Node.html">Node</a>></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes replacing the current children of the <a href="Container.html">Container</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="replaceWith"><span class="type-signature"></span>replaceWith<span class="signature">(&hellip;nodes)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line196">line 196</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#replaceWith">Container#replaceWith</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Replace the current <a href="Node.html">Node</a> with another Node or Nodes, returning the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>node.replaceWith(someOtherNode) // returns the current node</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>nodes</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Node.html">Node</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                    &lt;repeatable><br>
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Any nodes replacing the current <a href="Node.html">Node</a>.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toJSON"><span class="type-signature"></span>toJSON<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;(<a href="Node.html">Node</a>|string)>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line64">line 64</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the current <a href="Fragment.html">Fragment</a> as an Array.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>fragment.toJSON() // returns []</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;(<a href="Node.html">Node</a>|string)></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="toString"><span class="type-signature"></span>toString<span class="signature">()</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Fragment.js.html">Fragment.js</a>, <a href="Fragment.js.html#line73">line 73</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Return the current <a href="Fragment.html">Fragment</a> as a String.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>fragment.toJSON() // returns ''</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="visit"><span class="type-signature"></span>visit<span class="signature">(result, overrideVisitors<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {<a href="global.html#ResultPromise">ResultPromise</a>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line222">line 222</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#visit">Container#visit</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Transform the current <a href="Node.html">Node</a> and any descendants using visitors.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>await node.visit(result)</code></pre>
+
+    <pre class="prettyprint"><code>await node.visit() // visit using the result of the current node</code></pre>
+
+    <pre class="prettyprint"><code>await node.visit(result, {
+  Element () {
+    // do something to an element
+  }
+})</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Result.html">Result</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><a href="Result.html">Result</a> to be used by visitors.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>overrideVisitors</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Alternative visitors to be used in place of <a href="Result.html">Result</a> visitors.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="global.html#ResultPromise">ResultPromise</a></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="walk"><span class="type-signature"></span>walk<span class="signature">(callback_or_filter, callback)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Container.js.html">Container.js</a>, <a href="Container.js.html#line234">line 234</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#walk">Container#walk</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Traverse the descendant <a href="Node.html">Node</a>s of the current <a href="Container.html">Container</a> with a callback function, returning the current <a href="Container.html">Container</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>container.walk(node => {
+  console.log(node);
+})</code></pre>
+
+    <pre class="prettyprint"><code>container.walk('*', node => {
+  console.log(node);
+})</code></pre>
+
+        <p class="code-caption">Walk only "section" <a href="Element.html">Element</a>s.</p>
+    
+    <pre class="prettyprint"><code>container.walk('section', node => {
+  console.log(node); // logs only Section Elements
+})</code></pre>
+
+    <pre class="prettyprint"><code>container.walk(/^section$/, node => {
+  console.log(node); // logs only Section Elements
+})</code></pre>
+
+    <pre class="prettyprint"><code>container.walk(
+  node => node.name.toLowerCase() === 'section',
+  node => {
+  console.log(node); // logs only Section Elements
+})</code></pre>
+
+        <p class="code-caption">Walk only <a href="Text.html">Text</a>.</p>
+    
+    <pre class="prettyprint"><code>container.walk('#text', node => {
+  console.log(node); // logs only Text Nodes
+})</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callback_or_filter</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function, or a filter to reduce <a href="Node.html">Node</a>s the callback is applied to.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+|
+
+<span class="param-type">string</span>
+|
+
+<span class="param-type">RegExp</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Callback function when a filter is also specified.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    <h4 class="name" id="warn"><span class="type-signature"></span>warn<span class="signature">(result, text, opts<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Node.js.html">Node.js</a>, <a href="Node.js.html#line241">line 241</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-overrides">Overrides:</dt>
+    <dd class="tag-overrides"><ul class="dummy"><li>
+        <a href="Container.html#warn">Container#warn</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+<div class="description">
+    <p>Add a warning from the current <a href="Node.html">Node</a>.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>node.warn(result, 'Something went wrong')</code></pre>
+
+    <pre class="prettyprint"><code>node.warn(result, 'Something went wrong', {
+  node: someOtherNode,
+  plugin: someOtherPlugin
+})</code></pre>
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>result</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="Result.html">Result</a></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p><a href="Result.html">Result</a> the warning is being added to.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Message being sent as the warning.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>opts</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>Additional information about the warning.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>

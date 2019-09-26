@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Container.js - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Container.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Node from './Node';
+
+/** Return a new {@link Container} {@link Node}.
+* @extends Node
+*/
+class Container extends Node {
+	/**
+	* Return the first child {@link Node} of the current {@link Container}, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.first // returns a Node or null
+	*/
+	get first () {
+		return this.nodes[0] || null;
+	}
+
+	/**
+	* Return the first child {@link Element} of the current {@link Container}, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.firstElement // returns an Element or null
+	*/
+	get firstElement () {
+		return this.nodes.find(hasNodes) || null;
+	}
+
+	/**
+	* Return the last child {@link Node} of the current {@link Container}, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.last // returns a Node or null
+	*/
+	get last () {
+		return this.nodes[this.nodes.length - 1] || null;
+	}
+
+	/**
+	* Return the last child {@link Element} of the current {@link Container}, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.lastElement // returns an Element or null
+	*/
+	get lastElement () {
+		return this.nodes.slice().reverse().find(hasNodes) || null;
+	}
+
+	/**
+	* Return a child {@link Element} {@link NodeList} of the current {@link Container}.
+	* @returns {Node[]}
+	* @example
+	* container.elements // returns an array of Elements
+	*/
+	get elements () {
+		return this.nodes.filter(hasNodes) || [];
+	}
+
+	/**
+	* Return the innerHTML of the current {@link Container} as a String.
+	* @example
+	* container.innerHTML // returns a string of innerHTML
+	*/
+	get innerHTML () {
+		return this.nodes.innerHTML;
+	}
+
+	/**
+	* Define the nodes of the current {@link Container} from a String.
+	* @param {string} innerHTML - Source being processed.
+	* @returns {void}
+	* @example
+	* container.innerHTML = 'Hello &lt;strong>world&lt;/strong>';
+	* container.nodes.length; // 2
+	*/
+	set innerHTML (innerHTML) {
+		this.nodes.innerHTML = innerHTML;
+	}
+
+	/**
+	* Return the outerHTML of the current {@link Container} as a String.
+	* @returns {string}
+	* @example
+	* container.outerHTML // returns a string of outerHTML
+	*/
+	get outerHTML () {
+		return this.nodes.innerHTML;
+	}
+
+	/**
+	* Replace the current {@link Container} from a String.
+	* @param {string} input - Source being processed.
+	* @returns {void}
+	* @example
+	* container.outerHTML = 'Hello &lt;strong>world&lt;/strong>';
+	*/
+	set outerHTML (outerHTML) {
+		const Result = Object(this.result).constructor;
+
+		if (Result) {
+			const childNodes = new Result(outerHTML).root.nodes;
+
+			this.replaceWith(...childNodes);
+		}
+	}
+
+	/**
+	* Return the stringified innerHTML from the source input.
+	* @returns {string}
+	*/
+	get sourceInnerHTML () {
+		return this.isSelfClosing || this.isVoid || typeof Object(this.source.input).html !== 'string'
+			? ''
+		: 'startInnerOffset' in this.source &amp;&amp; 'endInnerOffset' in this.source
+			? this.source.input.html.slice(
+				this.source.startInnerOffset,
+				this.source.endInnerOffset
+			)
+		: this.sourceOuterHTML;
+	}
+
+	/**
+	* Return the stringified outerHTML from the source input.
+	* @returns {string}
+	*/
+	get sourceOuterHTML () {
+		return typeof Object(this.source.input).html !== 'string'
+			? ''
+		: this.source.input.html.slice(
+			this.source.startOffset,
+			this.source.endOffset
+		);
+	}
+
+	/**
+	* Return the text content of the current {@link Container} as a String.
+	* @returns {string}
+	*/
+	get textContent () {
+		return this.nodes.textContent;
+	}
+
+	/**
+	* Define the content of the current {@link Container} as a new {@link Text} {@link Node}.
+	* @returns {void}
+	*/
+	set textContent (textContent) {
+		this.nodes.textContent = textContent;
+	}
+
+	/**
+	* Return a child {@link Node} of the current {@link Container} by last index, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.lastNth(0) // returns a Node or null
+	*/
+	lastNth (index) {
+		return this.nodes.slice().reverse()[index] || null;
+	}
+
+	/**
+	* Return a child {@link Element} of the current {@link Container} by last index, or `null` if there is none.
+	* @returns {Element|null}
+	* @example
+	* container.lastNthElement(0) // returns an Element or null
+	*/
+	lastNthElement (index) {
+		return this.elements.reverse()[index] || null;
+	}
+
+	/**
+	* Return a child {@link Node} of the current {@link Container} by index, or `null` if there is none.
+	* @returns {Node|null}
+	* @example
+	* container.nth(0) // returns a Node or null
+	*/
+	nth (index) {
+		return this.nodes[index] || null;
+	}
+
+	/**
+	* Return an {@link Element} child of the current Container by index, or `null` if there is none.
+	* @returns {Element|null}
+	* @example
+	* container.nthElement(0) // returns an Element or null
+	*/
+	nthElement (index) {
+		return this.elements[index] || null;
+	}
+
+	/**
+	* Replace all of the children of the current {@link Container}, returning the current {@link Container}.
+	* @param {Node[]} nodes - Any nodes replacing the current children of the {@link Container}.
+	* @example
+	* container.replaceAll(new Text({ data: 'Hello World' }))
+	*/
+	replaceAll (...nodes) {
+		if (this.nodes) {
+			this.nodes.splice(0, this.nodes.length, ...nodes);
+		}
+
+		return this;
+	}
+
+	/**
+	* Traverse the descendant {@link Node}s of the current {@link Container} with a callback function, returning the current {@link Container}.
+	* @param {Function|string|RegExp} callback_or_filter - Callback function, or a filter to reduce {@link Node}s the callback is applied to.
+	* @param {Function|string|RegExp} callback - Callback function when a filter is also specified.
+	* @example
+	* container.walk(node => {
+	*   console.log(node);
+	* })
+	* @example
+	* container.walk('*', node => {
+	*   console.log(node);
+	* })
+	* @example &lt;caption>Walk only "section" {@link Element}s.&lt;/caption>
+	* container.walk('section', node => {
+	*   console.log(node); // logs only Section Elements
+	* })
+	* @example
+	* container.walk(/^section$/, node => {
+	*   console.log(node); // logs only Section Elements
+	* })
+	* @example
+	* container.walk(
+	*   node => node.name.toLowerCase() === 'section',
+	*   node => {
+	*   console.log(node); // logs only Section Elements
+	* })
+	* @example &lt;caption>Walk only {@link Text}.&lt;/caption>
+	* container.walk('#text', node => {
+	*   console.log(node); // logs only Text Nodes
+	* })
+	*/
+	walk () {
+		const [ cb, filter ] = getCbAndFilterFromArgs(arguments);
+
+		walk(this, cb, filter);
+
+		return this;
+	}
+}
+
+function walk (node, cb, filter) {
+	if (typeof cb === 'function' &amp;&amp; node.nodes) {
+		node.nodes.slice(0).forEach(child => {
+			if (Object(child).parent === node) {
+				if (testWithFilter(child, filter)) {
+					cb(child); // eslint-disable-line callback-return
+				}
+
+				if (child.nodes) {
+					walk(child, cb, filter);
+				}
+			}
+		});
+	}
+}
+
+function getCbAndFilterFromArgs (args) {
+	const [ cbOrFilter, onlyCb ] = args;
+	const cb = onlyCb || cbOrFilter;
+	const filter = onlyCb ? cbOrFilter : undefined;
+
+	return [cb, filter];
+}
+
+function testWithFilter (node, filter) {
+	if (!filter) {
+		return true;
+	} else if (filter === '*') {
+		return Object(node).constructor.name === 'Element';
+	} else if (typeof filter === 'string') {
+		return node.name === filter;
+	} else if (filter instanceof RegExp) {
+		return filter.test(node.name);
+	} else if (filter instanceof Function) {
+		return filter(node);
+	} else {
+		return false;
+	}
+}
+
+function hasNodes (node) {
+	return node.nodes;
+}
+
+export default Container;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>

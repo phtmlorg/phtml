@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "start": "npx upsite -c empty -d ."
+  },
+  "private": true
+}

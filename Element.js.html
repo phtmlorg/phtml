@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Element.js - pHTML</title>
+    
+    <meta name="description" content="A tool for transforming HTML with JavaScript" />
+    
+    
+    
+    <meta property="og:title" content="pHTML"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:image" content="https://phtml.io/phtml.png"/>
+    <meta property="og:site_name" content="Docdash"/>
+    <meta property="og:url" content="https://phtml.io/"/>
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="image/x-icon" href="https://phtml.io/favicon.ico"></head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav >
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="./">pHTML</a></h2><h2></h2><h2><a href="https://gitter.im/postcss" >Support</a></h2><h3>Classes</h3><ul><li><a href="AttributeList.html">AttributeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="AttributeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#add">add</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#contains">contains</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#get">get</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#indexOf">indexOf</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toggle">toggle</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="AttributeList.html#toString">toString</a></li></ul></li><li><a href="Comment.html">Comment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Comment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Comment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Comment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Comment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Comment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Comment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Comment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Comment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Comment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Comment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Comment.html#warn">warn</a></li></ul></li><li><a href="Container.html">Container</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Container.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Container.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Container.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Container.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Container.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Container.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Container.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Container.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Container.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Container.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Container.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Container.html#warn">warn</a></li></ul></li><li><a href="Doctype.html">Doctype</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Doctype.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Doctype.html#warn">warn</a></li></ul></li><li><a href="Element.html">Element</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Element.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Element.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Element.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Element.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Element.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Element.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Element.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Element.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Element.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Element.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Element.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Element.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Element.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Element.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Element.html#warn">warn</a></li></ul></li><li><a href="Fragment.html">Fragment</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Fragment.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNth">lastNth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#lastNthElement">lastNthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nth">nth</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#nthElement">nthElement</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceAll">replaceAll</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#walk">walk</a></li><li data-type='method' style='display: none;'><a href="Fragment.html#warn">warn</a></li></ul></li><li><a href="Node.html">Node</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Node.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Node.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Node.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Node.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Node.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Node.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Node.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Node.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Node.html#warn">warn</a></li></ul></li><li><a href="NodeList.html">NodeList</a><ul class='methods'><li data-type='method' style='display: none;'><a href="NodeList.html#.from">from</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#pop">pop</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#push">push</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#shift">shift</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#splice">splice</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="NodeList.html#unshift">unshift</a></li></ul></li><li><a href="PHTML.html">PHTML</a><ul class='methods'><li data-type='method' style='display: none;'><a href="PHTML.html#.process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#.use">use</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#process">process</a></li><li data-type='method' style='display: none;'><a href="PHTML.html#use">use</a></li></ul></li><li><a href="Plugin.html">Plugin</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Plugin.html#process">process</a></li></ul></li><li><a href="Result.html">Result</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Result.html#normalize">normalize</a></li><li data-type='method' style='display: none;'><a href="Result.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Result.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Result.html#warn">warn</a></li></ul></li><li><a href="Text.html">Text</a><ul class='methods'><li data-type='method' style='display: none;'><a href="Text.html#after">after</a></li><li data-type='method' style='display: none;'><a href="Text.html#append">append</a></li><li data-type='method' style='display: none;'><a href="Text.html#appendTo">appendTo</a></li><li data-type='method' style='display: none;'><a href="Text.html#before">before</a></li><li data-type='method' style='display: none;'><a href="Text.html#clone">clone</a></li><li data-type='method' style='display: none;'><a href="Text.html#prepend">prepend</a></li><li data-type='method' style='display: none;'><a href="Text.html#remove">remove</a></li><li data-type='method' style='display: none;'><a href="Text.html#replaceWith">replaceWith</a></li><li data-type='method' style='display: none;'><a href="Text.html#toJSON">toJSON</a></li><li data-type='method' style='display: none;'><a href="Text.html#toString">toString</a></li><li data-type='method' style='display: none;'><a href="Text.html#visit">visit</a></li><li data-type='method' style='display: none;'><a href="Text.html#warn">warn</a></li></ul></li></ul>
+<h3>Links</h3><ul><li><a href="https://github.com/phtmlorg/phtml" >GitHub</a></li></ul></nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Element.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import AttributeList from './AttributeList';
+import Container from './Container';
+import NodeList from './NodeList';
+import Result from './Result';
+
+/** Return a new {@link Element} {@Link Node}.
+* @extends Container
+*/
+class Element extends Container {
+	/**
+	* @param {ElementSettings|string} settings - Custom settings applied to the Element or its tag name.
+	* @param {Array&lt;Array|AttributeList,NodeList>} [args] - Custom settings applied to the Element or its tag name.
+	* @example
+	* new Element({ name: 'p' }) // returns an element representing &lt;p>&lt;/p>
+	*
+	* new Element({
+	*   name: 'input',
+	*   attrs: [{ name: 'type', value: 'search' }],
+	*   isVoid: true
+	* }) // returns an element representing &lt;input type="search">
+	* @example
+	* new Element('p') // returns an element representing &lt;p>&lt;/p>
+	*
+	* new Element('p', null,
+	*   new Element(
+	*     'input',
+	*     [{ name: 'type', value: 'search' }]
+	*   )
+	* ) // returns an element representing &lt;p>&lt;input type="search">&lt;/p>
+	*/
+	constructor (settings, ...args) {
+		super();
+
+		if (settings !== Object(settings)) {
+			settings = { name: String(settings == null ? 'span' : settings) };
+		}
+
+		if (args[0] === Object(args[0])) {
+			settings.attrs = args[0];
+		}
+
+		if (args.length > 1) {
+			settings.nodes = args.slice(1);
+		}
+
+		/** Type identifier of the Element
+		* @type {'element'} */
+		this.type = 'element';
+
+		/** Tag name of the Element
+		* @type {string} */
+		this.name = settings.name;
+
+		/** Whether the Element is self-closing
+		* @type {boolean} */
+		this.isSelfClosing = Boolean(settings.isSelfClosing);
+
+		/** Whether the Element is self-closing
+		* @type {boolean} */
+		this.isVoid = 'isVoid' in settings
+			? Boolean(settings.isVoid)
+		: Result.voidElements.includes(settings.name);
+
+		/** Whether the Element includes a closing tag
+		* @type {boolean} */
+		this.isWithoutEndTag = Boolean(settings.isWithoutEndTag);
+
+		/** Attributes applied to the Element
+		* @type {AttributeList} */
+		this.attrs = AttributeList.from(settings.attrs);
+
+		/** Nodes appended to the Element
+		* @type {NodeList} */
+		this.nodes = Array.isArray(settings.nodes)
+			? new NodeList(this, ...Array.from(settings.nodes))
+		: settings.nodes !== null &amp;&amp; settings.nodes !== undefined
+			? new NodeList(this, settings.nodes)
+		: new NodeList(this);
+
+		/** Source mapping of the Element
+		* @type {ElementSource} */
+		this.source = Object(settings.source);
+
+		/** Current result applied to the Element
+		* @type {Result} */
+		this.result = settings.result;
+	}
+
+	/**
+	* Return the outerHTML of the current {@link Element} as a String.
+	* @returns {string}
+	* @example
+	* element.outerHTML // returns a string of outerHTML
+	*/
+	get outerHTML () {
+		return `${getOpeningTagString(this)}${this.nodes.innerHTML}${getClosingTagString(this)}`;
+	}
+
+	/**
+	* Replace the current {@link Element} from a String.
+	* @param {string} input - Source being processed.
+	* @returns {void}
+	* @example
+	* element.outerHTML = 'Hello &lt;strong>world&lt;/strong>';
+	*/
+	set outerHTML (outerHTML) {
+		Object.getOwnPropertyDescriptor(Container.prototype, 'outerHTML').set.call(this, outerHTML);
+	}
+
+	/**
+	* Return a clone of the current {@link Element}.
+	* @param {ElementSettings} settings - Custom settings applied to the cloned Element.
+	* @param {boolean} isDeep - Whether the descendants of the current Element should also be cloned.
+	*/
+	clone (settings, isDeep) {
+		const clone = new Element({
+			...this,
+			nodes: [],
+			...Object(settings)
+		});
+
+		const didSetNodes = 'nodes' in Object(settings);
+
+		if (isDeep &amp;&amp; !didSetNodes) {
+			clone.nodes = this.nodes.clone(clone);
+		}
+
+		return clone;
+	}
+
+	/**
+	* Return the Element as a unique Object.
+	* @returns {ElementJSON}
+	*/
+	toJSON () {
+		/** @type {ElementJSON} */
+		const object = { name: this.name };
+
+		// conditionally disclose whether the Element is self-closing
+		if (this.isSelfClosing) {
+			object.isSelfClosing = true;
+		}
+
+		// conditionally disclose whether the Element is void
+		if (this.isVoid) {
+			object.isVoid = true;
+		}
+
+		// conditionally disclose Attributes applied to the Element
+		if (this.attrs.length) {
+			object.attrs = this.attrs.toJSON();
+		}
+
+		// conditionally disclose Nodes appended to the Element
+		if (!this.isSelfClosing &amp;&amp; !this.isVoid &amp;&amp; this.nodes.length) {
+			object.nodes = this.nodes.toJSON();
+		}
+
+		return object;
+	}
+
+	/**
+	* Return the stringified Element.
+	*/
+	toString () {
+		return `${getOpeningTagString(this)}${this.nodes || ''}${
+			`${getClosingTagString(this)}`
+		}`;
+	}
+}
+
+export default Element;
+
+function getClosingTagString (element) {
+	return element.isSelfClosing || element.isVoid || element.isWithoutEndTag
+		? ''
+	: `&lt;/${element.name}${element.source.after || ''}>`;
+}
+
+function getOpeningTagString (element) {
+	return `&lt;${element.name}${element.attrs}${element.source.before || ''}>`;
+}
+
+/**
+* @typedef {Object} ElementSettings - Custom settings applied to the Element or its tag name.
+* @property {string} [name="span"] - Tag name of the Element.
+* @property {boolean} [isSelfClosing=false] - Whether the Element is self-closing.
+* @property {boolean} [isVoid=false] - Whether the Element is void.
+* @property {boolean} [isWithoutEndTag=false] - Whether the Element includes a closing tag.
+* @property {Array|AttributeList|Object} [attrs] - Attributes applied to the Element.
+* @property {Array|NodeList} [nodes] - Nodes appended to the Element.
+* @property {Object} [source] - Source mapping of the Element.
+* @property {Result} result - Result applied to the Element.
+*
+* @typedef {Object} ElementSource - Source mapping of the Element.
+* @property {string} before - Raw content before the inner-opening tag of the Element.
+* @property {string} after - Raw content before the inner-closing tag of the Element.
+*
+* @typedef {Object} ElementJSON - JSON representation of the Element.
+* @property {string} name - Tag name of the Element.
+* @property {boolean} isSelfClosing - Whether the Element is self-closing.
+* @property {boolean} isVoid - Whether the Element is void.
+* @property {Object.&lt;string,string|null>} attrs - Attributes applied to the Element.
+* @property {Array&lt;ElementJSON|string>} nodes - Nodes appended to the Element.
+*/
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a> using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    
+</body>
+</html>
